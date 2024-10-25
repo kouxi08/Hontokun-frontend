@@ -9,3 +9,5 @@ dictionaries:
 ignorePaths:
   - "cspell.config.yaml"
   - "../.github/CODEOWNERS"
+  - "../README.md"
+  - "../package.json"
