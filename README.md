@@ -1,6 +1,40 @@
-# hontokun
+j# hontokun
+
+## Project 
+- vue
+- pinia
+
+## Summary
+
+探偵のホントくんといっしょにクイズでフェイクニュースを見破れ！
+
+詳しくはこちらへ！
+
+
 
 ## Project setup
+
+### Container Information
+```
+make ps
+```
+
+### Building Containers
+```
+make build
+```
+
+### Launching Containers
+```
+make up
+```
+
+### Stop Container
+```
+make down
+```
+
+### Package Install
 ```
 npm install
 ```
