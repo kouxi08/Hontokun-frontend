@@ -1,5 +1,8 @@
-hontokun
-buildx
-kouxi
 Avenir
+buildx
+datepicker
+hontokun
+kouxi
+pinia
+vuepic
 vuex
