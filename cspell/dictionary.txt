@@ -3,6 +3,9 @@ buildx
 datepicker
 hontokun
 kouxi
+Noto
+noto
+Maru
 pinia
 vuepic
 vuex
