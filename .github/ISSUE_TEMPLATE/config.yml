@@ -2,8 +2,9 @@ blank_issues_enabled: true
 contact_links:
   - name: ADD
     about: Issue template
-    url: https://github.com/sintaro-katuta/pulse/issues/new?template=issue_add_template.md&labels=💫新機能
+    
+    url: https://github.com/kouxi08/Hontokun-frontend/issues/new?template=issue_add_template.md&labels=💫新機能
   
   - name: BUG
     about: Issue template
-    url: https://github.com/sintaro-katuta/pulse/issues/new?template=issue_bug_template.md&labels=⛔バグ報告
+    url: https://github.com/kouxi08/Hontokun-frontend/issues/new?template=issue_bug_template.md&labels=⛔バグ報告
