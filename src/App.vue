@@ -1,16 +1,11 @@
 <template>
-  <AppHeader></AppHeader>
+  <Header></Header>
 </template>
 
-<script>
+<script setup>
 //import HelloWorld from './components/HelloWorld.vue'
-import AppHeader from './components/Header.vue';
-export default {
-  name: 'App',
-  components: {
-    AppHeader
-  }
-}
+import Header from './components/HeaderComponent.vue';
+
 </script>
 
 <style>

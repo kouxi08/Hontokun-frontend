@@ -8,14 +8,3 @@
       </div>
     </header>
   </template>
-  
-  <script>
-  export default {
-    name: 'AppHeader',
-  };
-  </script>
-  
-  <style scoped>
-  /* カスタムスタイルが必要なら追加 */
-  </style>
-  
