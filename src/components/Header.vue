@@ -5,11 +5,6 @@
           <h1 class="text-sm mt-2 font-bold">ニュース探偵</h1>
           <span class="text-2xl font-bold">ホントくん</span>
         </div>
-        <nav class="mt-10"> 
-          <a href="#" class="bg-white rounded-lg h-8 w-24 flex items-center justify-center" role="button">
-            ログイン
-          </a>
-        </nav>
       </div>
     </header>
   </template>
