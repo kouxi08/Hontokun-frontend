@@ -1,27 +1,7 @@
 <template>
-  <Button>
-    ログイン
-  </Button>
-
-  <Button color="primary">
-    ログイン
-  </Button>
-
-  <Button color="secondary">
-    ログイン
-  </Button>
-
-  <Button color="accent">
-    ログイン
-  </Button>
-
-  <Button color="danger">
-    ログイン
-  </Button>
 </template>
 
 <script setup>
-import Button from './components/ButtonComponent.vue'
 </script>
 
 <style>
