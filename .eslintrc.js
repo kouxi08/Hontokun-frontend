@@ -15,6 +15,8 @@ module.exports = {
   // add your custom rules here
   rules: {
     'vue/comment-directive': 'error',
-    'vue/jsx-uses-vars': 'error'
+    'vue/jsx-uses-vars': 'error',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
   }
 }
