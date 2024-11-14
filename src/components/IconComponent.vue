@@ -7,8 +7,14 @@
 <script setup>
 const props = defineProps({
     name: String,
-    width: Number,
-    height: Number
+    width: {
+        type: Number,
+        default: 16
+    },
+    height: {
+        type: Number,
+        default: 16
+    }
 });
 
 const src = "/icons/" + props.name + ".svg";
