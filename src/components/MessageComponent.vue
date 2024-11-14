@@ -21,7 +21,7 @@
   
     const positionStyles = {
       top: 'absolute top-[172px]',
-      middle: 'absolute top-[calc(50%-64px)]', // Half of 852px minus half the height (32px)
+      middle: 'absolute top-[calc(50%-64px)]',
       bottom: 'absolute bottom-[172px]'
     };
   
