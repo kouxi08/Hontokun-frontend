@@ -1,6 +1,6 @@
 module.exports = {
   disableEmoji: false,
-  format: "[{type}] {subject}",
+  format: "[{type}] refs {subject}",
   list: [
     "fix",
     "add",
