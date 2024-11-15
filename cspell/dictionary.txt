@@ -9,3 +9,5 @@ Maru
 pinia
 vuepic
 vuex
+width
+height
