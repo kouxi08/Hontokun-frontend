@@ -1,7 +1,7 @@
 <template>
-  <XP value=1 />
+  <Level>24</Level>
 </template>
 
 <script setup>
-import XP from './components/XpComponent.vue'
+import Level from './components/LevelComponent.vue';
 </script>
