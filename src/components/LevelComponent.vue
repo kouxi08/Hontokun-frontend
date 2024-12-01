@@ -10,38 +10,38 @@
   </div>
 </template>
   
-  <script setup>
-  import { computed, getCurrentInstance } from 'vue';
-  
-  // 現在のインスタンスからスロットを取得
-  const instance = getCurrentInstance();
-  const slots = instance?.slots;
-  
-  const level = computed(() => {
-    const slotContent = slots?.default ? slots.default()[0]?.children : null;
-    return Number(slotContent) || 0; // スロットが無い場合はデフォルトで0
-  });
-  
-  const images = [
-    './/public/icons/level_brown.svg', // 画像パス1
-    './/public/icons/level_silver.svg', // 画像パス2
-    './/public/icons/level_gold.svg', // 画像パス3
-    './/public/icons/level_purple.svg', // 画像パス4
-    './/public/icons/level_red.svg', // 画像パス5
-  ];
-  
-  // レベルに応じた画像を取得
-  const currentImage = computed(() => {
-    const imageIndex = Math.floor(level.value / 5);
-    return images[imageIndex] || 25;
-  });
-  </script>
-  
-  <style>
-  .text-shadow {
-    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000,
-      -1px 1px 0 #000, 1px -1px 0 #000, 0px 1px 0 #000, 0 -1px 0 #000,
-      -1px 0 0 #000, 1px 0 0 #000;
-  }
-  </style>
+<script setup>
+import { computed, getCurrentInstance } from 'vue';
+
+// 現在のインスタンスからスロットを取得
+const instance = getCurrentInstance();
+const slots = instance?.slots;
+
+const level = computed(() => {
+  const slotContent = slots?.default ? slots.default()[0]?.children : null;
+  return Number(slotContent) || 0; // スロットが無い場合はデフォルトで0
+});
+
+const images = [
+  './/public/icons/level_brown.svg', // 画像パス1
+  './/public/icons/level_silver.svg', // 画像パス2
+  './/public/icons/level_gold.svg', // 画像パス3
+  './/public/icons/level_purple.svg', // 画像パス4
+  './/public/icons/level_red.svg', // 画像パス5
+];
+
+// レベルに応じた画像を取得
+const currentImage = computed(() => {
+  const imageIndex = Math.floor(level.value / 5);
+  return images[imageIndex] || 25;
+});
+</script>
+
+<style>
+.text-shadow {
+  text-shadow: 1px 1px 0 #000, -1px -1px 0 #000,
+    -1px 1px 0 #000, 1px -1px 0 #000, 0px 1px 0 #000, 0 -1px 0 #000,
+    -1px 0 0 #000, 1px 0 0 #000;
+}
+</style>
   
