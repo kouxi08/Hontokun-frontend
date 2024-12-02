@@ -14,6 +14,18 @@ module.exports = {
         zenMaru: ["Zen Maru Gothic"],
         notoSans: ["Noto Sans JP"]
       },
+      keyframes: {
+        circle: {
+          '0%': { transform: 'translate(50px, 0)' },
+          '25%': { transform: 'translate(0, 50px)' },
+          '50%': { transform: 'translate(-50px, 0)' },
+          '75%': { transform: 'translate(0, -50px)' },
+          '100%': { transform: 'translate(50px, 0)' },
+        },
+      },
+      animation: {
+        circle: 'circle 4s linear infinite',
+      },
     },
   },
   variants: {

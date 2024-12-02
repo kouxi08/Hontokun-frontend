@@ -8,7 +8,7 @@ const pinia = createPinia()
 const app = createApp(App)
 
 const routes = [
-  { path: '/', component: import('./App.vue') },
+  { path: '/', name: "topPage", component: import('./components/page/topPage.vue') },
 ]
 
 const router = createRouter({

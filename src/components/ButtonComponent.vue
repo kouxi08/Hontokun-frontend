@@ -1,6 +1,5 @@
 <template>
   <button :class="buttonClasses" @click="routeTo(props.to)">
-
     <slot></slot>
   </button>
 </template>
@@ -20,7 +19,7 @@ const props = defineProps({
   size: {
     type: String,
     default: 'md',
-    validator: (value) => ['sm', 'md', 'lg'].includes(value)
+    validator: (value) => ['xs', 'sm', 'md', 'lg'].includes(value)
   },
   to: {
     type: String,
@@ -33,22 +32,23 @@ const buttonClasses = computed(() => {
 
   const colorClasses = {
     default: 'bg-[#FDFDFD] hover:bg-[#F8F8F8] focus:bg-[#EDEDED] focus:outline-none focus:ring focus:ring-primary',
-    primary: 'bg-primary hover:bg-[#FFD000] focus:bg-[#E6C222] focus:outline-none focus:ring focus:ring-accent',
-    secondary: 'bg-secondary hover:bg-[#26A0B1] focus:bg-[#3C93A0] focus:outline-none focus:ring focus:ring-primary',
-    accent: 'bg-accent hover:bg-[#EC5D2D] focus:bg-[#D3552A] focus:outline-none focus:ring focus:ring-primary',
-    danger: 'bg-danger hover:bg-[#E02B2B] focus:bg-[#D11717] focus:outline-none focus:ring focus:ring-primary'
+    primary: 'bg-primary hover:bg-[#FFD000] stroke-white-2 focus:bg-[#E6C222] focus:outline-none focus:ring focus:ring-accent',
+    secondary: 'bg-secondary hover:bg-[#26A0B1] stroke-white-2 focus:bg-[#3C93A0] focus:outline-none focus:ring focus:ring-primary',
+    accent: 'bg-accent hover:bg-[#EC5D2D] stroke-white-2 focus:bg-[#D3552A] focus:outline-none focus:ring focus:ring-primary',
+    danger: 'bg-danger hover:bg-[#E02B2B] stroke-white-2 focus:bg-[#D11717] focus:outline-none focus:ring focus:ring-primary'
   };
 
   const sizeClasses = {
-    sm: 'text-[16px] font-light',
-    md: 'text-[20px] font-normal',
-    lg: 'text-[24px] font-medium'
+    xs: 'text-[14px] font-bold',
+    sm: 'text-[16px] font-bold',
+    md: 'text-[20px] font-bold',
+    lg: 'text-[24px] font-bold'
   };
 
   return `${baseClasses} ${colorClasses[props.color]} ${sizeClasses[props.size]}`;
 });
 
 const routeTo = (to) => {
-  console.log("ページ遷移の処理")
+  router.push({ name: to })
 }
 </script>

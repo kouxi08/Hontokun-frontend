@@ -1,7 +1,7 @@
 <template>
-  <Level>24</Level>
+  <RouterView />
 </template>
 
 <script setup>
-import Level from './components/LevelComponent.vue';
+import { RouterView } from 'vue-router';
 </script>
