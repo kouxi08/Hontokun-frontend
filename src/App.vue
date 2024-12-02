@@ -2,7 +2,7 @@
   <div class="flex justify-center items-center min-h-screen bg-gray-50">
     <CardComponent
       icon-name="風呂敷ネコ"
-      icon-image="/furosiki.png"
+      icon-image="/hurosiki.png"
       :accuracy="40"
       :attempts="attemptData"
     />
