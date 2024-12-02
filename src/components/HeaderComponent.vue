@@ -1,10 +1,15 @@
 <template>
-  <header class="bg-primary text-black shadow-md font-zenMaru rounded-b-lg h-22 w-full"> <!-- 高さを88pxに設定 -->
-    <div class="container mx-auto pb-2 flex justify-between items-center h-full px-6"> <!-- ヘッダー内の要素を高さに合わせて調整 -->
-      <div class="flex space-x-2 mt-12"> <!-- 56pxのマージン -->
-        <h1 class="text-sm mt-2 font-bold">ニュース探偵</h1>
-        <span class="text-2xl font-bold">ホントくん</span>
+  <header class="bg-primary text-black shadow-md font-zenMaru rounded-b-lg h-[88px] w-full px-[24px] py-[8px]">
+    <div class="w-full h-full flex items-end justify-between">
+      <div class="flex items-center  gap-[8px]">
+        <p class="text-[10px] font-bold">ニュース探偵</p>
+        <p class="text-[24px] font-bold">ホントくん</p>
       </div>
+      <Button size="xs" to="loginPage">ログイン</Button>
     </div>
   </header>
 </template>
+
+<script setup>
+import Button from '../components/ButtonComponent.vue'
+</script>
