@@ -3,13 +3,14 @@
     <!-- 画像表示エリア -->
     <div v-if="currentImage" class="relative inline-block">
       <img :src="currentImage" alt="Level Image" class="w-16 h-16">
-      <div class="text-shadow font-zenMaru text-[24px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
+      <div
+        class="text-shadow font-zenMaru text-[24px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
         {{ level }}
       </div>
     </div>
   </div>
 </template>
-  
+
 <script setup>
 import { computed, getCurrentInstance } from 'vue';
 
@@ -23,11 +24,11 @@ const level = computed(() => {
 });
 
 const images = [
-  './/public/icons/level_brown.svg', // 画像パス1
-  './/public/icons/level_silver.svg', // 画像パス2
-  './/public/icons/level_gold.svg', // 画像パス3
-  './/public/icons/level_purple.svg', // 画像パス4
-  './/public/icons/level_red.svg', // 画像パス5
+  '/icons/level_brown.svg', // 画像パス1
+  '/icons/level_silver.svg', // 画像パス2
+  '/icons/level_gold.svg', // 画像パス3
+  '/icons/level_purple.svg', // 画像パス4
+  '/icons/level_red.svg', // 画像パス5
 ];
 
 // レベルに応じた画像を取得
@@ -44,4 +45,3 @@ const currentImage = computed(() => {
     -1px 0 0 #000, 1px 0 0 #000;
 }
 </style>
-  
