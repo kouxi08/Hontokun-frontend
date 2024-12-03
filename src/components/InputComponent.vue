@@ -56,9 +56,9 @@
     <!-- レポート内容入力フィールド -->
     <div v-else-if="type === 'textarea'">
       <textarea
-        id="reporttext"
+        id="textarea"
         v-model="value"
-        type="reporttext"
+        type="textarea"
         class="w-[240px] h-[184px] border rounded-[6px] focus:outline-none focus:border-black px-2"
         :placeholder="placeholder || '詳しい内容を教えてください'"
       />
