@@ -54,7 +54,7 @@
     </div>
     
     <!-- レポート内容入力フィールド -->
-    <div v-else-if="type === 'reporttext'">
+    <div v-else-if="type === 'textarea'">
       <textarea
         id="reporttext"
         v-model="value"
