@@ -1,104 +1,77 @@
 <template>
   <div class="flex justify-center items-center">
-    <!-- <label :for="type" class="block text-sm font-medium text-gray-700">{{ label }}</label> -->
-    
-    <div v-if="type === 'name'">
-      <!-- 名前 -->
+    <!-- 共通の text フィールド -->
+    <div v-if="isTextType">
       <input
-        id="name"
+        :id="type"
         v-model="value"
         type="text"
-        class="w-[240px] h-[40px] border  rounded-[6px] focus:outline-none focus:border-black"
-        :placeholder="placeholder || 'なまえ'"
+        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2"
+        :placeholder="placeholderMap[type] || placeholder || ''"
       >
     </div>
 
+    <!-- 数値入力フィールド -->
     <div v-else-if="type === 'age'">
-      <!-- 年齢 -->
       <input
         id="age"
         v-model.number="value"
         type="number"
         min="0"
-        class="w-[240px] h-[40px] border  rounded-[6px] focus:outline-none focus:border-black"
+        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2"
         :placeholder="placeholder || '年齢'"
       >
     </div>
-    <!-- 生年月日 -->
+
+    <!-- 生年月日入力フィールド -->
     <div v-else-if="type === 'date'">
       <input
         id="date"
         v-model="formattedDate"
         type="text"
         readonly
-        class="w-[240px] h-[40px] border  rounded-[6px] focus:outline-none focus:border-black cursor-pointer"
+        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black cursor-pointer px-2"
         :placeholder="placeholder || '生年月日'"
         @click="toggleDatePicker"
       >
       <div v-if="showDatePicker" class="mt-4">
-        <DatePickerComponent @dateSelected="handleDateSelected" @close="toggleDatePicker" />
-      </div>
-    </div>
-
-    <!-- メールアドレス -->
-    <div v-else-if="type === 'email'">
-      <input
-        id="email"
-        v-model="value"
-        type="text"
-        class="w-[240px] h-[40px] border  rounded-[6px] focus:outline-none focus:border-black cursor-pointer"
-        :placeholder="placeholder || 'メールアドレス'"
-      >
-    </div>
-
-    <!-- パスワード入力 -->
-    <div v-else-if="type === 'password'">
-      <input
-        id="password"
-        v-model="valuePassword"
-        type="password"
-        class="w-[240px] h-[40px] border  rounded-[6px] focus:outline-none focus:border-black"
-        :placeholder="placeholderPassword || 'パスワード'"
-      >
-    </div>
-
-    <div v-else-if="type === 'report'">
-      <div class="flex flex-col items-center space-y-8">
-        <input
-          id="report"
-          v-model="value"
-          type="text"
-          class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black cursor-pointer"
-          :placeholder="placeholder || '不適切な部分について'"
-        >
-        <!-- <input
-          id="report"
-          v-model="value"
-          type="text"
-          class="w-[240px] h-[184px] border  rounded-[6px] focus:outline-none focus:border-black cursor-pointer"
-          :placeholder="placeholder || '詳しい内容を教えてください'"
-        > -->
-        <!-- 2つ目の入力 -->
-        <textarea
-          id="report-detailed"
-          v-model="valueDetailed"
-          class="w-[240px] h-[184px] border rounded-[6px] focus:outline-none focus:border-black resize-none"
-          :placeholder="placeholderDetailed || '詳しい内容を教えてください'"
+        <DatePickerComponent
+          @dateSelected="handleDateSelected"
+          @close="toggleDatePicker"
         />
       </div>
     </div>
 
-    <!-- その他 -->
+    <!-- パスワード入力フィールド -->
+    <div v-else-if="type === 'password'">
+      <input
+        id="password"
+        v-model="value"
+        type="password"
+        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2"
+        :placeholder="placeholder || 'パスワード'"
+      >
+    </div>
+    
+    <!-- レポート内容入力フィールド -->
+    <div v-else-if="type === 'reporttext'">
+      <textarea
+        id="reporttext"
+        v-model="value"
+        type="reporttext"
+        class="w-[240px] h-[184px] border rounded-[6px] focus:outline-none focus:border-black px-2"
+        :placeholder="placeholder || '詳しい内容を教えてください'"
+      />
+    </div>
+    <!-- その他のフィールド -->
     <input
       v-else
       :id="type"
       v-model="value"
       :type="type"
-      class="w-[240px] h-[40px] border  rounded-[6px] focus:outline-none focus:border-black"
+      class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black"
       :placeholder="placeholder"
     >
-
-
   </div>
 </template>
 
@@ -138,6 +111,18 @@ const formattedDate = computed(() => {
   return `${date.value.year} / ${date.value.month} / ${date.value.date}`;
 });
 
+// テキストタイプの判定
+const isTextType = computed(() =>
+  ["name", "email", "report"].includes(props.type)
+);
+
+// テキストタイプに応じたプレースホルダー
+const placeholderMap = {
+  name: "なまえ",
+  email: "メールアドレス",
+  report: "不適切な部分について"
+};
+
 // 日付ピッカーの表示を切り替え
 const toggleDatePicker = () => {
   showDatePicker.value = !showDatePicker.value;
@@ -146,7 +131,7 @@ const toggleDatePicker = () => {
 // カスタム日付選択コンポーネントからデータを受け取る
 const handleDateSelected = (selectedDate) => {
   date.value = selectedDate;
-  value.value = formattedDate.value; // モデルに反映
+  value.value = formattedDate.value;
   showDatePicker.value = false;
 };
 
@@ -163,7 +148,3 @@ watch(
   }
 );
 </script>
-
-<style scoped>
-/* 必要に応じてスタイルをカスタマイズ */
-</style>
