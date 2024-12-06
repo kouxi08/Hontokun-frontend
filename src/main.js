@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { PiniaUndo } from 'pinia-undo'
 import App from './App.vue'
 import './index.css'
 import { createMemoryHistory, createRouter } from 'vue-router'
@@ -20,5 +19,4 @@ const router = createRouter({
 
 app.use(pinia)
 app.use(router)
-pinia.use(PiniaUndo)
 app.mount('#app')

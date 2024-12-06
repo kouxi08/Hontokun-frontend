@@ -4,7 +4,7 @@
       @click="page.setPage('モード選択', modePage)" />
     <p class="font-zenMaru font-bold text-[15px] text-center mb-[16px]">{{ page.name }}</p>
     <div class="h-full pb-[40px] grid grid-cols-2 gap-4 overflow-hidden overflow-y-scroll">
-      <img v-for="difficulty in difficultyes" :key="difficulty" :src="`/wantedList/${difficulty}`" alt="" width="152">
+      <img v-for="difficulty in difficulties" :key="difficulty" :src="`/wantedList/${difficulty}`" alt="" width="152">
     </div>
   </div>
 </template>
