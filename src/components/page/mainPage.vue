@@ -10,17 +10,21 @@
           <Icon name="user" />
         </div>
       </div>
-      <Message position="top" class="mt-[-25%]">
-        ようこそ！<br>
-        $user_name探偵事務所へ<br>
-        僕は助手のホントくん<br>
-        よろしくね！
-      </Message>
-      <img src="/hontokun.png" alt="" class="mx-auto my-[16px]">
-      <button
-        class="w-[136px] h-[136px] bg-[#FF6633] rounded-full text-white text-[32px] border-4 border-white flex items-center justify-center font-black font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] mx-auto mt-[120px] hover:translate-y-[2px]">
-        クイズ
-      </button>
+      <div v-if="!page.component">
+        <Message position="top" class="mt-[-25%]">
+          ようこそ！<br>
+          $user_name探偵事務所へ<br>
+          僕は助手のホントくん<br>
+          よろしくね！
+        </Message>
+        <img src="/hontokun.png" alt="" class="mx-auto my-[16px]">
+        <button
+          class="w-[136px] h-[136px] bg-[#FF6633] rounded-full text-white text-[32px] border-4 border-white flex items-center justify-center font-black font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] mx-auto mt-[120px] hover:translate-y-[2px]"
+          @click="page.setPage('モード選択', modePage)">
+          クイズ
+        </button>
+      </div>
+      <component :is="page.component" />
     </div>
   </div>
 </template>
@@ -30,6 +34,12 @@ import Level from '../LevelComponent.vue'
 import XP from '../XpComponent.vue'
 import Icon from '../IconComponent.vue'
 import Message from '../MessageComponent.vue'
+import modePage from '../page/modePage.vue'
+import difficultyPage from '../page/difficultyPage.vue'
+import { ref } from 'vue'
+import { useStore } from '../../stores/Page.js';
+const page = useStore();
+const difficultyes = ['1.png', '2.png', '3.png', '4.png', '5.png']
 </script>
 
 <style>
