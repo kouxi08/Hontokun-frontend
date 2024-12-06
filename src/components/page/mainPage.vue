@@ -35,11 +35,9 @@ import XP from '../XpComponent.vue'
 import Icon from '../IconComponent.vue'
 import Message from '../MessageComponent.vue'
 import modePage from '../page/modePage.vue'
-import difficultyPage from '../page/difficultyPage.vue'
-import { ref } from 'vue'
 import { useStore } from '../../stores/Page.js';
+import { ref } from 'vue'
 const page = useStore();
-const difficultyes = ['1.png', '2.png', '3.png', '4.png', '5.png']
 </script>
 
 <style>

@@ -20,9 +20,9 @@
 </template>
 
 <script setup>
-import { useStore } from '../../stores/Page.js';
 import Icon from '../IconComponent.vue'
 import difficultyPage from '../page/difficultyPage.vue'
+import { useStore } from '../../stores/Page.js';
 const page = useStore();
 const modes = [
   {

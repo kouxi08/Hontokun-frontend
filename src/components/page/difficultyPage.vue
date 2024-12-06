@@ -10,9 +10,9 @@
 </template>
 
 <script setup>
-import { useStore } from '../../stores/Page.js';
-import modePage from './modePage.vue'
 import Icon from '../IconComponent.vue'
+import modePage from './modePage.vue'
+import { useStore } from '../../stores/Page.js';
 const page = useStore();
-const difficultyes = ['1.png', '2.png', '3.png', '4.png', '5.png']
+const difficulties = ['1.png', '2.png', '3.png', '4.png', '5.png']
 </script>
