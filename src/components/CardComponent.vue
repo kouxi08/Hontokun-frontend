@@ -57,7 +57,7 @@
           size="sm" 
           color="secondary" 
         />
-        <span class="text-lg">→</span>
+        <Icon name="card-right" width="24" height="24" />
       </div>
     </div>
   </div>
@@ -96,9 +96,3 @@ const toggleDetails = () => {
   showDetails.value = !showDetails.value;
 };
 </script>
-
-<style scoped>
-.rate-container {
-  position: relative;
-}
-</style>
