@@ -9,7 +9,7 @@
     </div>
     <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto">
     <Button color="primary" size="lg" class="flex items-center justify-center mx-auto my-[56px]"
-      to="loadingPage">今すぐ挑戦</Button>
+      to="mainPage">今すぐ挑戦</Button>
     <div class="py-[104px]">
       <p
         class="text-center text-white stroke-accent-4 font-zenMaru text-[32px] font-black mx-[24px] my-[56px] leading-[48px]">
