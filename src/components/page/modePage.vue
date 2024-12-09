@@ -6,7 +6,7 @@
     <div class="flex flex-col gap-[8px]">
       <div
         class="bg-white p-[16px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] flex justify-between items-center rounded-[8px] cursor-pointer"
-        v-for="mode in modes" :key="mode" @click="page.setPage(mode.pageName, difficultyPage)">
+        v-for="mode in modes" :key="mode" @click="page.setPage(mode.pageName, mode.page)">
         <p class="px-[8px] py-[2px] rounded-[6px] font-bold font-zenMaru text-white bg-gradient-to-r from-[#FF1A1A] to-[#F19E29] text-[24px] text-center"
           :class="mode.gradient">
           {{ mode.name }}
@@ -39,5 +39,20 @@ const modes = [
     description: "3分で何問解ける？",
     gradient: 'from-[#65B2BD] to-[#90FFE1]',
   },
+  {
+    name: "ランク",
+    page: null,
+    pageName: null,
+    description: "最強の探偵に！",
+    gradient: 'from-[#8A42E2] to-[#59BAFE]',
+  },
+  {
+    name: "ムゲン",
+    page: null,
+    pageName: null,
+    description: "練習に最適！",
+    gradient: 'from-[#E24242] to-[#6441CC]',
+  },
+
 ]
 </script>
