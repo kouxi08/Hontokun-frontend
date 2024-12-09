@@ -10,6 +10,7 @@
           <Icon name="user" />
         </div>
       </div>
+      <Button to="battlePage">toBattle</Button>
       <Message position="top" class="mt-[-25%]">
         ようこそ！<br>
         $user_name探偵事務所へ<br>
@@ -30,6 +31,7 @@ import Level from '../LevelComponent.vue'
 import XP from '../XpComponent.vue'
 import Icon from '../IconComponent.vue'
 import Message from '../MessageComponent.vue'
+import Button from '../ButtonComponent.vue'
 </script>
 
 <style>
