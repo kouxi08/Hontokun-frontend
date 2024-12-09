@@ -1,6 +1,5 @@
 <template>
-  <table class="overflow-hidden font-zenMaru shadow-[0_4px_4px_rgba(0,0,0,0.25)]
- m-[30px] rounded-[6px]">
+  <table class="overflow-hidden font-zenMaru bg-white shadow-[0_4px_4px_rgba(0,0,0,0.25)] rounded-[6px] mx-auto">
     <thead>
       <tr>
         <td v-for="(col, index) in props.header" :key="index"
