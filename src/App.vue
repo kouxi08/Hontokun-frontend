@@ -7,7 +7,7 @@
   <Input type="password" />
   <Input type="report" />
   <Input type="textarea" />
-  <Input type="text" placeholder="説明" />
+  <Input type="text" placeholder="説明" modelValue=""/>
 
   
   

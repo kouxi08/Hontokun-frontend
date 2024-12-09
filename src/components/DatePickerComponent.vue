@@ -2,11 +2,6 @@
   <div>
     <!-- 年月選択画面 -->
     <div v-if="step === 'year-month'">
-      <!-- <div class="header">
-        <button @click="prevYear">‹</button>
-        <span>{{ selectedYear }}年</span>
-        <button @click="nextYear">›</button>
-      </div> -->
       <div class="header">
         <button @click="prevYear">‹</button>
         <select
@@ -61,14 +56,6 @@
         </div>
       </div>
     </div>
-
-    <!-- 日にちの選択完了画面 -->
-    <!-- <div v-if="step === 'complete'">
-      <div class="confirmation">
-        <p>選択された日付: {{ selectedYear }}年 {{ selectedMonth }}月 {{ selectedDate }}日</p>
-        <button @click="reset">リセット</button>
-      </div>
-    </div> -->
   </div>
 </template>
 
