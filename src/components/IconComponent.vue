@@ -1,7 +1,5 @@
 <template>
-    <div class="w-[16px] h-[16px] flex item-center justify-center">
-        <img :src="src" alt="icon" :width="props.width" :height="height">
-    </div>
+   <img :src="src" alt="icon" :width="props.width" :height="props.height">
 </template>
 
 <script setup>
