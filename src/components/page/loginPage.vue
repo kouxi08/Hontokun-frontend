@@ -8,7 +8,7 @@
     </p>
     <div class="flex flex-col items-center gap-[40px]">
       <Input type="email" v-model="email" />
-      <Input type="password" />
+      <Input type="password" v-model="password" />
       <router-link to="/signup" class="text-[#4F61EC]">新規登録はこちら</router-link>
       <Button color="primary" @click="toLogin">ログイン</Button>
       <p class="font-zenMaru text-[16px]">または</p>
@@ -38,6 +38,7 @@ const toLogin = () => {
 
 const loginCheck = () => {
   errorMessages.value = []
+  error.value = true
   if (email.value == "") {
     errorMessages.value.push("メールアドレスを入力してください")
     error.value = false
