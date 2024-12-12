@@ -10,6 +10,8 @@ const app = createApp(App)
 const routes = [
   { path: '/', name: "topPage", component: import('./components/page/topPage.vue') },
   { path: '/main', name: "mainPage", component: import('./components/page/mainPage.vue') },
+  { path: '/signup', name: "signupPage", component: import('./components/page/signupPage.vue') },
+  { path: '/login', name: "loginPage", component: import('./components/page/loginPage.vue') },
 ]
 
 const router = createRouter({
