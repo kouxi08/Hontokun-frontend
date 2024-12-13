@@ -7,7 +7,7 @@
           <XP value="4" class="bg-white border-2 border-primary rounded-[4px]" />
         </div>
         <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)]">
-          <Icon name="user" />
+          <Icon name="user" @click="router.push({ name: 'profileDetailPage' })" />
         </div>
       </div>
       <div v-if="!page.component">
@@ -34,10 +34,15 @@ import Level from '../LevelComponent.vue'
 import XP from '../XpComponent.vue'
 import Icon from '../IconComponent.vue'
 import Message from '../MessageComponent.vue'
+<<<<<<< HEAD
 import modePage from '../page/modePage.vue'
 import { useStore } from '../../stores/Page.js';
 import { ref } from 'vue'
 const page = useStore();
+=======
+import { useRouter } from 'vue-router'
+const router = useRouter()
+>>>>>>> 3ecde91 ([add] refs 38 プロフィール画面とプロフィール編集画面作成)
 </script>
 
 <style>
