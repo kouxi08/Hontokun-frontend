@@ -1,7 +1,8 @@
 <template>
   <div class="w-screen h-screen bg-[#FFFCF8]">
     <div class="w-full grid grid-cols-3 justify-between items-center pt-[64px] px-[48px]">
-      <Icon name="arrow-left-line" width=24 height=24 class="justify-self-start" />
+      <Icon name="arrow-left-line" width=24 height=24 class="justify-self-start"
+        @click="router.push({ name: 'profilePage' })" />
       <p class="font-zenMaru text-[16px] text-center">{{ catName }}</p>
       <Rate value="32" size="sm" class="justify-self-end" />
     </div>
@@ -9,7 +10,7 @@
       <img :src="catImage" alt="" height="120" class="justify-self-center">
       <Button color="primary" size="xs" class="justify-self-end">つかまえる</Button>
     </div>
-    <div>
+    <div class="flex items-center justify-center">
       <Table :header="tableHeader" :content="tableContent" />
     </div>
   </div>
@@ -21,6 +22,8 @@ import Rate from '../RateComponent.vue'
 import Button from '../ButtonComponent.vue'
 import Input from '../InputComponent.vue'
 import Table from '../TableComponent.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const catName = "ふろしきネコ"
 const catImage = "/hurosiki.svg"
 const tableHeader = [

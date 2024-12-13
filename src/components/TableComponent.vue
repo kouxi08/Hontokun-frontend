@@ -4,7 +4,7 @@
     <thead>
       <tr>
         <td v-for="(col, index) in props.header" :key="index"
-          class="bg-primary font-bold text-[16px] w-[80px] h-[40px] px-[8px] py-[4px] hover:bg-[#FFD000] cursor-default"
+          class="bg-primary font-bold text-[16px] w-[96px] h-[40px] px-[8px] py-[4px] hover:bg-[#FFD000] cursor-default"
           :class="headerRound[index]" align="center">
           {{ col.name }}
         </td>
@@ -12,7 +12,7 @@
     </thead>
     <tbody class="text-[16px] font-base">
       <tr v-for="(row, index) in props.content" :key="index" align="center"
-        class="w-[80px] h-[40px] px-[8px] py-[4px] border-t-[1.5px] border-black cursor-default hover:bg-gray-100">
+        class="w-[96px] h-[40px] px-[8px] py-[4px] border-t-[1.5px] border-black cursor-default hover:bg-gray-100">
         <td>{{ row.id }}</td>
         <td>
           <Icon :name="row.correction" width=24 height=24 />

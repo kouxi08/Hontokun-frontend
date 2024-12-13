@@ -1,7 +1,8 @@
 <template>
   <div class="w-screen h-screen bg-[#FFFCF8]">
     <div class="w-full grid grid-cols-3 justify-between items-center pt-[64px] px-[48px]">
-      <Icon name="arrow-left-line" width=24 height=24 class="justify-self-start" />
+      <Icon name="arrow-left-line" width=24 height=24 class="justify-self-start cursor-pointer"
+        @click="router.push({ name: 'profilePage' })" />
       <p class="font-zenMaru text-[16px] text-center">{{ userName }}</p>
       <Button color="primary" size="sm" class="justify-self-end">保存</Button>
     </div>
@@ -29,5 +30,7 @@ import Icon from '../IconComponent.vue'
 import Rate from '../RateComponent.vue'
 import Button from '../ButtonComponent.vue'
 import Input from '../InputComponent.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const userName = "しんたろう"
 </script>
