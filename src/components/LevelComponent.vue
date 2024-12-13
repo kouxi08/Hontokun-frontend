@@ -2,7 +2,7 @@
   <div>
     <!-- 画像表示エリア -->
     <div v-if="currentImage" class="relative inline-block">
-      <img :src="currentImage" alt="Level Image" class="w-16 h-16">
+      <img :src="currentImage" alt="Level Image" class="w-16 h-16" />
       <div
         class="text-shadow font-zenMaru text-[24px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white">
         {{ level }}

@@ -2,12 +2,12 @@
   <div class="w-screen h-full">
     <Header />
     <div class="relative w-fit h-fit my-[64px] mx-auto">
-      <img src="/NewsPaper.png" alt="NewsPaper">
+      <img src="/NewsPaper.png" alt="NewsPaper" />
       <div class="rotate-container absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 ">
-        <img src="/MagnifyingGlass.svg" alt="MagnifyingGlass" class="circle-animation">
+        <img src="/MagnifyingGlass.svg" alt="MagnifyingGlass" class="circle-animation" />
       </div>
     </div>
-    <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto">
+    <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto" />
     <Button color="primary" size="lg" class="flex items-center justify-center mx-auto my-[56px]"
       to="mainPage">今すぐ挑戦</Button>
     <div class="py-[104px]">
@@ -39,10 +39,10 @@
       <p class="font-black font-zenMaru text-[20px] text-center my-[16px]">{{ cats[index].name }}</p>
       <div class="flex transition duration-150 ease-in-out">
         <img :src="cats[previousCat(index)].img" :alt="cats[previousCat(index)].name"
-          class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = previousCat(index)">
-        <img :src="cats[index].img" :alt="cats[index].img" class="mx-auto">
+          class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = previousCat(index)" />
+        <img :src="cats[index].img" :alt="cats[index].img" class="mx-auto" />
         <img :src="cats[nextCat(index)].img" :alt="cats[nextCat(index)].name"
-          class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = nextCat(index)">
+          class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = nextCat(index)" />
       </div>
       <p class="font-zenMaru text-[14px] font-bold text-center m-[24px] leading-[32px]">{{ cats[index].description }}
       </p>
