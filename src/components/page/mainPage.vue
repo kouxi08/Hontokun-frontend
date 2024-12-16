@@ -10,7 +10,7 @@
           <Icon name="user" />
         </div>
       </div>
-      <Button to="battlePage">toBattle</Button>
+      <button @click="router.push({ name: 'battlePage', params: { difficulty: 2 } })">toBattle</button>
       <Message position="top" class="mt-[-25%]">
         ようこそ！<br>
         $user_name探偵事務所へ<br>
@@ -32,6 +32,8 @@ import XP from '../XpComponent.vue'
 import Icon from '../IconComponent.vue'
 import Message from '../MessageComponent.vue'
 import Button from '../ButtonComponent.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 </script>
 
 <style>

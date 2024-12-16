@@ -9,16 +9,16 @@
       {{ gotMessage.subTitle }}
     </p>
   </div>
-  <div class="pt-[96px]" v-show="resultPage">
+  <div class="h-full pt-[5%]" v-show="resultPage">
     <Table :header="tableHeader" :content="tableContent" />
-    <div class="h-[376px] flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
+    <div class="h-[42%] flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
       <News :title="quiz.questionTitle" :content="quiz.content" :img="quiz.img" showResult=true v-for="quiz in quizSet"
         :key="quiz" />
     </div>
-    <div class="flex items-center justify-between mx-[48px] pt-[32px]">
-      <Button color="accent">難易度</Button>
-      <Button color="primary">モード選択</Button>
-      <Button color="secondary">事務所</Button>
+    <div class="flex flex-col justify-center items-center gap-[24px] mx-[48px] pt-[5%]">
+      <Button color="accent" class="w-full" @click="page.$reset()">難易度へ戻る</Button>
+      <Button color="primary" class="w-full" @click="page.$reset()">モード選択へ戻る</Button>
+      <Button color="secondary" class="w-full" to="mainPage" @click="page.$reset()">事務所へ戻る</Button>
     </div>
   </div>
 </template>
@@ -29,6 +29,7 @@ import News from '../NewsComponent.vue'
 import Button from '../ButtonComponent.vue'
 import { useStore } from '../../stores/Quiz.js'
 import { ref } from 'vue'
+
 const emit = defineEmits(['battleEvent']);
 const page = useStore()
 const isBattle = ref(true)
@@ -38,7 +39,7 @@ const gotMessage = {
   titleStroke: "stroke-accent-4",
   subTitleStroke: "stroke-accent-2",
   title: "おめでとう",
-  subTitle: "ふろしきねこをつかまえた",
+  subTitle: "指名手配猫をつかまえた！",
 }
 const gotAwayMessage = {
   stroke: "stroke-secondary-4",
@@ -92,6 +93,9 @@ setTimeout(() => {
   isBattle.value = false
   battleEvent()
   isResultMessage.value = true
+  setTimeout(() => {
+    showResultPage()
+  }, 3000);
 }, 3000);
 </script>
 
