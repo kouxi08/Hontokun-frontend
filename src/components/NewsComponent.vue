@@ -6,9 +6,8 @@
     </div>
     <div class="mx-[48px] p-[16px] shadow-lg rounded-[6px] flex flex-col gap-[16px]">
       <div class="relative">
-        <img src="/sample.jpg" alt="" class="w-full h-[104px] rounded-[6px] object-cover">
-        <p
-          class="absolute w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-white text-[14px] text-center font-notoSans tracking-widest font-bold text-stroke">
+        <img src="/sample.jpg" alt="" class="w-full h-[104px] rounded-[6px] object-cover" />
+        <p class="absolute w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-white text-[14px] text-center font-notoSans tracking-widest font-bold text-stroke">
           {{ props.title }}
         </p>
         <Button size="sm" color="accent" class="absolute top-0 left-0 m-[8px]">解説</Button>
@@ -25,13 +24,16 @@
 import Button from './ButtonComponent.vue'
 const props = defineProps({
   question: {
-    type: String
+    type: String,
+    default: ""
   },
   title: {
-    type: String
+    type: String,
+    default: ""
   },
   content: {
-    type: String
+    type: String,
+    default: ""
   }
 });
 </script>

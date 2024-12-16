@@ -2,7 +2,10 @@
   <div>
     <Header />
     <p class="pt-[136px] pb-[24px] text-center font-zenMaru text-[16px]">新規登録</p>
-    <p v-for="message in errorMessages" :key="message" class="bg-danger rounded-[16px] text-white text-center font-zenMaru font-bold my-[24px] mx-[48px] p-[16px]">
+    <p 
+      v-for="message in errorMessages" 
+      :key="message" class="bg-danger rounded-[16px] text-white text-center font-zenMaru font-bold my-[24px] mx-[48px] p-[16px]"
+    >
       {{ message }}
     </p>
     <div class="flex flex-col items-center gap-[40px]">

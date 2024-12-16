@@ -12,7 +12,12 @@
       <p class="justify-self-start bg-accent font-bold text-white text-[16px] py-[4px] px-[8px] rounded-[8px]">
         正解
       </p>
-      <Icon class="justify-self-center" :name="answer === 'true' ? 'correct' : 'incorrect'" width="24" height="24" />
+      <Icon 
+        class="justify-self-center" 
+        :name="answer === 'true' ? 'correct' : 'incorrect'" 
+        width="24" 
+        height="24"
+      />
       <a 
         v-if="answer === 'true'" 
         class="justify-self-end text-blue-500 text-[12px] font-bold" 

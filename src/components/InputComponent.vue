@@ -3,7 +3,13 @@
     <!-- 入力フィールド (テキスト) -->
     <div v-if="isTextFieldType">
       <!-- 通常のテキスト入力 -->
-      <input :id="type" v-model="inputValue" type="text" class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2" :placeholder="placeholderMap[type] || placeholder || ''" />
+      <input 
+        :id="type" 
+        v-model="inputValue" 
+        type="text" 
+        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2" 
+        :placeholder="placeholderMap[type] || placeholder || ''" 
+      />
     </div>
 
     <!-- 入力フィールド (数値) -->
@@ -41,7 +47,13 @@
 
     <!-- 入力フィールド (パスワード) -->
     <div v-else-if="type === 'password'">
-      <input id="password" v-model="inputValue" type="password" class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2" :placeholder="placeholder || 'パスワード'" />
+      <input 
+        id="password" 
+        v-model="inputValue" 
+        type="password" 
+        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2" 
+        :placeholder="placeholder || 'パスワード'" 
+      />
     </div>
     
     <!-- 入力フィールド (テキストエリア) -->
