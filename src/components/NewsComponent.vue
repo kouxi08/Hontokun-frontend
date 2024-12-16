@@ -23,7 +23,8 @@
 import Button from './ButtonComponent.vue'
 const props = defineProps({
   title: {
-    type: String
+    type: String,
+    default: ""
   },
   content: {
     type: String
@@ -34,6 +35,8 @@ const props = defineProps({
   showResult: {
     type: Boolean,
     default: false
+    type: String,
+    default: ""
   }
 });
 </script>

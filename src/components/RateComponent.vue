@@ -1,8 +1,15 @@
 <template>
   <svg :width="sizeInPixels" :height="sizeInPixels" viewBox="0 0 100 100">
     <!-- プログレスバー -->
-    <circle class="progress-ring-circle" cx="50" cy="50" :r="radius" :stroke-width="strokeWidth"
-      :stroke-dasharray="circumference" :stroke-dashoffset="strokeDashoffset" stroke="#FFDA29" />
+    <circle 
+      class="progress-ring-circle" 
+      cx="50" 
+      cy="50" 
+      :r="radius" 
+      :stroke-width="strokeWidth"
+      :stroke-dasharray="circumference"
+      :stroke-dashoffset="strokeDashoffset" stroke="#FFDA29"
+    />
     <!-- 中央の円 -->
     <circle class="center-circle" cx="50" cy="50" :r="centerCircleRadius" :fill="currentColor" />
     <!-- 数値表示 -->
