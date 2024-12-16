@@ -3,12 +3,12 @@
     <!-- 入力フィールド (テキスト) -->
     <div v-if="isTextFieldType">
       <!-- 通常のテキスト入力 -->
-      <input
-        :id="type"
-        v-model="inputValue"
-        type="text"
-        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2"
-        :placeholder="placeholderMap[type] || placeholder || ''"
+      <input 
+        :id="type" 
+        v-model="inputValue" 
+        type="text" 
+        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2" 
+        :placeholder="placeholderMap[type] || placeholder || ''" 
       />
     </div>
 
@@ -39,7 +39,7 @@
       <!-- 日付ピッカーコンポーネント -->
       <div v-if="isDatePickerVisible" class="mt-4">
         <DatePickerComponent
-          @dateSelected="handleDateSelected"
+          @date-selected="handleDateSelected"
           @close="toggleDatePicker"
         />
       </div> 
@@ -47,12 +47,12 @@
 
     <!-- 入力フィールド (パスワード) -->
     <div v-else-if="type === 'password'">
-      <input
-        id="password"
-        v-model="inputValue"
-        type="password"
-        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2"
-        :placeholder="placeholder || 'パスワード'"
+      <input 
+        id="password" 
+        v-model="inputValue" 
+        type="password" 
+        class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2" 
+        :placeholder="placeholder || 'パスワード'" 
       />
     </div>
     
@@ -68,13 +68,13 @@
     </div>
     
     <!-- その他のフィールド (デフォルト) -->
-    <input
-      v-else
-      :id="type"
-      v-model="inputValue"
-      :type="type"
-      class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black"
-      :placeholder="placeholder"
+    <input 
+      v-else 
+      :id="type" 
+      v-model="inputValue" 
+      :type="type" 
+      class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black" 
+      :placeholder="placeholder" 
     />
   </div>
 </template>

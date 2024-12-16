@@ -13,11 +13,11 @@
         :src="iconImage" 
         alt="ネコ画像" 
         class="w-12 h-12 rounded-full object-cover"
-      >
+      />
       <!-- 名前 -->
       <p class="text-sm leading-4 text-center">
         {{ iconName.split('ネコ')[0] }}
-        <br>
+        <br />
         ネコ
       </p>
       <!-- Rate -->
@@ -29,8 +29,8 @@
         />
       </div>
       <!-- アイコン -->
-      <Icon v-if="showDetails" name="card_close" width="24" height="24"/>
-      <Icon v-if="!showDetails" name="card_open" width="24" height="24"/>
+      <Icon v-if="showDetails" name="card_close" width="24" height="24" />
+      <Icon v-if="!showDetails" name="card_open" width="24" height="24" />
     </div>
 
     <!-- アコーディオンの詳細 -->
