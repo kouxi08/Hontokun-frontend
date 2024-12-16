@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: kouxi00/hontokun-front:1.0.0
+    image: kouxi00/hontokun-frontend:1.0.0
     container_name: hontokun-front
     ports:
       - "8080:8080"

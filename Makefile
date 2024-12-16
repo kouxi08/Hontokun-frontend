@@ -1,4 +1,4 @@
-APP_NAME = hontokun-front
+APP_NAME = hontokun-frontend
 
 COMPOSE = docker/
 
