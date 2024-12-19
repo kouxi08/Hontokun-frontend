@@ -35,6 +35,8 @@ import Level from '../LevelComponent.vue'
 import XP from '../XpComponent.vue'
 import Icon from '../IconComponent.vue'
 import Message from '../MessageComponent.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 import modePage from '../page/modePage.vue'
 import { useStore } from '../../stores/Page.js';
 import { ref } from 'vue'
