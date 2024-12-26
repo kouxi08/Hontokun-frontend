@@ -1,11 +1,10 @@
 <template>
   <div class="pt-[88px]">
-    <NewsTile :title="quizSet[current].newsTitle" :id="quizSet[current].id" />
-    <News :title="quizSet[current].questionTitle" :img="quizSet[current].img" :content="quizSet[current].content"
-      class="pt-[32px]" />
+    <NewsTile :id="quizSet[current].id" :title="quizSet[current].newsTitle" />
+    <News :title="quizSet[current].questionTitle" :img="quizSet[current].img" :content="quizSet[current].content" zclass="pt-[32px]" />
     <div class="flex justify-between mx-[48px] pt-[32px]">
-      <Icon name="correct" width=96 height=96 class="cursor-pointer" @click="isCorrect" />
-      <Icon name="incorrect" width=96 height=96 class="cursor-pointer" @click="isCorrect" />
+      <Icon name="correct" width="96" height="96" class="cursor-pointer" @click="isCorrect" />
+      <Icon name="incorrect" width="96" height="96" class="cursor-pointer" @click="isCorrect" />
     </div>
   </div>
 </template>
