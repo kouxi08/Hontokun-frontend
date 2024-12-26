@@ -2,9 +2,10 @@
   <div class="font-zenMaru flex flex-col">
     <div class="mx-[48px] p-[16px] h-[408px] bg-white shadow-lg rounded-[6px] flex flex-col gap-[16px] z-10">
       <div class="relative">
-        <img :src="props.img" alt="" class="w-full h-[104px] rounded-[6px] object-cover">
+        <img :src="props.img" alt="" class="w-full h-[104px] rounded-[6px] object-cover" />
         <p
-          class="absolute w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-white pt-[24px] text-[14px] text-center font-notoSans tracking-widest font-bold stroke-black-4">
+          class="absolute w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-white pt-[24px] text-[14px] text-center font-notoSans tracking-widest font-bold stroke-black-4"
+        >
           {{ props.title }}
         </p>
         <div v-if="props.showResult">
@@ -27,14 +28,16 @@ const props = defineProps({
     default: ""
   },
   content: {
-    type: String
+    type: String,
+    default: ""
   },
   img: {
-    type: String
+    type: String,
+    default: ""
   },
   showResult: {
     type: Boolean,
-    default: false
+    default: false,
     type: String,
     default: ""
   }

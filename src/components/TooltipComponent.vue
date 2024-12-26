@@ -1,7 +1,7 @@
 <template>
   <div class="absolute z-50">
     <div v-show="visibleTooltip" @click="visibleTooltip = false">
-      <Icon name="tooltip" width=24 height=24 />
+      <Icon name="tooltip" width="24" height="24" />
     </div>
     <div
       v-show="!visibleTooltip"
