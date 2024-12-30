@@ -1,7 +1,7 @@
 <template>
   <div class="px-6 flex flex-col">
     <div :class="positionClasses">
-      <slot />
+      <slot></slot>
     </div>
   </div>
 </template>

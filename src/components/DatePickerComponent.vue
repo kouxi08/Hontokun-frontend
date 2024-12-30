@@ -6,8 +6,8 @@
         <button @click="prevYear">‹</button>
         <select
           v-model="selectedYear"
-          @change="handleYearChange"
           class="year-selector"
+          @change="handleYearChange"
         >
           <option v-for="year in yearRange" :key="year" :value="year">
             {{ year }}年
@@ -19,8 +19,8 @@
         <button
           v-for="(month, index) in months"
           :key="index"
-          @click="selectMonth(index + 1)"
           class="month-button"
+          @click="selectMonth(index + 1)"
         >
           {{ month }}
         </button>
@@ -46,8 +46,8 @@
           <div v-for="(date, index) in calendarDates" :key="index">
             <button
               v-if="date"
-              @click="selectDate(date)"
               class="date-button"
+              @click="selectDate(date)"
             >
               {{ date }}
             </button>

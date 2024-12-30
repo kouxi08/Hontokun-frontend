@@ -4,20 +4,38 @@
     <div class="flex justify-between items-center w-full p-[16px] cursor-pointer rounded-[6px] hover:bg-[#C5C5C5]"
       @click="toggleDetails">
       <!-- 画像 -->
+<<<<<<< HEAD
       <img :src="iconImage" alt="ネコ画像" class="w-[64px] h-[64px] object-contain">
       <!-- 名前 -->
       <p class="text-[16px] text-center font-zenMaru">
         {{ iconName.slice(0, -2) }}
         <br>
         {{ iconName.slice(-2) }}
+=======
+      <img 
+        :src="iconImage" 
+        alt="ネコ画像" 
+        class="w-12 h-12 rounded-full object-cover"
+      />
+      <!-- 名前 -->
+      <p class="text-sm leading-4 text-center">
+        {{ iconName.split('ネコ')[0] }}
+        <br />
+        ネコ
+>>>>>>> origin/develop
       </p>
       <!-- Rate -->
       <div class="h-full flex items-center justify-center">
         <Rate :value="accuracy" size="md" color="default" />
       </div>
       <!-- アイコン -->
+<<<<<<< HEAD
       <Icon v-if="showDetails" name="card-close" width="24" height="24" />
       <Icon v-if="!showDetails" name="card-open" width="24" height="24" />
+=======
+      <Icon v-if="showDetails" name="card_close" width="24" height="24" />
+      <Icon v-if="!showDetails" name="card_open" width="24" height="24" />
+>>>>>>> origin/develop
     </div>
 
     <!-- アコーディオンの詳細 -->
