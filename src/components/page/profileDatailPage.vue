@@ -1,17 +1,32 @@
 <template>
-  <div class="w-screen h-screen bg-[#FFFCF8]">
-    <div class="w-full grid grid-cols-3 justify-between items-center pt-[64px] px-[48px]">
-      <Icon name="arrow-left-line" width=24 height=24 class="justify-self-start"
-        @click="router.push({ name: 'profilePage' })" />
-      <p class="font-zenMaru text-[16px] text-center">{{ catName }}</p>
-      <Rate value="32" size="sm" class="justify-self-end" />
+  <div class="w-screen h-screen bg-[#FFFCF8] flex flex-col overflow-hidden">
+    <!-- 固定部分 -->
+    <div class="flex-shrink-0">
+      <!-- ヘッダー -->
+      <div class="w-full grid grid-cols-3 justify-between items-center pt-[64px] px-[48px]">
+        <Icon name="arrow-left-line" width=24 height=24 class="justify-self-start cursor-pointer"
+          @click="router.push({ name: 'profilePage' })" />
+        <p class="font-zenMaru text-[16px] text-center">{{ catName }}</p>
+        <Rate value="32" size="sm" class="justify-self-end" />
+      </div>
+      <!-- ネコとボタン -->
+      <div class="relative h-44 mx-[48px] my-[24px]">
+        <img :src="catImage" alt="" height="120" class="absolute left-1/2 -translate-x-1/2">
+        <Button color="primary" size="xs" class="absolute left-1/2 bottom-0 -translate-x-1/2">つかまえる</Button>
+      </div>
     </div>
-    <div class="flex items-end justify-end pt-[32px] mx-[48px]">
-      <img :src="catImage" alt="" height="120" class="justify-self-center">
-      <Button color="primary" size="xs" class="justify-self-end">つかまえる</Button>
-    </div>
-    <div class="flex items-center justify-center">
-      <Table :header="tableHeader" :content="tableContent" />
+
+    <!-- スクロール可能な部分 -->
+    <div class="flex-1 overflow-y-auto">
+      <!-- テーブル -->
+      <div class="flex items-center justify-center">
+        <Table :header="tableHeader" :content="tableContent" />
+      </div>
+      <!-- ニュース -->
+      <div v-for="quiz in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
+        <NewsTitle :id="quiz.id" :title="quiz.newsTitle" />
+        <News :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content" :showResult=true />
+      </div>
     </div>
   </div>
 </template>
@@ -22,6 +37,8 @@ import Rate from '../RateComponent.vue'
 import Button from '../ButtonComponent.vue'
 import Input from '../InputComponent.vue'
 import Table from '../TableComponent.vue'
+import NewsTitle from '../NewsTitleComponent.vue'
+import News from '../NewsComponent.vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const catName = "ふろしきネコ"
