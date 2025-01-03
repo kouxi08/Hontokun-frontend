@@ -14,7 +14,7 @@ const routes = [
   { path: '/signup', name: "signupPage", component: import('./components/page/signupPage.vue') },
   { path: '/login', name: "loginPage", component: import('./components/page/loginPage.vue') },
   { path: '/profile', name: "profilePage", component: import('./components/page/profilePage.vue') },
-  { path: '/profile/detail', name: "profileDetailPage", component: import('./components/page/profileDatailPage.vue') },
+  { path: '/profile/detail', name: "profileDetailPage", component: import('./components/page/profileDetailPage.vue') },
   { path: '/profile/edit', name: "profileEditPage", component: import('./components/page/profileEditPage.vue') }
 ]
 
