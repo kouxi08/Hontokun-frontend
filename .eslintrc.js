@@ -37,13 +37,7 @@ module.exports = {
         },
       },
     ],
-    "vue/html-closing-bracket-newline": [
-      "error",
-      {
-        singleline: "never",
-        multiline: "always",
-      },
-    ],
+    
     "vue/html-quotes": "off", // 属性値のクォートルールを無効化
   },
 };
