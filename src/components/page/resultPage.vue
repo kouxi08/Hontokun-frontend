@@ -1,5 +1,5 @@
 <template>
-  <img v-show="isBattle" src="/smoke.png" alt="" class="animate-tilt absolute mx-auto top-1/3" />
+  <img v-show="isBattle" src="/smoke.png" alt="" class="animate-tilt absolute mx-auto top-1/3">
   <div v-show="isResultMessage" class="h-full flex flex-col gap-[40px] items-center justify-center" @click="showResultPage">
     <p class="text-[64px] font-zenMaru text-white font-bold" :class="gotMessage.titleStroke">
       {{ gotMessage.title }}
@@ -13,7 +13,7 @@
     <div class="h-[42%] flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
       <News
         v-for="quiz in quizSet" :key="quiz" :title="quiz.questionTitle" :content="quiz.content" :img="quiz.img"
-        show-result="true"
+        show-result="true" 
       />
     </div>
     <div class="flex flex-col justify-center items-center gap-[24px] mx-[48px] pt-[5%]">

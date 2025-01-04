@@ -11,7 +11,7 @@
       <router-link to="/signup" class="text-[#4F61EC]">新規登録はこちら</router-link>
       <Button color="primary" @click="toLogin">ログイン</Button>
       <p class="font-zenMaru text-[16px]">または</p>
-      <img src="/signin-with-google.svg" alt="" class="cursor-pointer" @click="toGoogleWithSignin" />
+      <img src="/signin-with-google.svg" alt="" class="cursor-pointer" @click="toGoogleWithSignin">
     </div>
   </div>
 </template>

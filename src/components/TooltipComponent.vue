@@ -8,9 +8,9 @@
       class="w-[320px] h-[180px] bg-[#FFFCF8] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] rounded-[12px] relative"
     >
       <Icon 
-        name="close-circle" width="24" height="24" 
+        name="close-circle" width=24 height=24 
         class="absolute top-0 left-0 m-[8px]" 
-        @click="visibleTooltip = true"
+        @click="visibleTooltip = true" 
       />
       <p class="font-zenMaru text-[20px] flex items-start justify-center mx-[16px] pt-[48px]">
         <slot></slot>

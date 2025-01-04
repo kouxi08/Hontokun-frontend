@@ -8,8 +8,8 @@
         v-model="inputValue" 
         type="text" 
         class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2" 
-        :placeholder="placeholderMap[type] || placeholder || ''" 
-      />
+        :placeholder="placeholderMap[type] || placeholder || ''"
+      >
     </div>
 
     <!-- 入力フィールド (数値) -->
@@ -21,7 +21,7 @@
         min="0"
         class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2"
         :placeholder="placeholder || '年齢'"
-      />
+      >
     </div>
 
     <!-- 入力フィールド (日付) -->
@@ -35,12 +35,12 @@
         class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black cursor-pointer px-2"
         :placeholder="placeholder || '生年月日'"
         @click="toggleDatePicker"
-      />
+      >
       <!-- 日付ピッカーコンポーネント -->
       <div v-if="isDatePickerVisible" class="mt-4">
         <DatePickerComponent
           @date-selected="handleDateSelected"
-          @close="toggleDatePicker"
+          @close="toggleDatePicker" 
         />
       </div> 
     </div>
@@ -52,8 +52,8 @@
         v-model="inputValue" 
         type="password" 
         class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2" 
-        :placeholder="placeholder || 'パスワード'" 
-      />
+        :placeholder="placeholder || 'パスワード'"
+      >
     </div>
     
     <!-- 入力フィールド (テキストエリア) -->
@@ -74,8 +74,8 @@
       v-model="inputValue" 
       :type="type" 
       class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black" 
-      :placeholder="placeholder" 
-    />
+      :placeholder="placeholder"
+    >
   </div>
 </template>
 
