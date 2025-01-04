@@ -39,7 +39,6 @@ const props = defineProps({
     type: Boolean,
     default: false,
     type: String,
-    default: ""
   }
 });
 </script>
