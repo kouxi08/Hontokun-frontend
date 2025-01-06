@@ -1,6 +1,6 @@
 <template>
   <div class="bg-[#FFF8D6] h-[488px] mx-[24px] mt-[32px] relative p-[16px] rounded-[8px] overflow-hidden">
-    <Icon name="arrow-left-line" class="absolute top-[16px] cursor-pointer" width="24" height="24" @click="page.setPage('メイン', null)" />
+    <Icon name="arrow-left-line" class="absolute top-[16px] cursor-pointer" width=24 height=24 @click="page.setPage('メイン', null)" />
     <p class="font-zenMaru font-bold text-[15px] text-center mb-[16px]">{{ page.name }}</p>
     <div class="flex flex-col gap-[8px]">
       <div 
