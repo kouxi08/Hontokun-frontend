@@ -34,9 +34,8 @@ const props = defineProps({
   },
   showResult: {
     type: Boolean,
-    default: false
+    default: false,
     type: String,
-    default: ""
   }
 });
 </script>
