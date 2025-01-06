@@ -33,10 +33,9 @@ module.exports = {
         component: 'always' // コンポーネントは自己閉じ
       }
     }],
-    "vue/html-closing-bracket-newline": [
-    "error",
-    {
+    "vue/html-closing-bracket-newline": ["error", {
       "singleline": "never",
     }],
+    "vue/v-on-event-hyphenation": "off"
   }
 }
