@@ -39,7 +39,6 @@ const toSignup = () => {
       router.push({ name: "mainPage" });
     })
     .catch((error) => {
-      console.log(error)
       switch (error.code) {
         case 'auth/invalid-email':
           // メールアドレスの形式がおかしい
