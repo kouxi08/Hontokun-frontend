@@ -8,7 +8,8 @@
       </div>
     </div>
     <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto" />
-    <Button color="primary" size="lg" class="flex items-center justify-center mx-auto my-[56px]" to="mainPage">
+    <Button color="primary" size="lg" class="flex items-center justify-center mx-auto my-[56px]"
+      @click="anonymousLogin">
       今すぐ挑戦
     </Button>
     <div class="py-[104px]">
@@ -63,16 +64,23 @@ import Footer from '../FooterComponent.vue'
 import Button from '../ButtonComponent.vue'
 import { ref } from 'vue'
 import { useRouter } from "vue-router";
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { getAuth, onAuthStateChanged, signInAnonymously } from 'firebase/auth'
 
 const router = useRouter()
 const auth = getAuth()
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    router.push({ name: "mainPage" });
+    // router.push({ name: "mainPage" });
   }
 })
+
+const anonymousLogin = () => {
+  signInAnonymously(auth)
+    .then(() => {
+      router.push({ name: "mainPage" });
+    })
+}
 
 const cats = [
   { name: "ホントくん", img: "/hontokun.png", description: "我らが主人公ホントくん！今まで難解な事件を解決してきた敏腕探偵ねこ。魚を盗む元泥棒ねこ。" },
