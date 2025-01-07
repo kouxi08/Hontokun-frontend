@@ -32,6 +32,6 @@ module.exports = {
       "singleline": "never",
     }],
     "vue/v-on-event-hyphenation": "off",
-    "vue/html-quotes": "off"
+    "vue/html-quotes": "error"
   }
 }
