@@ -17,11 +17,9 @@
           僕は助手のホントくん<br>
           よろしくね！
         </Message>
-        <img src="/hontokun.png" alt="" class="mx-auto my-[16px]">
-        <button 
-          class="w-[136px] h-[136px] bg-[#FF6633] rounded-full text-white text-[32px] border-4 border-white flex items-center justify-center font-black font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] mx-auto mt-[120px] hover:translate-y-[2px]" 
-          @click="page.setPage('モード選択', modePage)"
-        >
+        <img src="/hontokun.png" alt="" class="mx-auto my-[16px]" />
+        <button
+          class="w-[136px] h-[136px] bg-[#FF6633] rounded-full text-white text-[32px] border-4 border-white flex items-center justify-center font-black font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] mx-auto mt-[120px] hover:translate-y-[2px]"
           クイズ
         </button>
       </div>
@@ -31,23 +29,23 @@
 </template>
 
 <script setup>
-import Level from '../LevelComponent.vue'
-import XP from '../XpComponent.vue'
-import Icon from '../IconComponent.vue'
-import Message from '../MessageComponent.vue'
-import { useRouter } from 'vue-router'
-const router = useRouter()
-import modePage from '../page/modePage.vue'
-import { useStore } from '../../stores/Page.js';
-import { ref } from 'vue'
-const page = useStore();
+  import Level from "../LevelComponent.vue";
+  import XP from "../XpComponent.vue";
+  import Icon from "../IconComponent.vue";
+  import Message from "../MessageComponent.vue";
+  import { useRouter } from "vue-router";
+  const router = useRouter();
+  import modePage from "../page/modePage.vue";
+  import { useStore } from "../../stores/Page.js";
+  import { ref } from "vue";
+  const page = useStore();
 </script>
 
 <style>
-.bg-custom {
-  width: 100%;
-  height: 100%;
-  background-image: url(../../../public/detective-offices.png);
-  background-position: center;
-}
+  .bg-custom {
+    width: 100%;
+    height: 100%;
+    background-image: url(../../../public/detective-offices.png);
+    background-position: center;
+  }
 </style>
