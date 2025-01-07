@@ -7,7 +7,7 @@
       <Rate value="32" size="sm" class="justify-self-end" />
     </div>
     <div
-      class="w-[168px] h-[168px] rounded-full shadow-lg relative mx-auto mt-[56px] overflow-hidden cursor-pointer transition duration-200 hover:scale-110"
+      class="w-[168px] h-[168px] rounded-full shadow-lg relative mx-auto my-[56px] overflow-hidden cursor-pointer transition duration-200 hover:scale-110"
       @click="router.push({ name: 'profileEditPage' })">
       <img src="/honto.svg" alt="" height="120" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <p
@@ -16,7 +16,7 @@
       </p>
     </div>
     <div
-      class="w-full h-[50%] flex flex-col items-center justify-start gap-[24px] px-[48px] my-[56px] overflow-hidden overflow-y-scroll">
+      class="w-full h-[50%] flex flex-col items-center justify-start gap-[24px] px-[48px] py-[32px] overflow-hidden overflow-y-scroll">
       <Card :iconName="cat.name" :iconImage="cat.icon" :accuracy=cat.accuracy :attempts=cat.attempts v-for="cat in cats"
         :key="cat" />
     </div>
