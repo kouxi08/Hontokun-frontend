@@ -1,5 +1,5 @@
 <template>
-  <img v-show="isBattle" src="/smoke.png" alt="" class="animate-tilt absolute mx-auto top-1/3" />
+  <img v-show="isBattle" src="/smoke.png" alt="" class="animate-tilt absolute mx-auto top-1/3">
   <div
     v-show="isResultMessage"
     class="h-full flex flex-col gap-[40px] items-center justify-center"

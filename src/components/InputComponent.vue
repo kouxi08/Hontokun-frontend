@@ -9,7 +9,7 @@
         type="text"
         class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2"
         :placeholder="placeholderMap[type] || placeholder || ''"
-      />
+      >
     </div>
 
     <!-- 入力フィールド (数値) -->
@@ -50,7 +50,7 @@
         type="password"
         class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2"
         :placeholder="placeholder || 'パスワード'"
-      />
+      >
     </div>
 
     <!-- 入力フィールド (テキストエリア) -->
@@ -72,7 +72,7 @@
       :type="type"
       class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black"
       :placeholder="placeholder"
-    />
+    >
   </div>
 </template>
 

@@ -7,8 +7,8 @@
       :key="index"
       :src="index <= props.value ? '/icons/star-true.svg' : '/icons/star-false.svg'"
       alt="Star"
-    />
-</template>
+    >
+  </div></template>
 
 <script setup>
   const props = defineProps({
