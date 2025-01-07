@@ -12,9 +12,9 @@
       </div>
       <div v-if="!page.component">
         <Message position="top" class="mt-[-25%]">
-          ようこそ！<br />
-          $user_name探偵事務所へ<br />
-          僕は助手のホントくん<br />
+          ようこそ！<br>
+          $user_name探偵事務所へ<br>
+          僕は助手のホントくん<br>
           よろしくね！
         </Message>
         <img src="/hontokun.png" alt="" class="mx-auto my-[16px]" />
@@ -43,10 +43,10 @@ const router = useRouter()
 </script>
 
 <style>
-.bg-custom {
-  width: 100%;
-  height: 100%;
-  background-image: url(../../../public/detective-offices.png);
-  background-position: center;
-}
+  .bg-custom {
+    width: 100%;
+    height: 100%;
+    background-image: url(../../../public/detective-offices.png);
+    background-position: center;
+  }
 </style>

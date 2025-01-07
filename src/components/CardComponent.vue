@@ -42,31 +42,32 @@ import Icon from "./IconComponent.vue";
 import { useRouter } from 'vue-router'
 const router = useRouter();
 
-// 受け取るprops
-const props = defineProps({
-  iconName: {
-    type: String,
-    required: true,
-  },
-  iconImage: {
-    type: String,
-    required: true,
-  },
-  accuracy: {
-    type: Number,
-    required: true,
-  },
-  attempts: {
-    type: Array,
-    required: true,
-  },
-});
+  // 受け取るprops
+  const props = defineProps({
+    iconName: {
+      type: String,
+      required: true,
+    },
+    iconImage: {
+      type: String,
+      required: true,
+    },
+    accuracy: {
+      type: Number,
+      required: true,
+    },
+    attempts: {
+      type: Array,
+      required: true,
+    },
+  });
 
-// アコーディオンの開閉状態
-const showDetails = ref(false);
+  // アコーディオンの開閉状態
+  const showDetails = ref(false);
 
 // 開閉トグル
 const toggleDetails = () => {
   showDetails.value = !showDetails.value;
 };
+
 </script>
