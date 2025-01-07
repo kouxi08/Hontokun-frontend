@@ -1,5 +1,5 @@
 <template>
-  <div class="font-zenMaru flex flex-col">
+  <div class="w-full h-fit font-zenMaru flex flex-col">
     <div class="mx-[48px] p-[16px] h-[408px] bg-white shadow-lg rounded-[6px] flex flex-col gap-[16px] z-10">
       <div class="relative">
         <img :src="props.img" alt="" class="w-full h-[104px] rounded-[6px] object-cover" />
@@ -38,6 +38,7 @@ const props = defineProps({
   showResult: {
     type: Boolean,
     default: false,
+    type: String,
   }
 });
 </script>
