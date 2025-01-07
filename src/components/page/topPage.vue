@@ -2,12 +2,12 @@
   <div class="w-screen h-full">
     <Header />
     <div class="relative w-fit h-fit my-[64px] mx-auto">
-      <img src="/NewsPaper.png" alt="NewsPaper" />
+      <img src="/NewsPaper.png" alt="NewsPaper">
       <div class="rotate-container absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4">
-        <img src="/MagnifyingGlass.svg" alt="MagnifyingGlass" class="circle-animation" />
+        <img src="/MagnifyingGlass.svg" alt="MagnifyingGlass" class="circle-animation">
       </div>
     </div>
-    <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto" />
+    <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto">
     <Button
       color="primary"
       size="lg"
@@ -20,13 +20,13 @@
       <p
         class="text-center text-white stroke-accent-4 font-zenMaru text-[32px] font-black mx-[24px] my-[56px] leading-[48px]"
       >
-        フェイクニュースに<br />騙されていませんか？
+        フェイクニュースに<br>騙されていませんか？
       </p>
       <p class="text-[18px] font-zenMaru font-black text-center leading-[48px] mb-[72px]">
         日本での調査では
-        <span class="bg-accent rounded-[8px] p-[4px] mx-[4px] text-white stroke-black-2">４人中３人</span>は、<br />
-        騙されている可能性があり<br />
-        その中の半分の人は偽の情報を知らぬ間に<br />
+        <span class="bg-accent rounded-[8px] p-[4px] mx-[4px] text-white stroke-black-2">４人中３人</span>は、<br>
+        騙されている可能性があり<br>
+        その中の半分の人は偽の情報を知らぬ間に<br>
         拡散してしまっています。
       </p>
 
@@ -61,8 +61,8 @@
           :alt="cats[previousCat(index)].name"
           class="w-[64px] object-contain animate-pulse cursor-pointer"
           @click="index = previousCat(index)"
-        />
-        <img :src="cats[index].img" :alt="cats[index].img" class="mx-auto" />
+        >
+        <img :src="cats[index].img" :alt="cats[index].img" class="mx-auto">
         <img
           :src="cats[nextCat(index)].img"
           :alt="cats[nextCat(index)].name"

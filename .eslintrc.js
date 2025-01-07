@@ -23,7 +23,7 @@ module.exports = {
     }],
     'vue/html-self-closing': ['error', {
       html: {
-        void: 'always', // void要素は自己閉じ
+        void: 'never', // void要素は自己閉じ
         normal: 'never', // 通常要素は閉じタグを使用
         component: 'always' // コンポーネントは自己閉じ
       }
@@ -31,6 +31,7 @@ module.exports = {
     "vue/html-closing-bracket-newline": ["error", {
       "singleline": "never",
     }],
-    "vue/v-on-event-hyphenation": "off"
+    "vue/v-on-event-hyphenation": "off",
+    "vue/html-quotes": "error"
   }
 }

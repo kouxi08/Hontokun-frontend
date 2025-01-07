@@ -4,8 +4,10 @@
     <div class="flex-shrink-0">
       <!-- ヘッダー -->
       <div class="w-full grid grid-cols-3 justify-between items-center pt-[64px] px-[48px]">
-        <Icon name="arrow-left-line" width=24 height=24 class="justify-self-start cursor-pointer"
-          @click="router.push({ name: 'profilePage' })" />
+        <Icon
+          name="arrow-left-line" width="24" height="24" class="justify-self-start cursor-pointer"
+          @click="router.push({ name: 'profilePage' })"
+        />
         <p class="font-zenMaru text-[16px] text-center">{{ catName }}</p>
         <Rate value="32" size="sm" class="justify-self-end" />
       </div>
@@ -25,7 +27,7 @@
       <!-- ニュース -->
       <div v-for="quiz in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
         <NewsTitle :id="quiz.id" :title="quiz.newsTitle" />
-        <News :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content" :showResult=true />
+        <News :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content" :show-result="true" />
       </div>
     </div>
   </div>

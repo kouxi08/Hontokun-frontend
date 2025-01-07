@@ -17,10 +17,11 @@
           僕は助手のホントくん<br>
           よろしくね！
         </Message>
-        <img src="/hontokun.png" alt="" class="mx-auto my-[16px]" />
+        <img src="/hontokun.png" alt="" class="mx-auto my-[16px]">
         <button
           class="w-[136px] h-[136px] bg-[#FF6633] rounded-full text-white text-[32px] border-4 border-white flex items-center justify-center font-black font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] mx-auto mt-[120px] hover:translate-y-[2px]"
-          @click="page.setPage('モード選択', modePage)">
+          @click="page.setPage('モード選択', modePage)"
+        >
           クイズ
         </button>
       </div>

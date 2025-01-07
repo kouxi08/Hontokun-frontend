@@ -20,7 +20,7 @@
         alt=""
         class="cursor-pointer"
         @click="toGoogleWithSignin"
-      />
+      >
     </div>
   </div>
 </template>
