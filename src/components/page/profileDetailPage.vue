@@ -13,7 +13,7 @@
       </div>
       <!-- ネコとボタン -->
       <div class="relative h-44 mx-[48px] my-[24px]">
-        <img :src="catImage" alt="" height="120" class="absolute left-1/2 -translate-x-1/2" />
+        <img :src="catImage" alt="" height="120" class="absolute left-1/2 -translate-x-1/2">
         <Button color="primary" size="xs" class="absolute left-1/2 bottom-0 -translate-x-1/2">つかまえる</Button>
       </div>
     </div>

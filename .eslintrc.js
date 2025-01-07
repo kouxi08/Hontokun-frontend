@@ -31,6 +31,7 @@ module.exports = {
     "vue/html-closing-bracket-newline": ["error", {
       "singleline": "never",
     }],
-    "vue/v-on-event-hyphenation": "off"
+    "vue/v-on-event-hyphenation": "off",
+    "vue/html-quotes": "off"
   }
 }

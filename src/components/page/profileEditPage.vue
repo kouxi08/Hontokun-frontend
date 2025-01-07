@@ -10,7 +10,7 @@
     </div>
     <div class="flex items-center justify-center gap-[48px] pt-[32px]">
       <Icon name="arrow-left" width="8" />
-      <img src="/honto.svg" alt="" height="120" />
+      <img src="/honto.svg" alt="" height="120">
       <Icon name="arrow-right" width="8" />
     </div>
     <div class="flex flex-col items-start justify-center px-[72px] pt-[78px]">

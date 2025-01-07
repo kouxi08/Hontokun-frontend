@@ -12,7 +12,7 @@
       class="w-[168px] h-[168px] rounded-full shadow-lg relative mx-auto my-[56px] overflow-hidden cursor-pointer transition duration-200 hover:scale-110"
       @click="router.push({ name: 'profileEditPage' })"
     >
-      <img src="/honto.svg" alt="" height="120" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      <img src="/honto.svg" alt="" height="120" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       <p
         class="absolute w-full h-1/5 bottom-0 py-[8px] text-center text-[10px] stroke-white-2 font-zenMaru font-black bg-[#FFDA29] bg-opacity-[25%]"
       >
