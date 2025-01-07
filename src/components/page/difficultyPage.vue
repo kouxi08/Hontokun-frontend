@@ -19,7 +19,7 @@
         :src="`/wantedList/${difficulty}`"
         alt=""
         width="152"
-      >
+      />
     </div>
   </div>
 </template>

@@ -23,7 +23,7 @@ module.exports = {
     }],
     'vue/html-self-closing': ['error', {
       html: {
-        void: 'never', // void要素は自己閉じ
+        void: 'always', // void要素は自己閉じ
         normal: 'never', // 通常要素は閉じタグを使用
         component: 'always' // コンポーネントは自己閉じ
       }

@@ -7,7 +7,7 @@
         alt=""
         width="208"
         class="absolute top-[88px] left-1/2 -translate-x-1/2 z-0"
-      >
+      />
       <div v-if="!page.component" class="w-full h-full whitespace-nowrap overflow-hidden">
         <p
           class="h-full absolute top-1/2 -translate-y-1/2 font-zenMaru text-[128px] inline-block pl-[100%] animate-scroll text-white stroke-primary-4"
@@ -21,7 +21,7 @@
         src="/hontokun.svg"
         alt=""
         class="absolute bottom-[32px] left-1/2 -translate-x-1/2"
-      >
+      />
     </div>
   </div>
 </template>
