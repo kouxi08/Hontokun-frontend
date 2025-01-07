@@ -32,10 +32,10 @@
 
       <p class="text-[18px] font-zenMaru font-black text-center leading-[48px]">
         フェイクニュースは、
-        <span class="bg-accent rounded-[8px] p-[4px] text-white stroke-black-2">世代とは関係なく</span><br />
-        騙され、拡散されています。<br />
-        だから<br />
-        ちゃんとした知識を身に着け<br />
+        <span class="bg-accent rounded-[8px] p-[4px] text-white stroke-black-2">世代とは関係なく</span><br>
+        騙され、拡散されています。<br>
+        だから<br>
+        ちゃんとした知識を身に着け<br>
         フェイクニュースに
       </p>
       <p
@@ -68,7 +68,7 @@
           :alt="cats[nextCat(index)].name"
           class="w-[64px] object-contain animate-pulse cursor-pointer"
           @click="index = nextCat(index)"
-        />
+        >
       </div>
       <p class="font-zenMaru text-[14px] font-bold text-center m-[24px] leading-[32px]">
         {{ cats[index].description }}

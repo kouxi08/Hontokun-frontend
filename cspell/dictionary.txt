@@ -13,3 +13,4 @@ width
 height
 hurosiki
 hamaki
+zclass

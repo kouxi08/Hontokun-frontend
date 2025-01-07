@@ -2,7 +2,7 @@
   <div class="font-zenMaru mx-[48px] p-[16px] shadow-lg rounded-[8px] flex flex-col">
     <!-- Header Section -->
     <div class="w-full h-[40px] grid grid-cols-3 justify-between items-center top-4">
-      <Icon name="card-left" width="24" height="24" />
+      <Icon name="card-left" width=24 height=24 />
       <p class="font-bold text-[16px] text-center">解説</p>
       <Button size="xs" color="danger" class="justify-self-end">報告</Button>
     </div>
@@ -57,7 +57,7 @@
             'border-blue-500 text-blue-500': index === correctIndex && indexColor === 'blue',
           }"
         >
-          <Icon name="check-circle" width="24" height="24" class="mr-2" />
+          <Icon name="check-circle" width=24 height=24 class="mr-2" />
           <span class="font-bold text-[14px]">{{ option }}</span>
         </div>
       </div>

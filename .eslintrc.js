@@ -2,16 +2,11 @@ module.exports = {
   root: true,
   env: {
     browser: true,
-    node: true
+    node: true,
   },
-  parserOptions: {
-  },
-  extends: [
-    "plugin:vue/vue3-recommended"
-  ],
-  plugins: [
-    'vue'
-  ],
+  parserOptions: {},
+  extends: ["plugin:vue/vue3-recommended"],
+  plugins: ["vue"],
   rules: {
     'vue/comment-directive': 'error',
     'vue/jsx-uses-vars': 'error',

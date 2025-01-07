@@ -19,8 +19,8 @@
         <Rate :value="accuracy" size="md" color="default" />
       </div>
       <!-- アイコン -->
-      <Icon v-if="showDetails" name="card_close" width="24" height="24" />
-      <Icon v-if="!showDetails" name="card_open" width="24" height="24" />
+      <Icon v-if="showDetails" name="card_close" width=24 height=24 />
+      <Icon v-if="!showDetails" name="card_open" width=24 height=24 />
     </div>
 
     <!-- アコーディオンの詳細 -->

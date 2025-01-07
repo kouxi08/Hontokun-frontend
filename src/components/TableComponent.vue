@@ -24,10 +24,10 @@
       >
         <td>{{ row.id }}</td>
         <td>
-          <Icon :name="row.correction" width="24" height="24" />
+          <Icon :name="row.correction" width=24 height=24 />
         </td>
         <td>
-          <Icon :name="row.question" width="24" height="24" />
+          <Icon :name="row.question" width=24 height=24 />
         </td>
       </tr>
     </tbody>
