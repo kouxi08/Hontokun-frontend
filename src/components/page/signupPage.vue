@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative">
     <Header />
     <p class="pt-[136px] pb-[24px] text-center font-zenMaru text-[16px]">新規登録</p>
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">

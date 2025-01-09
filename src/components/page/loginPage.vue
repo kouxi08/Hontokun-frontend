@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="relative">
     <Header />
+    <Icon name="arrow-left-line" class="cursor-pointer w-6 h-6 absolute top-32 left-8" @click="toTopPage" />
     <p class="pt-[136px] pb-[24px] text-center font-zenMaru text-[16px]">ログイン</p>
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">
       {{ errorMessage }}
@@ -11,12 +12,7 @@
       <router-link to="/signup" class="text-[#4F61EC]">新規登録はこちら</router-link>
       <Button color="primary" @click="toLogin">ログイン</Button>
       <p class="font-zenMaru text-[16px]">または</p>
-      <img
-        src="/signin-with-google.svg"
-        alt=""
-        class="cursor-pointer"
-        @click="toGoogleWithSignin"
-      >
+      <img src="/signin-with-google.svg" alt="" class="cursor-pointer" @click="toGoogleWithSignin">
     </div>
   </div>
 </template>
