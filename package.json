@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "format": "npx prettier --write"
   },
   "dependencies": {
     "@vuepic/vue-datepicker": "^9.0.3",
@@ -27,7 +28,8 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
-    "git-cz": "^4.9.0"
+    "git-cz": "^4.9.0",
+    "prettier": "3.4.2"
   },
   "eslintConfig": {
     "root": true,

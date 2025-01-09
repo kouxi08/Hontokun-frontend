@@ -2,9 +2,9 @@
   <div class="w-screen h-full">
     <Header />
     <div class="relative w-fit h-fit my-[64px] mx-auto">
-      <img src="/NewsPaper.png" alt="NewsPaper" />
-      <div class="rotate-container absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 ">
-        <img src="/MagnifyingGlass.svg" alt="MagnifyingGlass" class="circle-animation" />
+      <img src="/NewsPaper.png" alt="NewsPaper">
+      <div class="rotate-container absolute top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4">
+        <img src="/MagnifyingGlass.svg" alt="MagnifyingGlass" class="circle-animation">
       </div>
     </div>
     <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto" />
@@ -26,13 +26,15 @@
 
       <p class="text-[18px] font-zenMaru font-black text-center leading-[48px]">
         フェイクニュースは、
-        <span class="bg-accent rounded-[8px] p-[4px] text-white stroke-black-2">世代とは関係なく</span><br />
-        騙され、拡散されています。<br />
-        だから<br />
-        ちゃんとした知識を身に着け<br />
+        <span class="bg-accent rounded-[8px] p-[4px] text-white stroke-black-2">世代とは関係なく</span><br>
+        騙され、拡散されています。<br>
+        だから<br>
+        ちゃんとした知識を身に着け<br>
         フェイクニュースに
       </p>
-      <p class="text-primary text-[20px] font-zenMaru font-black text-center stroke-black-2 my-[24px]">
+      <p
+        class="text-primary text-[20px] font-zenMaru font-black text-center stroke-black-2 my-[24px]"
+      >
         騙されない、見抜く力をつけてほしい
       </p>
     </div>
@@ -43,7 +45,9 @@
       </p>
     </div>
     <div class="mb-[240px]">
-      <p class="font-black font-zenMaru text-[20px] text-center my-[16px]">{{ cats[index].name }}</p>
+      <p class="font-black font-zenMaru text-[20px] text-center my-[16px]">
+        {{ cats[index].name }}
+      </p>
       <div class="flex transition duration-150 ease-in-out">
         <img :src="cats[previousCat(index)].img" :alt="cats[previousCat(index)].name"
           class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = previousCat(index)" />
@@ -51,7 +55,8 @@
         <img :src="cats[nextCat(index)].img" :alt="cats[nextCat(index)].name"
           class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = nextCat(index)" />
       </div>
-      <p class="font-zenMaru text-[14px] font-bold text-center m-[24px] leading-[32px]">{{ cats[index].description }}
+      <p class="font-zenMaru text-[14px] font-bold text-center m-[24px] leading-[32px]">
+        {{ cats[index].description }}
       </p>
     </div>
     <Footer />
@@ -82,61 +87,84 @@ const anonymousLogin = () => {
     })
 }
 
-const cats = [
-  { name: "ホントくん", img: "/hontokun.png", description: "我らが主人公ホントくん！今まで難解な事件を解決してきた敏腕探偵ねこ。魚を盗む元泥棒ねこ。" },
-  { name: "ふろしきねこ", img: "/hurosiki.png", description: "悪いことはまだしたことのない初心者ふろしきねこ。ふろしきの中身は誰も知らない。" },
-  { name: "ハットねこ", img: "/hat.png", description: "営業職で顔の広く、話しやすい気性のハットねこ。元ホントくんの相棒だったとか…" },
-  { name: "はまきねこ", img: "/hamaki.png", description: "主に活動するのは夜のため目が光るはまきねこ。吸っているはまきは、セリバ・オリエ・Y。" },
-  { name: "ボスねこ", img: "/boss.png", description: "できる悪いことは全てしてきたボスねこ。はまきを吸っているのはかっこいいから。" }
-];
+  const cats = [
+    {
+      name: "ホントくん",
+      img: "/hontokun.png",
+      description:
+        "我らが主人公ホントくん！今まで難解な事件を解決してきた敏腕探偵ねこ。魚を盗む元泥棒ねこ。",
+    },
+    {
+      name: "ふろしきねこ",
+      img: "/hurosiki.png",
+      description: "悪いことはまだしたことのない初心者ふろしきねこ。ふろしきの中身は誰も知らない。",
+    },
+    {
+      name: "ハットねこ",
+      img: "/hat.png",
+      description: "営業職で顔の広く、話しやすい気性のハットねこ。元ホントくんの相棒だったとか…",
+    },
+    {
+      name: "はまきねこ",
+      img: "/hamaki.png",
+      description:
+        "主に活動するのは夜のため目が光るはまきねこ。吸っているはまきは、セリバ・オリエ・Y。",
+    },
+    {
+      name: "ボスねこ",
+      img: "/boss.png",
+      description: "できる悪いことは全てしてきたボスねこ。はまきを吸っているのはかっこいいから。",
+    },
+  ];
 
-const index = ref(0);
+  const index = ref(0);
 
-const previousCat = (index) => {
-  if (index === 0) {
-    return cats.length - 1;
-  } else {
-    return index - 1;
-  }
-};
+  const previousCat = (index) => {
+    if (index === 0) {
+      return cats.length - 1;
+    } else {
+      return index - 1;
+    }
+  };
 
-const nextCat = (index) => {
-  if (index === cats.length - 1) {
-    return 0;
-  } else {
-    return index + 1;
-  }
-};
-
+  const nextCat = (index) => {
+    if (index === cats.length - 1) {
+      return 0;
+    } else {
+      return index + 1;
+    }
+  };
 </script>
 
 <style>
-@keyframes circular-motion {
-  from {
-    transform: translate(50%, -50%) rotate(0deg) translateX(80px) rotate(0deg);
+  @keyframes circular-motion {
+    from {
+      transform: translate(50%, -50%) rotate(0deg) translateX(80px) rotate(0deg);
+    }
+
+    to {
+      transform: translate(50%, -50%) rotate(360deg) translateX(80px) rotate(-360deg);
+    }
   }
 
-  to {
-    transform: translate(50%, -50%) rotate(360deg) translateX(80px) rotate(-360deg);
+  .slide {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
   }
-}
 
-.slide {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
+  .slide.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-.slide.active {
-  opacity: 1;
-  transform: translateY(0);
-}
+  .circle-animation {
+    animation: circular-motion 4s linear infinite;
+  }
 
-.circle-animation {
-  animation: circular-motion 4s linear infinite;
-}
-
-.rotate-container {
-  transform: rotate(-30deg);
-}
+  .rotate-container {
+    transform: rotate(-30deg);
+  }
 </style>
