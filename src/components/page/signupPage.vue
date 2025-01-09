@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="relative">
     <Header />
     <p class="pt-[136px] pb-[24px] text-center font-zenMaru text-[16px]">新規登録</p>
+    <Icon name="arrow-left-line" class="cursor-pointer w-6 h-6 absolute top-32 left-8" @click="toTopPage" />
     <p
       v-for="message in errorMessages"
       :key="message"
@@ -29,6 +30,7 @@
   import Header from "../HeaderComponent.vue";
   import Input from "../InputComponent.vue";
   import Button from "../ButtonComponent.vue";
+  import Icon from "../IconComponent.vue"
   import { ref } from "vue";
   import { RouterView, RouterLink, useRouter } from "vue-router";
   const email = ref("");
