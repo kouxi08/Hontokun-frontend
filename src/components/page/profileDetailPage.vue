@@ -4,10 +4,8 @@
     <div class="flex-shrink-0">
       <!-- ヘッダー -->
       <div class="w-full grid grid-cols-3 justify-between items-center pt-[64px] px-[48px]">
-        <Icon
-          name="arrow-left-line" width="24" height="24" class="justify-self-start cursor-pointer"
-          @click="router.push({ name: 'profilePage' })"
-        />
+        <Icon name="arrow-left-line" width="24" height="24" class="justify-self-start cursor-pointer"
+          @click="router.push({ name: 'profilePage' })" />
         <p class="font-zenMaru text-[16px] text-center">{{ catName }}</p>
         <Rate value="32" size="sm" class="justify-self-end" />
       </div>
@@ -25,9 +23,13 @@
         <Table :header="tableHeader" :content="tableContent" />
       </div>
       <!-- ニュース -->
-      <div v-for="quiz in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
+      <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
         <NewsTitle :id="quiz.id" :title="quiz.newsTitle" />
-        <News :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content" :show-result="true" />
+        <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
+          :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
+        <Explain v-else :type="explainData[index].type" :explanation="explainData[index].explanation"
+          :answer="explainData[index].answer" :keyword="explainData[index].keyword"
+          @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
       </div>
     </div>
   </div>
@@ -41,8 +43,12 @@ import Input from '../InputComponent.vue'
 import Table from '../TableComponent.vue'
 import NewsTitle from '../NewsTitleComponent.vue'
 import News from '../NewsComponent.vue'
+import Explain from '../ExplainComponent.vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+
 const router = useRouter()
+
 const catName = "ふろしきネコ"
 const catImage = "/hurosiki.svg"
 const tableHeader = [
@@ -78,4 +84,27 @@ const quizSet = [
     content: "最新の研究によると、寝ることは実は時間の無駄だと判明。科学者たちは、睡眠時間を削減することで生産性が飛躍的に向上すると主張しています。この革新的な発見により、人々の生活様式が大きく変わる可能性があります。",
   }
 ]
+
+const explainData = [
+  {
+    type: "true_or_false",
+    answer: true,
+    explanation: "「台風15号」など台風番号で調べることでより検索しやすくなります。「関東」「接近」で関東に接近した台風の情報が検索で出てきやすくなります。",
+    keyword: "台風15号　関東　接近",
+  },
+  {
+    type: "true_or_false",
+    answer: false,
+    explanation: "「NASA」が公式発表されている記事を検索して、フェイクニュースか判断することができます。",
+    keyword: "NASA　宇宙ステーション　巨大UFO",
+  },
+  {
+    type: "true_or_false",
+    answer: false,
+    explanation: "「睡眠時間」が生産性に関係している記事を検索して、フェイクニュースか判断することができます。",
+    keyword: "睡眠時間　生産　無駄",
+  },
+]
+
+const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => true))
 </script>

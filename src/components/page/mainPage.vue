@@ -6,8 +6,9 @@
           <Level />
           <XP value="4" class="bg-white border-2 border-primary rounded-[4px]" />
         </div>
-        <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer">
-          <Icon name="user" @click="router.push({ name: 'profilePage' })" />
+        <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
+          @click="router.push({ name: 'profilePage' })">
+          <Icon name="user" />
         </div>
       </div>
       <div v-if="!page.component">
@@ -20,8 +21,7 @@
         <img src="/hontokun.png" alt="" class="mx-auto my-[16px]">
         <button
           class="w-[136px] h-[136px] bg-[#FF6633] rounded-full text-white text-[32px] border-4 border-white flex items-center justify-center font-black font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] mx-auto mt-[120px] hover:translate-y-[2px]"
-          @click="page.setPage('モード選択', modePage)"
-        >
+          @click="page.setPage('モード選択', modePage)">
           クイズ
         </button>
       </div>
@@ -44,10 +44,10 @@ const router = useRouter()
 </script>
 
 <style>
-  .bg-custom {
-    width: 100%;
-    height: 100%;
-    background-image: url(../../../public/detective-offices.png);
-    background-position: center;
-  }
+.bg-custom {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../public/detective-offices.png);
+  background-position: center;
+}
 </style>
