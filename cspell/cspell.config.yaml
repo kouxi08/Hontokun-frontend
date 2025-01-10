@@ -12,3 +12,5 @@ ignorePaths:
   - "../README.md"
   - "../package.json"
   - "../public"
+  - "../charts"
+  - "../docker"
