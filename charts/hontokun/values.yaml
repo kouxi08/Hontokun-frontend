@@ -14,13 +14,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-secretName: hontokun-backend-sercret
-
-env:
-  - name: GOOGLE_APPLICATION_CREDENTIALS
-    key: application_credentials
-
-podAnnotations: {}
 podLabels: {}
 
 podSecurityContext: {}
