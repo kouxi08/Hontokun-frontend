@@ -21,6 +21,7 @@
 import Header from '../HeaderComponent.vue'
 import Input from '../InputComponent.vue'
 import Button from '../ButtonComponent.vue'
+import Icon from '../IconComponent.vue'
 import { RouterView, RouterLink, useRouter } from "vue-router";
 import { ref } from 'vue'
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
