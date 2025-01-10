@@ -6,18 +6,26 @@
         @click="router.push({ name: 'mainPage' })"
       />
       <p class="font-zenMaru text-[16px] text-center">{{ userName }}</p>
-      <Rate value="32" size="sm" class="justify-self-end" />
+      <!-- ログアウトボタンにクリックイベントを追加 -->
+      <Button color="secondary" size="xs" class="justify-self-end cursor-pointer" @click="Logout">
+        ログアウト
+      </Button>
     </div>
-    <div
-      class="w-[168px] h-[168px] rounded-full shadow-lg relative mx-auto my-[56px] overflow-hidden cursor-pointer transition duration-200 hover:scale-110"
-      @click="router.push({ name: 'profileEditPage' })"
-    >
-      <img src="/honto.svg" alt="" height="120" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <p
-        class="absolute w-full h-1/5 bottom-0 py-[8px] text-center text-[10px] stroke-white-2 font-zenMaru font-black bg-[#FFDA29] bg-opacity-[25%]"
+    <div class="relative w-[168px] h-[168px] mx-auto my-[56px]">
+      <div
+        class="w-[168px] h-[168px] rounded-full shadow-lg relative mx-auto my-[56px] overflow-hidden cursor-pointer transition duration-200 hover:scale-110"
+        @click="router.push({ name: 'profileEditPage' })"
       >
-        プロフィールの編集
-      </p>
+        <img src="/honto.svg" alt="" height="120" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <p
+          class="absolute w-full h-1/5 bottom-0 py-[8px] text-center text-[10px] stroke-white-2 font-zenMaru font-black bg-[#FFDA29] bg-opacity-[25%]"
+        >
+          プロフィールの編集
+        </p>
+      </div>
+      <div class="absolute top-[-15%] right-[-15%]">
+        <Rate value="32" size="md" />
+      </div>
     </div>
     <div
       class="w-full h-[50%] flex flex-col items-center justify-start gap-[24px] px-[48px] py-[32px] overflow-hidden overflow-y-scroll"
@@ -34,9 +42,25 @@
 import Icon from '../IconComponent.vue'
 import Rate from '../RateComponent.vue'
 import Card from '../CardComponent.vue'
+import Button from '../ButtonComponent.vue'
 import { useRouter } from 'vue-router'
+import { getAuth, signOut } from "firebase/auth"; // Firebase Authのインポート
+
 const router = useRouter()
 const userName = "しんたろう"
+
+// Firebase Authのインスタンスを取得
+const auth = getAuth();
+
+// ログアウト処理
+const Logout = async () => {
+  try {
+    await signOut(auth); // Firebaseからログアウト
+    router.push({ name: 'topPage' }); // ログアウト後にトップページにリダイレクト
+  } catch (error) {
+    console.error("ログアウト中にエラーが発生しました: ", error);
+  }
+};
 
 const cats = [
   {

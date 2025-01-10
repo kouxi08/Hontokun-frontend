@@ -2,7 +2,7 @@
   <div class="font-zenMaru mx-[48px] p-[16px] shadow-lg rounded-[8px] flex flex-col">
     <!-- Header Section -->
     <div class="w-full h-[40px] grid grid-cols-3 justify-between items-center top-4">
-      <Icon name="card-left" width="24" height="24" @click="showNews" class="cursor-pointer" />
+      <Icon name="card-left" width="24" height="24" class="cursor-pointer" @click="showNews" />
       <p class="font-bold text-[16px] text-center">解説</p>
       <Button size="xs" color="danger" class="justify-self-end">報告</Button>
     </div>
@@ -13,7 +13,8 @@
         正解
       </p>
       <Icon class="justify-self-center" :name="answer ? 'correct' : 'incorrect'" width="24" height="24" />
-      <a v-if="answer === 'true'" class="justify-self-end text-blue-500 text-[12px] font-bold" href="example.com"
+      <a
+        v-if="answer === 'true'" class="justify-self-end text-blue-500 text-[12px] font-bold" href="example.com"
         target="_blank">
         ニュース記事へ
       </a>
@@ -27,7 +28,8 @@
           正解
         </p>
         <p class="font-bold text-[16px] text-center">正解の選択肢</p>
-        <div v-for="(option, index) in options" :key="index"
+        <div
+          v-for="(option, index) in options" :key="index"
           class="flex items-center justify-center w-[200px] h-[50px] border-[3px] rounded-md" :class="{
             'border-red-500 text-red-500': index === correctIndex && indexColor === 'red',
             'border-yellow-500 text-yellow-500': index === correctIndex && indexColor === 'yellow',
@@ -45,7 +47,8 @@
       <p class="text-black font-bold text-[12px] px-[8px] flex-1">
         {{ keyword }}
       </p>
-      <button class="bg-primary text-black font-bold text-[14px] py-[6px] px-[16px] rounded-full shadow"
+      <button
+        class="bg-primary text-black font-bold text-[14px] py-[6px] px-[16px] rounded-full shadow"
         @click="searchGoogle">
         検索
       </button>

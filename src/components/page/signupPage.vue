@@ -1,6 +1,7 @@
 <template>
   <div class="relative">
     <Header />
+    <Icon name="arrow-left-line" class="cursor-pointer w-6 h-6 absolute top-32 left-8" @click="toTopPage" />
     <p class="pt-[136px] pb-[24px] text-center font-zenMaru text-[16px]">新規登録</p>
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">
       {{ errorMessage }}
@@ -25,6 +26,7 @@
 import Header from '../HeaderComponent.vue'
 import Input from '../InputComponent.vue'
 import Button from '../ButtonComponent.vue'
+import Icon from '../IconComponent.vue'
 import { ref } from 'vue'
 import { RouterView, RouterLink, useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth"

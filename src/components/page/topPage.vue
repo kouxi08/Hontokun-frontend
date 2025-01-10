@@ -7,20 +7,21 @@
         <img src="/MagnifyingGlass.svg" alt="MagnifyingGlass" class="circle-animation">
       </div>
     </div>
-    <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto" />
-    <Button color="primary" size="lg" class="flex items-center justify-center mx-auto my-[56px]"
+    <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto">
+    <Button
+      color="primary" size="lg" class="flex items-center justify-center mx-auto my-[56px]"
       @click="anonymousLogin">
       今すぐ挑戦
     </Button>
     <div class="py-[104px]">
       <p
         class="text-center text-white stroke-accent-4 font-zenMaru text-[32px] font-black mx-[24px] my-[56px] leading-[48px]">
-        フェイクニュースに<br />騙されていませんか？</p>
+        フェイクニュースに<br>騙されていませんか？</p>
       <p class="text-[18px] font-zenMaru font-black text-center leading-[48px] mb-[72px]">
         日本での調査では
-        <span class="bg-accent rounded-[8px] p-[4px] mx-[4px] text-white stroke-black-2">４人中３人</span>は、<br />
-        騙されている可能性があり<br />
-        その中の半分の人は偽の情報を知らぬ間に<br />
+        <span class="bg-accent rounded-[8px] p-[4px] mx-[4px] text-white stroke-black-2">４人中３人</span>は、<br>
+        騙されている可能性があり<br>
+        その中の半分の人は偽の情報を知らぬ間に<br>
         拡散してしまっています。
       </p>
 
@@ -50,10 +51,10 @@
       </p>
       <div class="flex transition duration-150 ease-in-out">
         <img :src="cats[previousCat(index)].img" :alt="cats[previousCat(index)].name"
-          class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = previousCat(index)" />
-        <img :src="cats[index].img" :alt="cats[index].img" class="w-[120px] h-[136px] mx-auto" />
+          class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = previousCat(index)">
+        <img :src="cats[index].img" :alt="cats[index].img" class="w-[120px] h-[136px] mx-auto">
         <img :src="cats[nextCat(index)].img" :alt="cats[nextCat(index)].name"
-          class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = nextCat(index)" />
+          class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = nextCat(index)">
       </div>
       <p class="font-zenMaru text-[14px] font-bold text-center m-[24px] leading-[32px]">
         {{ cats[index].description }}
@@ -76,7 +77,7 @@ const auth = getAuth()
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // router.push({ name: "mainPage" });
+    router.push({ name: "mainPage" });
   }
 })
 
