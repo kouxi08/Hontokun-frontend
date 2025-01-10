@@ -26,6 +26,9 @@ module.exports = {
       animation: {
         circle: 'circle 4s linear infinite',
       },
+      boxShadow: {
+        'card': '0px 0px 16px 0px rgba(171, 171, 171, 0.25)'
+      }
     },
   },
   variants: {

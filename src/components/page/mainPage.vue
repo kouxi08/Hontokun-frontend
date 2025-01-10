@@ -6,7 +6,9 @@
           <Level />
           <XP value="4" class="bg-white border-2 border-primary rounded-[4px]" />
         </div>
-        <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)]">
+        <div
+          class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
+          @click="router.push({ name: 'profilePage' })">
           <Icon name="user" />
         </div>
       </div>
@@ -35,9 +37,11 @@ import XP from '../XpComponent.vue'
 import Icon from '../IconComponent.vue'
 import Message from '../MessageComponent.vue'
 import modePage from '../page/modePage.vue'
+import { useRouter } from 'vue-router'
 import { useStore } from '../../stores/Page.js';
 import { ref } from 'vue'
 const page = useStore();
+const router = useRouter()
 </script>
 
 <style>
