@@ -50,12 +50,10 @@
         {{ cats[index].name }}
       </p>
       <div class="flex transition duration-150 ease-in-out">
-        <img
-          :src="cats[previousCat(index)].img" :alt="cats[previousCat(index)].name"
+        <img :src="cats[previousCat(index)].img" :alt="cats[previousCat(index)].name"
           class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = previousCat(index)">
-        <img :src="cats[index].img" :alt="cats[index].img" class="mx-auto">
-        <img
-          :src="cats[nextCat(index)].img" :alt="cats[nextCat(index)].name"
+        <img :src="cats[index].img" :alt="cats[index].img" class="w-[120px] h-[136px] mx-auto">
+        <img :src="cats[nextCat(index)].img" :alt="cats[nextCat(index)].name"
           class="w-[64px] object-contain animate-pulse cursor-pointer" @click="index = nextCat(index)">
       </div>
       <p class="font-zenMaru text-[14px] font-bold text-center m-[24px] leading-[32px]">
