@@ -20,7 +20,7 @@
         @click="page.setPage(mode.pageName, mode.page)"
       >
         <p
-          class="px-[8px] py-[2px] rounded-[6px] font-bold font-zenMaru text-white bg-gradient-to-r from-[#FF1A1A] to-[#F19E29] text-[24px] text-center"
+          class="px-[8px] py-[2px] rounded-[6px] font-bold font-zenMaru text-white bg-gradient-to-r text-[24px] text-center"
           :class="mode.gradient"
         >
           {{ mode.name }}
