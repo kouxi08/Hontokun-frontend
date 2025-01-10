@@ -63,11 +63,11 @@ resources:
 
 livenessProbe:
   httpGet:
-    path: /health-check
+    path: /
     port: 80
 readinessProbe:
   httpGet:
-    path: /health-check
+    path: /
     port: 80
 
 autoscaling:
