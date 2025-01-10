@@ -79,7 +79,7 @@ const auth = getAuth()
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // router.push({ name: "mainPage" });
+    router.push({ name: "mainPage" });
   }
 })
 
