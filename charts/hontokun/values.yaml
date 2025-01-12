@@ -39,7 +39,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: hontokun-frontend.kouxi.jp
+    - host: hontokun.kouxi.jp
       paths:
         - path: /
           pathType: ImplementationSpecific
