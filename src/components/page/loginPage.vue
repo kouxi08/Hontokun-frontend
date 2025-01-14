@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <Header />
-    <Icon name="arrow-left-line" class="cursor-pointer w-6 h-6 absolute top-32 left-8" @click="toTopPage" />
+    <Icon name="arrow-left-line" class="cursor-pointer w-6 h-6 absolute top-32 left-8" @click="router.push({ name: 'topPage' })" />
     <p class="pt-[136px] pb-[24px] text-center font-zenMaru text-[16px]">ログイン</p>
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">
       {{ errorMessage }}
