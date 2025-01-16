@@ -6,13 +6,27 @@
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">
       {{ errorMessage }}
     </p>
-    <div class="flex flex-col items-center gap-[40px]">
-      <Input v-model="email" type="email" />
-      <Input v-model="password" type="password" />
-      <router-link to="/signup" class="text-[#4F61EC]">新規登録はこちら</router-link>
-      <Button color="primary" @click="toLogin">ログイン</Button>
-      <p class="font-zenMaru text-[16px]">または</p>
-      <img src="/signin-with-google.svg" alt="" class="cursor-pointer" @click="toGoogleWithSignin">
+    <div class="flex flex-col items-center">
+      <div class="flex flex-col items-start justify-center px-[72px] pt-[40px]">
+        <label for="email" class="text-[16px] pb-[8px] font-zenMaru">メールアドレス</label>
+        <Input v-model="email" name="email" type="email" />
+      </div>
+      <div class="flex flex-col items-start justify-center px-[72px] pt-[40px]">
+        <label for="password" class="text-[16px] pb-[8px] font-zenMaru">パスワード</label>
+        <Input v-model="password" name="password" type="password" />
+      </div>
+      <div class="flex flex-col items-start justify-center px-[72px] pt-[24px]">
+        <router-link to="/signup" class="text-[#4F61EC]">新規登録はこちら</router-link>
+      </div>
+      <div class="flex flex-col items-start justify-center px-[72px] pt-[24px]">
+        <Button color="primary" @click="toLogin">ログイン</Button>
+      </div>
+      <div class="flex flex-col items-start justify-center px-[72px] pt-[32px]">
+        <p class="font-zenMaru text-[16px]">または</p>
+      </div>
+      <div class="flex flex-col items-start justify-center px-[72px] pt-[104px]">
+        <img src="/signin-with-google.svg" alt="" class="cursor-pointer" @click="toGoogleWithSignin">
+      </div>
     </div>
   </div>
 </template>
