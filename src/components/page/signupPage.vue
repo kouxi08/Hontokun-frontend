@@ -23,12 +23,12 @@
 </template>
 
 <script setup>
-import Header from '../HeaderComponent.vue'
-import Input from '../InputComponent.vue'
-import Button from '../ButtonComponent.vue'
-import Icon from '../IconComponent.vue'
+import Header from '@/components/modules/HeaderComponent.vue'
+import Input from '@/components/modules/InputComponent.vue'
+import Button from '@/components/modules/ButtonComponent.vue'
+import Icon from '@/components/modules/IconComponent.vue'
 import { ref } from 'vue'
-import { RouterView, RouterLink, useRouter } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 
 const email = ref('')

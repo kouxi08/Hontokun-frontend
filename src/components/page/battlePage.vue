@@ -28,8 +28,8 @@
 
 <script setup>
   // todo: 難易度によって背景画像を変更
-  import quizPage from "./quizPage.vue";
-  import { useStore } from "../../stores/Quiz.js";
+  import quizPage from "@/components/page/quizPage.vue";
+  import { useStore } from "@/stores/Quiz.js";
   import { ref } from "vue";
 
   const props = defineProps({

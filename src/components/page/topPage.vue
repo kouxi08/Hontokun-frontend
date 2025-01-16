@@ -65,9 +65,9 @@
 </template>
 
 <script setup>
-import Header from '../HeaderComponent.vue'
-import Footer from '../FooterComponent.vue'
-import Button from '../ButtonComponent.vue'
+import Header from '@/components/modules/HeaderComponent.vue'
+import Footer from '@/components/modules/FooterComponent.vue'
+import Button from '@/components/modules/ButtonComponent.vue'
 import { ref } from 'vue'
 import { useRouter } from "vue-router";
 import { getAuth, onAuthStateChanged, signInAnonymously } from 'firebase/auth'

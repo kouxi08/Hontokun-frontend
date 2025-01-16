@@ -15,15 +15,13 @@
 </template>
 
 <script setup>
-  import News from "../NewsComponent.vue";
-  import NewsTile from "../NewsTitleComponent.vue";
-  import Icon from "../IconComponent.vue";
-  import resultPage from "./resultPage.vue";
-  import { useStore } from "../../stores/Quiz.js";
-  import { useRouter } from "vue-router";
+  import News from "@/components/modules/NewsComponent.vue";
+  import NewsTile from "@/components/modules/NewsTitleComponent.vue";
+  import Icon from "@/components/modules/IconComponent.vue";
+  import resultPage from "@/components/page/resultPage.vue";
+  import { useStore } from "@/stores/Quiz.js";
   import { ref } from "vue";
 
-  const router = useRouter();
   const page = useStore();
   const current = ref(0);
   const quizSet = [

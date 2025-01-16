@@ -25,9 +25,9 @@
 </template>
 
 <script setup>
-  import Icon from "../IconComponent.vue";
-  import modePage from "./modePage.vue";
-  import { useStore } from "../../stores/Page.js";
+  import Icon from "@/components/modules/IconComponent.vue";
+  import modePage from "@/components/page/modePage.vue";
+  import { useStore } from "@/stores/Quiz.js";
   const page = useStore();
   const difficulties = ["1.png", "2.png", "3.png", "4.png", "5.png"];
 </script>
