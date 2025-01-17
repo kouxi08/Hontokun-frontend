@@ -34,9 +34,9 @@
 </template>
 
 <script setup>
-  import Icon from "../IconComponent.vue";
-  import difficultyPage from "../page/difficultyPage.vue";
-  import { useStore } from "../../stores/Page.js";
+  import Icon from "@/components/modules/IconComponent.vue";
+  import difficultyPage from "@/components/page/difficultyPage.vue";
+  import { useStore } from "@/stores/Quiz.js";
   const page = useStore();
   const modes = [
     {

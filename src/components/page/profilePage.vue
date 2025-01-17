@@ -39,10 +39,10 @@
 </template>
 
 <script setup>
-import Icon from '../IconComponent.vue'
-import Rate from '../RateComponent.vue'
-import Card from '../CardComponent.vue'
-import Button from '../ButtonComponent.vue'
+import Icon from '@/components/modules/IconComponent.vue'
+import Rate from '@/components/modules/RateComponent.vue'
+import Card from '@/components/modules/CardComponent.vue'
+import Button from '@/components/modules/ButtonComponent.vue'
 import { useRouter } from 'vue-router'
 import { getAuth, signOut } from "firebase/auth"; // Firebase Authのインポート
 

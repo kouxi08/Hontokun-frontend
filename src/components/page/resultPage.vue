@@ -33,10 +33,10 @@
 </template>
 
 <script setup>
-  import Table from "../TableComponent.vue";
-  import News from "../NewsComponent.vue";
-  import Button from "../ButtonComponent.vue";
-  import { useStore } from "../../stores/Quiz.js";
+  import Table from "@/components/modules/TableComponent.vue";
+  import News from "@/components/modules/NewsComponent.vue";
+  import Button from "@/components/modules/ButtonComponent.vue";
+  import { useStore } from "@/stores/Quiz.js";
   import { ref } from "vue";
 
   const emit = defineEmits(["battleEvent"]);

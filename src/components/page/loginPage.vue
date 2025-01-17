@@ -32,11 +32,11 @@
 </template>
 
 <script setup>
-import Header from '../HeaderComponent.vue'
-import Input from '../InputComponent.vue'
-import Button from '../ButtonComponent.vue'
-import Icon from '../IconComponent.vue'
-import { RouterView, RouterLink, useRouter } from "vue-router";
+import Header from '@/components/modules/HeaderComponent.vue'
+import Input from '@/components/modules/InputComponent.vue'
+import Button from '@/components/modules/ButtonComponent.vue'
+import Icon from '@/components/modules/IconComponent.vue'
+import { RouterLink, useRouter } from "vue-router";
 import { ref } from 'vue'
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 

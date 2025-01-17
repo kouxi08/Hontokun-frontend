@@ -9,8 +9,7 @@
 </template>
 
 <script setup>
-  import Header from "../HeaderComponent.vue";
-  import Footer from "../FooterComponent.vue";
+  import Header from "@/components/modules/HeaderComponent.vue";
 </script>
 
 <style>
