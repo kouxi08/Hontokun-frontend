@@ -49,7 +49,7 @@
         v-model="inputValue"
         type="password"
         class="w-[240px] h-[40px] border rounded-[6px] focus:outline-none focus:border-black px-2"
-        :placeholder="placeholder || 'パスワード'"
+        :placeholder="placeholder || '6文字以上のパスワード'"
       >
     </div>
 
@@ -116,7 +116,7 @@
   // テキストタイプごとのデフォルトプレースホルダー
   const placeholderMap = {
     name: "なまえ",
-    email: "メールアドレス",
+    email: "exmple@gmail.com",
     report: "不適切な部分について",
   };
 
