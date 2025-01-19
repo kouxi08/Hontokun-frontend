@@ -32,14 +32,13 @@
 </template>
 
 <script setup>
-import Level from '../LevelComponent.vue'
-import XP from '../XpComponent.vue'
-import Icon from '../IconComponent.vue'
-import Message from '../MessageComponent.vue'
-import modePage from '../page/modePage.vue'
+import Level from '@/components/modules/LevelComponent.vue'
+import XP from '@/components/modules/XpComponent.vue'
+import Icon from '@/components/modules/IconComponent.vue'
+import Message from '@/components/modules/MessageComponent.vue'
+import modePage from '@/components/page/modePage.vue'
 import { useRouter } from 'vue-router'
-import { useStore } from '../../stores/Page.js';
-import { ref } from 'vue'
+import { useStore } from '@/stores/Quiz.js';
 const page = useStore();
 const router = useRouter()
 </script>

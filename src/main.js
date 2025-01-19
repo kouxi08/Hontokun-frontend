@@ -11,7 +11,7 @@ import profilePage from './components/page/profilePage.vue';
 import profileDetailPage from './components/page/profileDetailPage.vue';
 import profileEditPage from './components/page/profileEditPage.vue';
 
-import { createWebHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter, START_LOCATION } from 'vue-router'
 
 const pinia = createPinia()
 const app = createApp(App)
@@ -30,6 +30,21 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+})
+
+const allowedDirectAccess = ['/', '/login', '/signup', '/main']
+
+router.beforeEach((to, from, next) => {
+  if (allowedDirectAccess.includes(to.path)) {
+    // 許可されたパスへの直接アクセスは許可
+    next()
+  } else if (from === START_LOCATION) {
+    // 直接URLアクセスで、許可されていないパスの場合
+    next('/') // または適切なリダイレクト先
+  } else {
+    // アプリケーション内での遷移の場合は許可
+    next()
+  }
 })
 
 app.use(pinia)

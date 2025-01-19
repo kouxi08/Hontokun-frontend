@@ -39,14 +39,13 @@
 </template>
 
 <script setup>
-import Icon from '../IconComponent.vue'
-import Rate from '../RateComponent.vue'
-import Button from '../ButtonComponent.vue'
-import Input from '../InputComponent.vue'
-import Table from '../TableComponent.vue'
-import NewsTitle from '../NewsTitleComponent.vue'
-import News from '../NewsComponent.vue'
-import Explain from '../ExplainComponent.vue'
+import Icon from '@/components/modules/IconComponent.vue'
+import Rate from '@/components/modules/RateComponent.vue'
+import Button from '@/components/modules/ButtonComponent.vue'
+import Table from '@/components/modules/TableComponent.vue'
+import NewsTitle from '@/components/modules/NewsTitleComponent.vue'
+import News from '@/components/modules/NewsComponent.vue'
+import Explain from '@/components/modules/ExplainComponent.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
