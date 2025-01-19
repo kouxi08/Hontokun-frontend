@@ -38,7 +38,7 @@ const router = createRouter({
   routes,
 })
 
-const allowedDirectAccess = ['/', '/login', '/signup', '/main', '/result/1']
+const allowedDirectAccess = ['/', '/login', '/signup', '/main']
 
 router.beforeEach((to, from, next) => {
   if (allowedDirectAccess.includes(to.path)) {
