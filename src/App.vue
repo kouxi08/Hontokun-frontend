@@ -1,7 +1,7 @@
 <template>
-  <XP value=1 />
+  <router-view />
 </template>
 
 <script setup>
-import XP from './components/XpComponent.vue'
+import { firebase } from "./firebase.js"
 </script>

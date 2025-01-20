@@ -14,6 +14,21 @@ module.exports = {
         zenMaru: ["Zen Maru Gothic"],
         notoSans: ["Noto Sans JP"]
       },
+      keyframes: {
+        circle: {
+          '0%': { transform: 'translate(50px, 0)' },
+          '25%': { transform: 'translate(0, 50px)' },
+          '50%': { transform: 'translate(-50px, 0)' },
+          '75%': { transform: 'translate(0, -50px)' },
+          '100%': { transform: 'translate(50px, 0)' },
+        },
+      },
+      animation: {
+        circle: 'circle 4s linear infinite',
+      },
+      boxShadow: {
+        'card': '0px 0px 16px 0px rgba(171, 171, 171, 0.25)'
+      }
     },
   },
   variants: {
