@@ -8,8 +8,8 @@
           {{ props.title }}
         </p>
         <div v-if="props.showResult">
-          <Button size="sm" color="accent" class="absolute top-0 left-0 m-[8px]" @click="showExplain">解説</Button>
-          <Button size="sm" color="danger" class="absolute top-0 right-0 m-[8px]">報告</Button>
+          <Button size="xs" color="accent" class="absolute top-0 left-0 m-[8px]" @click="showExplain">解説</Button>
+          <Button size="xs" color="danger" class="absolute top-0 right-0 m-[8px]">報告</Button>
         </div>
       </div>
       <p class="font-notoSans font-bold text-[12px] tracking-wider leading-[32px]">

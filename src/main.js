@@ -4,7 +4,10 @@ import App from './App.vue'
 import './index.css'
 import topPage from './components/page/topPage.vue';
 import mainPage from './components/page/mainPage.vue'
+import modePage from './components/page/modePage.vue'
+import difficultyPage from './components/page/difficultyPage.vue'
 import battlePage from './components/page/battlePage.vue';
+import resultPage from './components/page/resultPage.vue';
 import signupPage from './components/page/signupPage.vue';
 import loginPage from './components/page/loginPage.vue';
 import profilePage from './components/page/profilePage.vue';
@@ -19,7 +22,10 @@ const app = createApp(App)
 const routes = [
   { path: '/', name: "topPage", component: topPage },
   { path: '/main', name: "mainPage", component: mainPage },
+  { path: '/main/mode', name: "modePage", component: modePage },
+  { path: '/main/difficulty', name: "difficultyPage", component: difficultyPage },
   { path: '/battle/:difficulty', name: "battlePage", props: true, component: battlePage },
+  { path: '/result/:difficulty', name: "resultPage", props: true, component: resultPage },
   { path: '/signup', name: "signupPage", component: signupPage },
   { path: '/login', name: "loginPage", component: loginPage },
   { path: '/profile', name: "profilePage", component: profilePage },
