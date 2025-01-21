@@ -3,9 +3,9 @@
     <div class="bg-quiz">
       <img v-show="visibleCats" :src="catSettings.image" alt="" width="208"
         class="absolute top-[88px] left-1/2 -translate-x-1/2 z-0">
-      <div class="w-full h-full whitespace-nowrap overflow-hidden">
+      <div v-show="!visibleQuiz" class="w-full h-full flex items-center whitespace-nowrap overflow-hidden">
         <p
-          class="absolute top-1/2 -translate-y-1/2 font-zenMaru text-[128px] inline-block pl-[100%] animate-scroll text-white stroke-primary-4">
+          class="font-zenMaru text-[128px] lg:text-[256px] inline-block pl-[100%] animate-scroll text-white stroke-primary-4">
           {{ catSettings.name }}
         </p>
       </div>
@@ -126,7 +126,7 @@ const battleEvent = () => {
 
 setTimeout(() => {
   visibleQuiz.value = true;
-}, 4000);
+}, 3000);
 </script>
 
 <style scoped>
@@ -135,6 +135,8 @@ setTimeout(() => {
   height: 100%;
   background-image: v-bind("catSettings.background");
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .animate-scroll {
