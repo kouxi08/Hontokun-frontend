@@ -9,7 +9,7 @@
           {{ catSettings.name }}
         </p>
       </div>
-      <div v-show="visibleQuiz" class="absolute top-[88px]">
+      <div v-show="visibleQuiz" class="w-full absolute top-[88px]">
         <NewsTitle :id="currentQuiz.id" :title="currentQuiz.newsTitle" />
         <News :title="currentQuiz.questionTitle" :img="currentQuiz.img" :content="currentQuiz.content"
           class="pt-[32px]" />

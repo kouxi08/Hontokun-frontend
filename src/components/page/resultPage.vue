@@ -1,7 +1,9 @@
 <template>
   <div class="w-screen h-screen fixed">
     <div class="bg-quiz">
-      <img v-show="isBattle" src="/smoke.png" alt="" class="animate-tilt absolute mx-auto top-1/3">
+      <div v-show="isBattle" class="flex items-center justify-center w-screen h-screen">
+        <img src="/smoke.png" alt="" class="animate-tilt">
+      </div>
       <div v-show="isResultMessage" class="h-full flex flex-col gap-[40px] items-center justify-center"
         @click="showResultPage">
         <p class="text-[64px] font-zenMaru text-white font-bold" :class="gotMessage.titleStroke">
@@ -11,7 +13,7 @@
           {{ gotMessage.subTitle }}
         </p>
       </div>
-      <div v-show="resultPage" class="h-full pt-[15%]">
+      <div v-show="resultPage" class="h-full xs:pt-[56px] sm:pt-[64px]">
         <Table :header="tableHeader" :content="tableContent" />
         <div class="h-[42%] flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
           <News v-for="quiz in quizSet" :key="quiz" :title="quiz.questionTitle" :content="quiz.content" :img="quiz.img"
@@ -79,7 +81,7 @@ const quizSet = [
   {
     id: 2,
     newsTitle: "これはフェイクニュース？",
-    questionTitle: "月面に巨大UFO出現？地球外生命体か",
+    questionTitle: "月面に巨大UFO出現？\n地球外生命体か",
     img: "/sample.jpg",
     content:
       "NASA発表によると、月面に直径1kmの巨大UFOが出現したとのこと。宇宙ステーションの観測カメラが捉えた映像には、円盤状の物体が月面に着陸する様子が映っていた。専門家は「地球外知的生命体の可能性が高い」と指摘。各国首脳が緊急会議を開き、対応を協議している。",
@@ -126,6 +128,8 @@ setTimeout(() => {
   height: 100%;
   background-image: v-bind(background);
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @keyframes tilt {

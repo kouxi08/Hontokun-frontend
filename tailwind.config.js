@@ -34,6 +34,9 @@ module.exports = {
       boxShadow: {
         'card': '0px 0px 16px 0px rgba(171, 171, 171, 0.25)',
         'button': '0 0 4px 2px rgba(171, 171, 171, 0.25)'
+      },
+      screens: {
+        'xs': '320px'
       }
     },
   },

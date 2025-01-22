@@ -2,7 +2,7 @@
   <div class="w-screen h-screen bg-[#FFFCF8] fixed">
     <div class="w-full grid grid-cols-3 justify-between items-center pt-[64px] px-[48px]">
       <Icon name="close-circle" width="24" height="24" class="justify-self-start cursor-pointer"
-        @click="router.back()" />
+        @click="router.push({ name: 'mainPage' })" />
       <p class="font-zenMaru text-[16px] text-center">{{ userName }}</p>
       <!-- ログアウトボタンにクリックイベントを追加 -->
     </div>
