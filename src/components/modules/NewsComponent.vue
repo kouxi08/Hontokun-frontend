@@ -4,7 +4,7 @@
       <div class="relative">
         <img :src="props.img" alt="" class="w-full h-[104px] rounded-[6px] object-cover">
         <p
-          class="absolute w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-white pt-[24px] text-[14px] text-center font-notoSans tracking-widest font-bold stroke-black-4">
+          class="absolute w-full top-1/2 left-1/2 -translate-x-2/4 -translate-y-2/4 text-white xs:text-[14px] md:text-[20px] pt-[16px] text-center font-notoSans whitespace-pre-wrap break-words tracking-widest font-bold stroke-black-4">
           {{ props.title }}
         </p>
         <div v-if="props.showResult">
@@ -12,7 +12,7 @@
           <Button size="xs" color="danger" class="absolute top-0 right-0 m-[8px]">報告</Button>
         </div>
       </div>
-      <p class="font-notoSans font-bold text-[12px] tracking-wider leading-[32px]">
+      <p class="font-notoSans font-bold xs:text-[12px] md:text-[16px] tracking-wider leading-[32px]">
         {{ props.content }}
       </p>
     </div>

@@ -1,36 +1,28 @@
 <template>
   <div class="w-screen h-screen bg-[#FFFCF8] flex flex-col overflow-hidden">
     <!-- 固定部分 -->
-    <div class="flex-shrink-0">
-      <!-- ヘッダー -->
-      <div class="w-full grid grid-cols-3 justify-between items-center pt-[64px] px-[48px]">
-        <Icon
-          name="arrow-left-line" width="24" height="24" class="justify-self-start cursor-pointer"
-          @click="router.push({ name: 'profilePage' })" />
-        <p class="font-zenMaru text-[16px] text-center">{{ catName }}</p>
-        <Rate value="32" size="sm" class="justify-self-end" />
-      </div>
-      <!-- ネコとボタン -->
-      <div class="relative h-44 mx-[48px] my-[24px]">
-        <img :src="catImage" alt="" height="120" class="absolute left-1/2 -translate-x-1/2">
-        <Button color="primary" size="xs" class="absolute left-1/2 bottom-0 -translate-x-1/2" @click="arrestCat">つかまえる</Button>
-      </div>
+    <!-- ヘッダー -->
+    <div class="w-full grid grid-cols-3 justify-between items-center pt-[64px] px-[48px]">
+      <Icon name="arrow-left-line" width="24" height="24" class="justify-self-start cursor-pointer"
+        @click="router.push({ name: 'profilePage' })" />
+      <p class="font-zenMaru text-[16px] text-center">{{ catName }}</p>
     </div>
-
+    <Rate value="32" size="sm" class="absolute top-[40px] right-[48px]" />
+    <!-- ネコとボタン -->
+    <div class="relative h-44 mx-[48px] my-[24px]">
+      <img :src="catImage" alt="" height="120" class="absolute left-1/2 -translate-x-1/2">
+      <Button color="primary" size="xs" class="absolute left-1/2 bottom-0 -translate-x-1/2">つかまえる</Button>
+    </div>
     <!-- スクロール可能な部分 -->
     <div class="flex-1 overflow-y-auto">
       <!-- テーブル -->
-      <div class="flex items-center justify-center">
-        <Table :header="tableHeader" :content="tableContent" />
-      </div>
+      <Table :header="tableHeader" :content="tableContent" />
       <!-- ニュース -->
       <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
         <NewsTitle :id="quiz.id" :title="quiz.newsTitle" />
-        <News
-          v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
+        <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
           :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
-        <Explain
-          v-else :type="explainData[index].type" :explanation="explainData[index].explanation"
+        <Explain v-else :type="explainData[index].type" :explanation="explainData[index].explanation"
           :answer="explainData[index].answer" :keyword="explainData[index].keyword"
           @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
       </div>
