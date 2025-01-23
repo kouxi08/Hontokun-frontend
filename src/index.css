@@ -7,110 +7,91 @@
 
 .stroke-black-1 {
   -webkit-text-stroke: 1px #000;
-  text-stroke: 1px #000;
   paint-order: stroke;
 }
 
 .stroke-black-2 {
   -webkit-text-stroke: 2px #000;
-  text-stroke: 2px #000;
   paint-order: stroke;
 }
 
 .stroke-black-4 {
   -webkit-text-stroke: 4px #000;
-  text-stroke: 4px #000;
   paint-order: stroke;
 }
 
 .stroke-white-1 {
   -webkit-text-stroke: 1px #FFF;
-  text-stroke: 1px #FFF;
   paint-order: stroke;
 }
 
 .stroke-white-2 {
   -webkit-text-stroke: 2px #FFF;
-  text-stroke: 2px #FFF;
   paint-order: stroke;
 }
 
 .stroke-white-4 {
   -webkit-text-stroke: 4px #FFF;
-  text-stroke: 4px #FFF;
   paint-order: stroke;
 }
 
 .stroke-primary-1 {
   -webkit-text-stroke: 1px #FFDA29;
-  text-stroke: 1px #FFDA29;
   paint-order: stroke;
 }
 
 .stroke-primary-2 {
   -webkit-text-stroke: 2px #FFDA29;
-  text-stroke: 2px #FFDA29;
   paint-order: stroke;
 }
 
 .stroke-primary-4 {
   -webkit-text-stroke: 4px #FFDA29;
-  text-stroke: 4px #FFDA29;
   paint-order: stroke;
 }
 
 .stroke-secondary-1 {
   -webkit-text-stroke: 1px #33B1C2;
-  text-stroke: 1px #33B1C2;
   paint-order: stroke;
 }
 
 .stroke-secondary-2 {
   -webkit-text-stroke: 2px #33B1C2;
-  text-stroke: 2px #33B1C2;
   paint-order: stroke;
 }
 
 .stroke-secondary-4 {
   -webkit-text-stroke: 4px #33B1C2;
-  text-stroke: 4px #33B1C2;
   paint-order: stroke;
 }
 
 .stroke-accent-1 {
   -webkit-text-stroke: 1px #FF6633;
-  text-stroke: 1px #FF6633;
   paint-order: stroke;
 }
 
 .stroke-accent-2 {
   -webkit-text-stroke: 2px #FF6633;
-  text-stroke: 2px #FF6633;
   paint-order: stroke;
 }
 
 .stroke-accent-4 {
   -webkit-text-stroke: 4px #FF6633;
-  text-stroke: 4px #FF6633;
   paint-order: stroke;
 }
 
 .stroke-braun-1 {
   -webkit-text-stroke: 1px #7B4300;
-  text-stroke: 1px #7B4300;
   paint-order: stroke;
 }
 
 .stroke-braun-2 {
   -webkit-text-stroke: 2px #7B4300;
-  text-stroke: 2px #7B4300;
   paint-order: stroke;
 }
 
 .stroke-braun-4 {
   -webkit-text-stroke: 4px #7B4300;
-  text-stroke: 4px #7B4300;
   paint-order: stroke;
 }
-
 
