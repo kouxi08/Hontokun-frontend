@@ -1,5 +1,5 @@
 <template>
-  <div class="font-zenMaru mx-[48px] p-[16px] shadow-lg rounded-[8px] flex flex-col">
+  <div class="font-zenMaru bg-white mx-[48px] p-[16px] shadow-lg rounded-[8px] flex flex-col">
     <!-- Header Section -->
     <div class="w-full h-[40px] grid grid-cols-3 justify-between items-center top-4">
       <Icon name="card-left" width="24" height="24" class="cursor-pointer" @click="showNews" />
