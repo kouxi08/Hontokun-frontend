@@ -20,7 +20,6 @@
       </a>
     </div>
 
-    <!-- Multiple Choice Section -->
     <div v-if="type === 'multiple_choice'" class="mt-[16px]">
       <!-- 正解表示 -->
       <div v-if="answer === 'true'" class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
@@ -42,7 +41,6 @@
       </div>
     </div>
 
-    <!-- Keyword Section -->
     <div class="mt-[32px] flex items-center justify-between border rounded-full p-[8px] shadow">
       <p class="text-black font-bold text-[12px] px-[8px] flex-1">
         {{ keyword }}
@@ -54,7 +52,6 @@
       </button>
     </div>
 
-    <!-- Explanation Section -->
     <p class="mt-[32px] font-bold text-[12px] tracking-wider leading-[32px]">
       {{ explanation }}
     </p>
@@ -65,15 +62,16 @@
 import Button from "./ButtonComponent.vue";
 import Icon from "./IconComponent.vue";
 
+// Propsを定義
 const props = defineProps({
   type: {
     type: String,
     required: true,
-    validator: (value) => ["true_or_false", "multiple_choice"].includes(value), // Validate quiz type
+    validator: (value) => ["true_or_false", "multiple_choice"].includes(value),
   },
   answer: {
     type: Boolean,
-    required: true
+    required: true,
   },
   explanation: {
     type: String,
@@ -85,34 +83,32 @@ const props = defineProps({
   },
   options: {
     type: Array,
-    default: () => [], // Options for multiple_choice type
+    default: () => [],
   },
   correctIndex: {
     type: Number,
-    default: -1, // Correct index for multiple_choice type
+    default: -1,
   },
 });
 
-// State management
+// State管理
 import { ref } from "vue";
 
-const isAnswered = ref(false); // Track if the question has been answered
-const selectedOption = ref(null); // Track the selected option index
+const isAnswered = ref(false);
+const selectedOption = ref(null); 
 
-const emit = defineEmits(['showNewsEvent']);
+// Emitsの定義
+const emit = defineEmits(["showNewsEvent"]);
 
+// ニュースを表示する関数
 const showNews = () => {
-  emit('showNewsEvent')
-}
+  emit("showNewsEvent");
+};
 
-function handleAnswer(index) {
-  selectedOption.value = index; // Store the selected option index
-  isAnswered.value = true; // Mark as answered
-}
-
+// Google検索用関数
 function searchGoogle() {
-  const query = encodeURIComponent(keyword); // URL encode the keyword
+  const query = encodeURIComponent(props.keyword); // propsからkeywordを取得
   const googleSearchUrl = `https://www.google.com/search?q=${query}`;
-  window.open(googleSearchUrl, "_blank"); // Open search in a new tab
+  window.open(googleSearchUrl, "_blank"); // 新しいタブで検索を開く
 }
 </script>
