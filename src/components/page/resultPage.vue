@@ -2,7 +2,8 @@
   <div class="w-screen h-screen fixed">
     <div class="bg-quiz">
       <img v-show="isBattle" src="/smoke.png" alt="" class="animate-tilt absolute mx-auto top-1/3">
-      <div v-show="isResultMessage" class="h-full flex flex-col gap-[40px] items-center justify-center"
+      <div
+        v-show="isResultMessage" class="h-full flex flex-col gap-[40px] items-center justify-center"
         @click="showResultPage">
         <p class="text-[64px] font-zenMaru text-white font-bold" :class="gotMessage.titleStroke">
           {{ gotMessage.title }}
@@ -14,8 +15,15 @@
       <div v-show="resultPage" class="h-full pt-[15%]">
         <Table :header="tableHeader" :content="tableContent" />
         <div class="h-[42%] flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
-          <News v-for="quiz in quizSet" :key="quiz" :title="quiz.questionTitle" :content="quiz.content" :img="quiz.img"
-            show-result="true" />
+          <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
+            <News
+              v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
+              :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
+            <Explain
+              v-else :type="explainData[index].type" :explanation="explainData[index].explanation"
+              :answer="explainData[index].answer" :keyword="explainData[index].keyword"
+              @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
+          </div>
         </div>
         <div class="flex flex-col justify-center items-center gap-[24px] mx-[48px] pt-[5%]">
           <Button color="accent" class="w-full" @click="router.push({ name: 'difficultyPage' })">難易度へ戻る</Button>
@@ -31,6 +39,7 @@
 import Table from "@/components/modules/TableComponent.vue";
 import News from "@/components/modules/NewsComponent.vue";
 import Button from "@/components/modules/ButtonComponent.vue";
+import Explain from '@/components/modules/ExplainComponent.vue'
 import { ref } from "vue";
 import { useRouter } from "vue-router"
 
@@ -93,6 +102,26 @@ const quizSet = [
       "最新の研究によると、寝ることは実は時間の無駄だと判明。科学者たちは、睡眠時間を削減することで生産性が飛躍的に向上すると主張しています。この革新的な発見により、人々の生活様式が大きく変わる可能性があります。",
   },
 ];
+const explainData = [
+  {
+    type: "true_or_false",
+    answer: true,
+    explanation: "「台風15号」など台風番号で調べることでより検索しやすくなります。「関東」「接近」で関東に接近した台風の情報が検索で出てきやすくなります。",
+    keyword: "台風15号　関東　接近",
+  },
+  {
+    type: "true_or_false",
+    answer: false,
+    explanation: "「NASA」が公式発表されている記事を検索して、フェイクニュースか判断することができます。",
+    keyword: "NASA　宇宙ステーション　巨大UFO",
+  },
+  {
+    type: "true_or_false",
+    answer: false,
+    explanation: "「睡眠時間」が生産性に関係している記事を検索して、フェイクニュースか判断することができます。",
+    keyword: "睡眠時間　生産　無駄",
+  },
+]
 
 const showResultPage = () => {
   isResultMessage.value = false;
@@ -118,6 +147,8 @@ setTimeout(() => {
     showResultPage();
   }, 3000);
 }, 3000);
+
+const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => true))
 </script>
 
 <style>
