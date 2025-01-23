@@ -12,15 +12,15 @@
         </div>
       </div>
       <div>
-        <Message class="mt-[10%]">
+        <Message class="mt-[5%]">
           ようこそ！<br>
           {{ userName }}探偵事務所へ<br>
           僕は助手のホントくん<br>
           よろしくね！
         </Message>
-        <img src="/hontokun.png" alt="" class="mx-auto my-[16px] md:w-[128px] lg:w-[208px]">
+        <img src="/hontokun.png" alt="" class="mx-auto my-[16px] xs:w-[128px] md:w-[192px]">
         <button
-          class="w-[136px] h-[136px] bg-[#FF6633] rounded-full text-white text-[32px] border-4 border-white flex items-center justify-center font-black font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] mx-auto mt-[120px] hover:translate-y-[2px] lg:mt-[40px]"
+          class="w-[136px] h-[136px] bg-[#FF6633] rounded-full text-white text-[32px] border-4 border-white flex items-center justify-center font-black font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] mx-auto mt-[120px] hover:translate-y-[2px] md:mt-[32px] lg:mt-[40px]"
           @click="router.push({ name: 'modePage' })">
           クイズ
         </button>
