@@ -6,7 +6,8 @@
           <Level />
           <XP value="4" class="bg-white border-2 border-primary rounded-[4px]" />
         </div>
-        <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
+        <div
+          class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
           @click="router.push({ name: 'profilePage' })">
           <Icon name="user" />
         </div>

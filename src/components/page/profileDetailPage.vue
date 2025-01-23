@@ -101,4 +101,9 @@ const explainData = [
 ]
 
 const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => true))
+
+const arrestCat = () => {
+  // ふろしきネコのページに遷移
+  router.push({  name: 'battlePage', params: { difficulty: 1 } })
+}
 </script>
