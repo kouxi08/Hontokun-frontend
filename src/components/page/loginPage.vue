@@ -1,10 +1,9 @@
 <template>
   <div class="relative">
     <Header />
-    <div class="flex items-center justify-between mt-12">
-      <Icon name="arrow-left-line" class="cursor-pointer ml-9 absolute" width="24" height="24" @click="router.push({ name: 'topPage' })" />
-      <p class="font-zenMaru text-[16px] text-center w-full">ログイン</p>
-    </div>
+    <Icon name="arrow-left-line" class="cursor-pointer w-6 h-6 absolute top-32 left-8"
+      @click="router.push({ name: 'topPage' })" />
+    <p class="pt-[136px] pb-[24px] text-center font-zenMaru text-[16px]">ログイン</p>
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">
       {{ errorMessage }}
     </p>
@@ -21,7 +20,7 @@
         <router-link to="/signup" class="text-[#4F61EC]">新規登録はこちら</router-link>
       </div>
       <div class="flex flex-col items-start justify-center px-[72px] pt-[24px]">
-        <Button color="primary" @click="toLogin">ログイン</Button>
+        <Button color="primary" @click="toAPI">ログイン</Button>
       </div>
       <div class="flex flex-col items-start justify-center px-[72px] pt-[32px]">
         <p class="font-zenMaru text-[16px]">または</p>
@@ -39,6 +38,7 @@ import Input from '@/components/modules/InputComponent.vue'
 import Button from '@/components/modules/ButtonComponent.vue'
 import Icon from '@/components/modules/IconComponent.vue'
 import { RouterLink, useRouter } from "vue-router";
+import axios from "axios"
 import { ref } from 'vue'
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 
@@ -48,6 +48,21 @@ const errorMessage = ref('')
 
 const router = useRouter()
 const auth = getAuth()
+
+const toAPI = () => {
+  // const healthCheck = axios.get(`${process.env.VUE_APP_API_BASE_URL}/health-check`)
+  const idToken = 'BFiEegHdj2a0t8QLn3wn5XYEY652'
+  // サインアップ用のデータ
+  const requestBody = {
+    nickname: "YourNickname",
+    birthday: "1990-01-01",
+  };
+  const signup = axios.post(`${process.env.VUE_APP_API_BASE_URL}/sign-up`, requestBody, {
+    headers: {
+      Authorization: `Bearer ${idToken}`,
+    }
+  })
+}
 
 const toLogin = () => {
   signInWithEmailAndPassword(auth, email.value, password.value)
