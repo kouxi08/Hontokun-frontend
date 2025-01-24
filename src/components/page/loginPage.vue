@@ -2,7 +2,7 @@
   <div class="relative">
     <Header />
     <div class="flex items-center justify-between mt-12">
-      <Icon name="arrow-left-line" class="cursor-pointer w-6 h-6 ml-9 absolute" @click="router.push({ name: 'topPage' })" />
+      <Icon name="arrow-left-line" class="cursor-pointer ml-9 absolute" width="24" height="24" @click="router.push({ name: 'topPage' })" />
       <p class="font-zenMaru text-[16px] text-center w-full">ログイン</p>
     </div>
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">
