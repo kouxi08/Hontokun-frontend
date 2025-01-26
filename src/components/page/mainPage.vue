@@ -6,8 +6,7 @@
           <Level />
           <XP value="4" class="bg-white border-2 border-primary rounded-[4px]" />
         </div>
-        <div
-          class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
+        <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
           @click="router.push({ name: 'profilePage' })">
           <Icon name="user" />
         </div>
@@ -35,10 +34,21 @@ import Level from '@/components/modules/LevelComponent.vue'
 import XP from '@/components/modules/XpComponent.vue'
 import Icon from '@/components/modules/IconComponent.vue'
 import Message from '@/components/modules/MessageComponent.vue'
-import { ref } from 'vue'
+import axios from 'axios'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const userName = ref('山田')
+
+const getMainPage = async () => {
+  const main = axios.get(`${process.env.VUE_APP_API_BASE_URL}/main`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`
+    }
+  })
+  console.log(localStorage.getItem("token"))
+  console.log(main)
+}
 </script>
 
 <style>

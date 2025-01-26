@@ -74,6 +74,7 @@ const auth = getAuth()
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    localStorage.setItem('token', user.getIdToken())
     router.push({ name: "mainPage" });
   }
 })

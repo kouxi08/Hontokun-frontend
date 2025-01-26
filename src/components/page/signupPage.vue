@@ -37,6 +37,7 @@ import Header from '@/components/modules/HeaderComponent.vue'
 import Input from '@/components/modules/InputComponent.vue'
 import Button from '@/components/modules/ButtonComponent.vue'
 import Icon from '@/components/modules/IconComponent.vue'
+import axios from 'axios'
 import { ref } from 'vue'
 import { RouterLink, useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
@@ -51,71 +52,75 @@ const auth = getAuth()
 const toSignup = () => {
   errorMessage.value = ''
   createUserWithEmailAndPassword(auth, email.value, password.value)
-    .then((userCredential) => {
-      createAccount(userCredential.user)
-        .catch((error) => {
-          switch (error.code) {
-            case 'auth/invalid-email':
-              // メールアドレスの形式がおかしい
-              errorMessage.value = "メールアドレスを確認してください"
-              break;
+    .then(async (userCredential) => {
+      const user = await userCredential.user
+      return user.getIdToken()
+    })
+    .then((token) => {
+      createAccount(token)
+      localStorage.setItem('token', token)
+      router.push({ name: 'mainPage' })
+    })
+    .catch((error) => {
+      switch (error.code) {
+        case 'auth/invalid-email':
+          // メールアドレスの形式がおかしい
+          errorMessage.value = "メールアドレスを確認してください"
+          break;
 
-            case 'auth/email-already-in-use':
-              // すでに登録されているメールを使用している
-              errorMessage.value = "このメールアドレスはすでに使用されています"
-              break;
+        case 'auth/email-already-in-use':
+          // すでに登録されているメールを使用している
+          errorMessage.value = "このメールアドレスはすでに使用されています"
+          break;
 
-            case 'auth/missing-password':
-              // パスワードを入力していない
-              errorMessage.value = "パスワードを確認してください"
-              break;
+        case 'auth/missing-password':
+          // パスワードを入力していない
+          errorMessage.value = "パスワードを確認してください"
+          break;
 
-            case 'auth/weak-password':
-              // 弱いパスワード
-              errorMessage.value = "パスワードを6文字以上で設定してください"
-              break;
+        case 'auth/weak-password':
+          // 弱いパスワード
+          errorMessage.value = "パスワードを6文字以上で設定してください"
+          break;
 
-            default:
-              // どれにも当てはまらない
-              errorMessage.value = "システムエラーが発生しました。現在、運営チームが対応中です"
-              break;
-          }
-        })
-    }
+        default:
+          // どれにも当てはまらない
+          errorMessage.value = "システムエラーが発生しました。現在、運営チームが対応中です"
+          break;
+      }
+    })
+}
 
 const toGoogleWithSignin = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((userCredential) => {
-        createAccount(userCredential.user)
-      })
-      .catch((error) => {
-        switch (error.code) {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+    .then((userCredential) => {
+      createAccount(userCredential.user)
+    })
+    .catch((error) => {
+      switch (error.code) {
 
-          case 'auth/email-already-in-use':
-            // すでに登録されているメールを使用している
-            errorMessage.value = "このメールアドレスはすでに使用されています"
-            break;
+        case 'auth/email-already-in-use':
+          // すでに登録されているメールを使用している
+          errorMessage.value = "このメールアドレスはすでに使用されています"
+          break;
 
-          default:
-            // どれにも当てはまらない
-            errorMessage.value = "システムエラーが発生しました。現在、運営チームが対応中です"
-            break;
-        }
-      })
-  }
+        default:
+          // どれにも当てはまらない
+          errorMessage.value = "システムエラーが発生しました。現在、運営チームが対応中です"
+          break;
+      }
+    })
 }
 const createAccount = (user) => {
-  const idToken = user.getIdToken()
   const requestBody = {
     nickname: "ホントくん",
     birthday: "2000-01-01",
   };
   const signup = axios.post(`${process.env.VUE_APP_API_BASE_URL}/sign-up`, requestBody, {
     headers: {
-      Authorization: `Bearer ${idToken}`,
+      Authorization: `Bearer ${user}`,
     }
   })
-})
-
+}
 </script>
