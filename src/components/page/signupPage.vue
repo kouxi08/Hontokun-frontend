@@ -41,6 +41,7 @@ import axios from 'axios'
 import { ref } from 'vue'
 import { RouterLink, useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
+import AxiosInstance from '@/axiosInstance.js'
 
 const email = ref('')
 const password = ref('')
@@ -53,12 +54,7 @@ const toSignup = () => {
   errorMessage.value = ''
   createUserWithEmailAndPassword(auth, email.value, password.value)
     .then(async (userCredential) => {
-      const user = await userCredential.user
-      return user.getIdToken()
-    })
-    .then((token) => {
-      createAccount(token)
-      localStorage.setItem('token', token)
+      createAccount()
       router.push({ name: 'mainPage' })
     })
     .catch((error) => {
@@ -95,7 +91,8 @@ const toGoogleWithSignin = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((userCredential) => {
-      createAccount(userCredential.user)
+      createAccount()
+      router.push({ name: 'mainPage' })
     })
     .catch((error) => {
       switch (error.code) {
@@ -112,15 +109,11 @@ const toGoogleWithSignin = () => {
       }
     })
 }
-const createAccount = (user) => {
+const createAccount = async () => {
   const requestBody = {
     nickname: "ホントくん",
     birthday: "2000-01-01",
   };
-  const signup = axios.post(`${process.env.VUE_APP_API_BASE_URL}/sign-up`, requestBody, {
-    headers: {
-      Authorization: `Bearer ${user}`,
-    }
-  })
+  const signup = await axiosInstance.post("/sign-up", requestBody)
 }
 </script>

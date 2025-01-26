@@ -75,8 +75,6 @@ const auth = getAuth()
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     try {
-      const idToken = await user.getIdToken();
-      localStorage.setItem('token', idToken);
       router.push({ name: "mainPage" });
     } catch (error) {
       console.error("トークン取得エラー:", error);

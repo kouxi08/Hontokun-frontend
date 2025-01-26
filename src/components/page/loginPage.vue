@@ -53,11 +53,6 @@ const toLogin = () => {
   errorMessage.value = ''
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then(async (userCredential) => {
-      const user = await userCredential.user
-      return user.getIdToken()
-    })
-    .then((token) => {
-      localStorage.setItem('token', token)
       router.push({ name: 'mainPage' })
     })
     .catch((error) => {

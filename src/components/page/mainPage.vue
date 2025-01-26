@@ -2,19 +2,14 @@
   <div class="w-screen h-screen">
     <div class="bg-detective-offices">
       <div class="flex justify-between items-center px-[24px] pt-[56px]">
-        <<<<<<< HEAD <div class="flex gap-[16px]">
-          <Level />
-          <XP value="4" class="bg-white border-2 border-primary rounded-[4px]" />
-          =======
-          <div class="flex gap-[8px]">
-            <Level>{{ user.level }}</Level>
-            <XP :value="user.experience" class="bg-white border-2 border-primary rounded-[4px]" />
-            >>>>>>> 5d70512 ([add] refs 100 メイン画面結合)
-          </div>
-          <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
-            @click="router.push({ name: 'profilePage' })">
-            <Icon name="user.experience" />
-          </div>
+        <div class="flex gap-[8px]">
+          <Level>{{ user.level }}</Level>
+          <XP :value="user.experience" class="bg-white border-2 border-primary rounded-[4px]" />
+        </div>
+        <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
+          @click="router.push({ name: 'profilePage' })">
+          <Icon name="user" />
+        </div>
       </div>
       <div>
         <Message class="mt-[5%]">
@@ -39,7 +34,7 @@ import Level from '@/components/modules/LevelComponent.vue'
 import XP from '@/components/modules/XpComponent.vue'
 import Icon from '@/components/modules/IconComponent.vue'
 import Message from '@/components/modules/MessageComponent.vue'
-import axios from 'axios'
+import AxiosInstance from '@/axiosInstance.js'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -47,16 +42,10 @@ const user = ref({})
 const costume = ref('')
 
 onMounted(async () => {
-  const main = await axios.get(`${process.env.VUE_APP_API_BASE_URL}/main`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`
-    }
-  })
-  console.log(main.data)
+  const main = await AxiosInstance.get('/main')
   user.value = main.data.user
   costume.value = main.data.costume.url
 })
-
 
 </script>
 
