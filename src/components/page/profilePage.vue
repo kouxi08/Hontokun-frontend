@@ -59,39 +59,31 @@ const Logout = async () => {
 
 const cats = [
   {
-    name: "ふろしきネコ", icon: "hurosiki.svg", accuracy: 22.8,
+    name: "ふろしきネコ", icon: "hurosiki.svg", accuracy: 100,
     attempts: [
       {
-        accuracy: 20, timeAgo: "2分前", to: 'profileDetailPage'
-      },
-      {
-        accuracy: 20, timeAgo: "2分前", to: 'profileDetailPage'
-
+        accuracy: 100, timeAgo: "2分前", to: 'profileDetailPage'
       },
     ]
   },
   {
     name: "ハットネコ", icon: "hat.svg", accuracy: 22.8,
     attempts: [{
-      accuracy: 20, timeAgo: "5分前", to: 'profileDetailPage'
     }]
   },
   {
     name: "グラサンネコ", icon: "sunglasses.svg", accuracy: 22.8,
     attempts: [{
-      accuracy: 20, timeAgo: "5分前", to: 'profileDetailPage'
     }]
   },
   {
     name: "はまきネコ", icon: "hamaki.svg", accuracy: 22.8,
     attempts: [{
-      accuracy: 20, timeAgo: "5分前", to: 'profileDetailPage'
     }]
   },
   {
     name: "ボスネコ", icon: "boss.svg", accuracy: 22.8,
     attempts: [{
-      accuracy: 20, timeAgo: "5分前", to: 'profileDetailPage'
     }]
   }
 ]

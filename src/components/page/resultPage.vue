@@ -17,11 +17,9 @@
         <Table :header="tableHeader" :content="tableContent" />
         <div class="h-[42%] flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
           <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
-            <News
-              v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
+            <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
               :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
-            <Explain
-              v-else :type="explainData[index].type" :explanation="explainData[index].explanation"
+            <Explain v-else :type="explainData[index].type" :explanation="explainData[index].explanation"
               :answer="explainData[index].answer" :keyword="explainData[index].keyword"
               @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
           </div>
@@ -73,9 +71,9 @@ const gotAwayMessage = {
 };
 const tableHeader = [{ name: "番号" }, { name: "正誤" }, { name: "問題" }];
 const tableContent = [
-  { id: 1, correction: "correct", question: "arrow-right-ring" },
-  { id: 2, correction: "correct", question: "arrow-right-ring" },
-  { id: 3, correction: "incorrect", question: "arrow-right-ring" },
+  { id: 1, correction: "incorrect", question: "arrow-right-ring" },
+  { id: 2, correction: "incorrect", question: "arrow-right-ring" },
+  { id: 3, correction: "correct", question: "arrow-right-ring" },
 ];
 const quizSet = [
   {
@@ -84,7 +82,7 @@ const quizSet = [
     questionTitle: "台風15号接近 首都圏厳戒態勢",
     img: "/sample.jpg",
     content:
-      "台風15号が関東地方に接近中。気象庁は警戒を呼びかけ、各地で厳重な備えが進む。東京都は午後から公共交通機関の計画運休を発表。スーパーには買い出しの長蛇の列。企業は在宅勤務を推奨し、学校は休校を決定。避難所も開設され始めた。強風と豪雨に備え、住民の緊張が高まる。明日未明に最接近の見込み。",
+      "",
   },
   {
     id: 2,
@@ -92,7 +90,7 @@ const quizSet = [
     questionTitle: "月面に巨大UFO出現？\n地球外生命体か",
     img: "/sample.jpg",
     content:
-      "NASA発表によると、月面に直径1kmの巨大UFOが出現したとのこと。宇宙ステーションの観測カメラが捉えた映像には、円盤状の物体が月面に着陸する様子が映っていた。専門家は「地球外知的生命体の可能性が高い」と指摘。各国首脳が緊急会議を開き、対応を協議している。",
+      "",
   },
   {
     id: 3,
@@ -100,27 +98,27 @@ const quizSet = [
     questionTitle: "実は寝ることは無駄！？",
     img: "/sample.jpg",
     content:
-      "最新の研究によると、寝ることは実は時間の無駄だと判明。科学者たちは、睡眠時間を削減することで生産性が飛躍的に向上すると主張しています。この革新的な発見により、人々の生活様式が大きく変わる可能性があります。",
+      "",
   },
 ];
 const explainData = [
   {
     type: "true_or_false",
+    answer: false,
+    explanation: "情報源がどこから、いつ発信されたものか、信用できるものかわからないものは信頼性が低いのでうのみにしないようにしましょう。",
+    keyword: "ニュース　情報　出どころ",
+  },
+  {
+    type: "true_or_false",
+    answer: false,
+    explanation: "専門家または必要な資格を持った人が、責任をもって発信しているものかわからないです。それを友達に教える「拡散」を行わないようにしましょう。",
+    keyword: "一般　記事　拡散　危険",
+  },
+  {
+    type: "true_or_false",
     answer: true,
-    explanation: "「台風15号」など台風番号で調べることでより検索しやすくなります。「関東」「接近」で関東に接近した台風の情報が検索で出てきやすくなります。",
-    keyword: "台風15号　関東　接近",
-  },
-  {
-    type: "true_or_false",
-    answer: false,
-    explanation: "「NASA」が公式発表されている記事を検索して、フェイクニュースか判断することができます。",
-    keyword: "NASA　宇宙ステーション　巨大UFO",
-  },
-  {
-    type: "true_or_false",
-    answer: false,
-    explanation: "「睡眠時間」が生産性に関係している記事を検索して、フェイクニュースか判断することができます。",
-    keyword: "睡眠時間　生産　無駄",
+    explanation: "画像だけでは判断する情報が少なく、他の記事の画像であったり、過去に撮影された無関係のものである可能性があります。",
+    keyword: "画像検索",
   },
 ]
 
@@ -149,7 +147,7 @@ setTimeout(() => {
   }, 3000);
 }, 3000);
 
-const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => true))
+const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => false))
 </script>
 
 <style>
