@@ -20,7 +20,7 @@
         <router-link to="/signup" class="text-[#4F61EC]">新規登録はこちら</router-link>
       </div>
       <div class="flex flex-col items-start justify-center px-[72px] pt-[24px]">
-        <Button color="primary" @click="toAPI">ログイン</Button>
+        <Button color="primary" @click="toLogin">ログイン</Button>
       </div>
       <div class="flex flex-col items-start justify-center px-[72px] pt-[32px]">
         <p class="font-zenMaru text-[16px]">または</p>
@@ -49,26 +49,8 @@ const errorMessage = ref('')
 const router = useRouter()
 const auth = getAuth()
 
-const toAPI = () => {
-  // const healthCheck = axios.get(`${process.env.VUE_APP_API_BASE_URL}/health-check`)
-  const idToken = 'BFiEegHdj2a0t8QLn3wn5XYEY652'
-  // サインアップ用のデータ
-  const requestBody = {
-    nickname: "YourNickname",
-    birthday: "1990-01-01",
-  };
-  const signup = axios.post(`${process.env.VUE_APP_API_BASE_URL}/sign-up`, requestBody, {
-    headers: {
-      Authorization: `Bearer ${idToken}`,
-    }
-  })
-}
-
 const toLogin = () => {
   signInWithEmailAndPassword(auth, email.value, password.value)
-    .then((userCredential) => {
-      router.push({ name: "mainPage" });
-    })
     .catch((error) => {
       switch (error.code) {
         case 'auth/invalid-email':
@@ -93,7 +75,6 @@ const toLogin = () => {
           break;
       }
     })
-
 }
 
 
