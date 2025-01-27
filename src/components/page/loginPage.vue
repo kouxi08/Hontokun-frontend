@@ -38,7 +38,6 @@ import Input from '@/components/modules/InputComponent.vue'
 import Button from '@/components/modules/ButtonComponent.vue'
 import Icon from '@/components/modules/IconComponent.vue'
 import { RouterLink, useRouter } from "vue-router";
-import axios from "axios"
 import { ref } from 'vue'
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 
