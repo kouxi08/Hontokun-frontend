@@ -23,7 +23,7 @@ const routes = [
   { path: '/', name: "topPage", component: topPage },
   { path: '/main', name: "mainPage", component: mainPage },
   { path: '/main/mode', name: "modePage", component: modePage },
-  { path: '/main/difficulty', name: "difficultyPage", component: difficultyPage },
+  { path: '/main/difficulty/:type', name: "difficultyPage", props: true, component: difficultyPage },
   { path: '/battle/:difficulty', name: "battlePage", props: true, component: battlePage },
   { path: '/result/:difficulty', name: "resultPage", props: true, component: resultPage },
   { path: '/signup', name: "signupPage", component: signupPage },
