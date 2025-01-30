@@ -51,6 +51,7 @@ const auth = getAuth();
 const Logout = async () => {
   try {
     await signOut(auth); // Firebaseからログアウト
+    localStorage.removeItem("token");
     router.push({ name: 'topPage' }); // ログアウト後にトップページにリダイレクト
   } catch (error) {
     console.error("ログアウト中にエラーが発生しました: ", error);

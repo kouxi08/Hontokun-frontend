@@ -36,4 +36,12 @@ import battlePage from "@/components/page/battlePage.vue"
 import { useRouter } from "vue-router"
 const router = useRouter()
 const difficulties = ["1.png", "2.png", "3.png", "4.png", "5.png"];
+
+const props = defineProps({
+  type: {
+    type: String,
+    require: true
+  }
+});
+
 </script>

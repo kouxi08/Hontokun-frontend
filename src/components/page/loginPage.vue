@@ -1,10 +1,9 @@
 <template>
   <div class="relative">
     <Header />
-    <div class="flex items-center justify-between mt-12">
-      <Icon name="arrow-left-line" class="cursor-pointer ml-9 absolute" width="24" height="24" @click="router.push({ name: 'topPage' })" />
-      <p class="font-zenMaru text-[16px] text-center w-full">ログイン</p>
-    </div>
+    <Icon name="arrow-left-line" class="cursor-pointer w-6 h-6 absolute top-32 left-8"
+      @click="router.push({ name: 'topPage' })" />
+    <p class="pt-[136px] pb-[24px] text-center font-zenMaru text-[16px]">ログイン</p>
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">
       {{ errorMessage }}
     </p>
@@ -50,37 +49,33 @@ const router = useRouter()
 const auth = getAuth()
 
 const toLogin = () => {
+  errorMessage.value = ''
   signInWithEmailAndPassword(auth, email.value, password.value)
-    .then((userCredential) => {
-      router.push({ name: "mainPage" });
+    .then(async (userCredential) => {
+      router.push({ name: 'mainPage' })
     })
     .catch((error) => {
       switch (error.code) {
         case 'auth/invalid-email':
           // メールアドレスの形式がおかしい
-          errorMessage.value = "メールアドレスを確認してください"
+          errorMessage.value = "メールアドレスを確認してください";
           break;
-
         case 'auth/missing-password':
         case 'auth/invalid-credential':
           // パスワードを入力していない
-          errorMessage.value = "パスワードを確認してください"
+          errorMessage.value = "パスワードを確認してください";
           break;
-
         case 'auth/too-many-requests':
-          // リスエスト数が許容を超えた
-          errorMessage.value = "しばらくお待ちから再度ログインしてください"
+          // リクエスト数が許容を超えた
+          errorMessage.value = "しばらくお待ちから再度ログインしてください";
           break;
-
         default:
           // どれにも当てはまらない
-          errorMessage.value = "システムエラーが発生しました。現在、運営チームが対応中です"
+          errorMessage.value = "システムエラーが発生しました。現在、運営チームが対応中です";
           break;
       }
-    })
-
-}
-
+    });
+};
 
 const toGoogleWithSignin = () => {
   const provider = new GoogleAuthProvider();

@@ -72,12 +72,15 @@ import { getAuth, onAuthStateChanged, signInAnonymously } from 'firebase/auth'
 const router = useRouter()
 const auth = getAuth()
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (user) {
-    router.push({ name: "mainPage" });
+    try {
+      router.push({ name: "mainPage" });
+    } catch (error) {
+      console.error("トークン取得エラー:", error);
+    }
   }
-})
-
+});
 const anonymousLogin = () => {
   signInAnonymously(auth)
     .then(() => {

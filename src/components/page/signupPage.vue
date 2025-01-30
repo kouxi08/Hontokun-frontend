@@ -1,10 +1,9 @@
 <template>
   <div class="relative">
     <Header />
-    <div class="flex items-center justify-between mt-12">
-      <Icon name="arrow-left-line" class="cursor-pointer ml-9 absolute" width="24" height="24" @click="router.push({ name: 'topPage' })" />
-      <p class="font-zenMaru text-[16px] text-center w-full">新規登録</p>
-    </div>
+    <Icon name="arrow-left-line" class="cursor-pointer w-6 h-6 absolute top-32 left-8"
+      @click="router.push({ name: 'topPage' })" />
+    <p class="pt-[136px] pb-[24px] text-center font-zenMaru text-[16px]">新規登録</p>
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">
       {{ errorMessage }}
     </p>
@@ -38,6 +37,7 @@ import Header from '@/components/modules/HeaderComponent.vue'
 import Input from '@/components/modules/InputComponent.vue'
 import Button from '@/components/modules/ButtonComponent.vue'
 import Icon from '@/components/modules/IconComponent.vue'
+import axios from 'axios'
 import { ref } from 'vue'
 import { RouterLink, useRouter } from "vue-router";
 import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
@@ -52,11 +52,14 @@ const auth = getAuth()
 const toSignup = () => {
   errorMessage.value = ''
   createUserWithEmailAndPassword(auth, email.value, password.value)
-    .then((userCredential) => {
-      // 作成成功
-      router.push({ name: "mainPage" });
+    .then(async (userCredential) => {
+      const user = await userCredential.user
+      return user.getIdToken()
     })
-    .catch((error) => {
+    .then((token) => {
+      createAccount(token)
+      router.push({ name: 'mainPage' })
+    }).catch((error) => {
       switch (error.code) {
         case 'auth/invalid-email':
           // メールアドレスの形式がおかしい
@@ -89,10 +92,14 @@ const toSignup = () => {
 const toGoogleWithSignin = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
-    .then((result) => {
-      router.push({ name: "mainPage" });
+    .then(async (userCredential) => {
+      const user = await userCredential.user
+      return user.getIdToken()
     })
-    .catch((error) => {
+    .then((token) => {
+      createAccount(token)
+      router.push({ name: 'mainPage' })
+    }).catch((error) => {
       switch (error.code) {
 
         case 'auth/email-already-in-use':
@@ -106,5 +113,16 @@ const toGoogleWithSignin = () => {
           break;
       }
     })
+}
+const createAccount = async (token) => {
+  const requestBody = {
+    nickname: "ホントくん",
+    birthday: "2000-01-01",
+  };
+  const signup = await axios.post(`${process.env.VUE_APP_API_BASE_URL}/sign-up`, requestBody, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  })
 }
 </script>
