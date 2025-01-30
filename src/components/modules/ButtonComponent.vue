@@ -31,11 +31,11 @@ const props = defineProps({
 
 const buttonClasses = computed(() => {
   const baseClasses =
-    "pt-[4px] pr-[16px] pb-[4px] pl-[16px] font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] rounded-[8px] focus:outline-none focus:ring disabled:cursor-not-allowed";
+    "pt-[4px] pr-[16px] pb-[4px] pl-[16px] font-zenMaru shadow-button rounded-[8px] focus:outline-none focus:ring disabled:cursor-not-allowed";
 
   const colorClasses = {
     default:
-      "bg-[#FDFDFD] hover:bg-[#F8F8F8] focus:bg-[#EDEDED] disabled:bg-[#C5C5C5] focus:ring-primary",
+      "bg-[#FDFDFD] hover:bg-[#F3F3F3] focus:bg-[#EDEDED] disabled:bg-[#C5C5C5] focus:ring-primary",
     primary:
       "bg-primary hover:bg-[#FFD000] stroke-white-2 focus:bg-[#E6C222] disabled:bg-[#FFEB8C] focus:ring-accent",
     secondary:

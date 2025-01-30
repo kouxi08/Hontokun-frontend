@@ -8,8 +8,7 @@
       </div>
     </div>
     <img src="/Logo.svg" alt="Logo" class="my-[56px] mx-auto">
-    <Button
-      color="primary" size="lg" class="flex items-center justify-center mx-auto my-[56px]"
+    <Button color="primary" size="lg" class="flex items-center justify-center mx-auto my-[56px]"
       @click="anonymousLogin">
       今すぐ挑戦
     </Button>
@@ -33,9 +32,7 @@
         ちゃんとした知識を身に着け<br>
         フェイクニュースに
       </p>
-      <p
-        class="text-primary text-[20px] font-zenMaru font-black text-center stroke-black-2 my-[24px]"
-      >
+      <p class="text-primary text-[20px] font-zenMaru font-black text-center stroke-black-2 my-[24px]">
         騙されない、見抜く力をつけてほしい
       </p>
     </div>
@@ -88,84 +85,84 @@ const anonymousLogin = () => {
     })
 }
 
-  const cats = [
-    {
-      name: "ホントくん",
-      img: "/hontokun.png",
-      description:
-        "我らが主人公ホントくん！今まで難解な事件を解決してきた敏腕探偵ねこ。魚を盗む元泥棒ねこ。",
-    },
-    {
-      name: "ふろしきねこ",
-      img: "/hurosiki.png",
-      description: "悪いことはまだしたことのない初心者ふろしきねこ。ふろしきの中身は誰も知らない。",
-    },
-    {
-      name: "ハットねこ",
-      img: "/hat.png",
-      description: "営業職で顔の広く、話しやすい気性のハットねこ。元ホントくんの相棒だったとか…",
-    },
-    {
-      name: "はまきねこ",
-      img: "/hamaki.png",
-      description:
-        "主に活動するのは夜のため目が光るはまきねこ。吸っているはまきは、セリバ・オリエ・Y。",
-    },
-    {
-      name: "ボスねこ",
-      img: "/boss.png",
-      description: "できる悪いことは全てしてきたボスねこ。はまきを吸っているのはかっこいいから。",
-    },
-  ];
+const cats = [
+  {
+    name: "ホントくん",
+    img: "/hontokun.png",
+    description:
+      "我らが主人公ホントくん！今まで難解な事件を解決してきた敏腕探偵ねこ。魚を盗む元泥棒ねこ。",
+  },
+  {
+    name: "ふろしきねこ",
+    img: "/hurosiki.png",
+    description: "悪いことはまだしたことのない初心者ふろしきねこ。ふろしきの中身は誰も知らない。",
+  },
+  {
+    name: "ハットねこ",
+    img: "/hat.png",
+    description: "営業職で顔の広く、話しやすい気性のハットねこ。元ホントくんの相棒だったとか…",
+  },
+  {
+    name: "はまきねこ",
+    img: "/hamaki.png",
+    description:
+      "主に活動するのは夜のため目が光るはまきねこ。吸っているはまきは、セリバ・オリエ・Y。",
+  },
+  {
+    name: "ボスねこ",
+    img: "/boss.png",
+    description: "できる悪いことは全てしてきたボスねこ。はまきを吸っているのはかっこいいから。",
+  },
+];
 
-  const index = ref(0);
+const index = ref(0);
 
-  const previousCat = (index) => {
-    if (index === 0) {
-      return cats.length - 1;
-    } else {
-      return index - 1;
-    }
-  };
+const previousCat = (index) => {
+  if (index === 0) {
+    return cats.length - 1;
+  } else {
+    return index - 1;
+  }
+};
 
-  const nextCat = (index) => {
-    if (index === cats.length - 1) {
-      return 0;
-    } else {
-      return index + 1;
-    }
-  };
+const nextCat = (index) => {
+  if (index === cats.length - 1) {
+    return 0;
+  } else {
+    return index + 1;
+  }
+};
 </script>
 
 <style>
-  @keyframes circular-motion {
-    from {
-      transform: translate(50%, -50%) rotate(0deg) translateX(80px) rotate(0deg);
-    }
-
-    to {
-      transform: translate(50%, -50%) rotate(360deg) translateX(80px) rotate(-360deg);
-    }
+@keyframes circular-motion {
+  from {
+    transform: translate(50%, -50%) rotate(0deg) translateX(80px) rotate(0deg);
   }
 
-  .slide {
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-      opacity 0.5s ease,
-      transform 0.5s ease;
+  to {
+    transform: translate(50%, -50%) rotate(360deg) translateX(80px) rotate(-360deg);
   }
+}
 
-  .slide.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.slide {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
 
-  .circle-animation {
-    animation: circular-motion 4s linear infinite;
-  }
+.slide.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  .rotate-container {
-    transform: rotate(-30deg);
-  }
+.circle-animation {
+  animation: circular-motion 4s linear infinite;
+}
+
+.rotate-container {
+  transform: rotate(-30deg);
+}
 </style>
