@@ -6,8 +6,7 @@
           <Level />
           <XP value="4" class="bg-white border-2 border-primary rounded-[4px]" />
         </div>
-        <div
-          class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
+        <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
           @click="router.push({ name: 'profilePage' })">
           <Icon name="user" />
         </div>
@@ -37,8 +36,40 @@ import Icon from '@/components/modules/IconComponent.vue'
 import Message from '@/components/modules/MessageComponent.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
 const router = useRouter()
 const userName = ref('山田')
+
+const requestRuby = async (text) => {
+  try {
+    const response = await axios.post("https://jlp.yahooapis.jp/FuriganaService/V2/furigana",
+      {
+        headers: {
+          "User-Agent": `Yahoo AppID: ${process.env.VUE_APP_YAHOO_CLIENT_ID}`,
+          "Content-Type": "application/json"
+        },
+      },
+      {
+        id: "1234-1",
+        jsonrpc: "2.0",
+        method: "jlp.furiganaservice.furigana",
+        params: {
+          q: text,
+          grade: 1, // 振り仮名の粒度（1: 小学生レベル、2: 中学生レベルなど）
+        },
+      }
+    );
+
+    // 結果を表示
+    console.log("ルビ振り結果:", response.data);
+  } catch (error) {
+    console.error("エラーが発生しました:", error.response ? error.response.data : error.message);
+  }
+};
+
+console.log(`Yahoo AppID: ${process.env.VUE_APP_YAHOO_CLIENT_ID}`)
+requestRuby("今日はいい天気ですね")
+
 </script>
 
 <style>
