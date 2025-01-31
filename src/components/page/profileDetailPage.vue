@@ -48,9 +48,9 @@ const router = useRouter()
 const catName = "ふろしきネコ"
 const catImage = "/hurosiki.svg"
 const tableHeader = [
-  { name: "番号" },
-  { name: "正誤" },
-  { name: "あなたの答え" }
+  { name: "ばんごう" },
+  { name: "こたえ" },
+  { name: "あなた" }
 ]
 const tableContent = [
   { id: 1, correction: "correct", yourAnser: "correct" },
