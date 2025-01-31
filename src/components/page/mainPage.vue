@@ -43,7 +43,7 @@ const userName = ref('山田')
 
 <style>
 .bg-detective-offices {
-  width: 99%;
+  width: 100%;
   height: 100%;
   background-image: url(../../../public/detective-offices.png);
   background-position: center;

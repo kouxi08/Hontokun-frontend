@@ -3,7 +3,6 @@
     <!-- Header Section -->
     <div class="w-full h-[40px] grid grid-cols-3 justify-between items-center top-4">
       <Button size="xs" color="accent" class="justify-self-start" @click="showNews">問題へ</Button>
-      <!-- <Icon name="card-left" width="24" height="24" class="cursor-pointer" @click="showNews" /> -->
       <p class="font-bold text-[16px] text-center">解説</p>
       <Button size="xs" color="danger" class="justify-self-end">報告</Button>
     </div>

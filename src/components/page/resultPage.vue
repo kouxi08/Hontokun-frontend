@@ -71,7 +71,7 @@ const gotAwayMessage = {
   gotAway: "ざんねん",
   gotAwaySub: "にげられてしまった",
 };
-const tableHeader = [{ name: "番号" }, { name: "正誤" }, { name: "あなたの答え" }];
+const tableHeader = [{ name: "ばんごう" }, { name: "こたえ" }, { name: "あなた" }];
 const tableContent = [
   { id: 1, correction: "correct", yourAnser: "correct" },
   { id: 2, correction: "correct", yourAnser: "incorrect" },

@@ -26,8 +26,6 @@
           :answer="explainData[index].answer" :keyword="explainData[index].keyword"
           @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
       </div>
-
-
     </div>
   </div>
 </template>
