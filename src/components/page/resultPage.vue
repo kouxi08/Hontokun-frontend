@@ -71,11 +71,11 @@ const gotAwayMessage = {
   gotAway: "ざんねん",
   gotAwaySub: "にげられてしまった",
 };
-const tableHeader = [{ name: "番号" }, { name: "正誤" }, { name: "問題" }];
+const tableHeader = [{ name: "ばんごう" }, { name: "こたえ" }, { name: "あなた" }];
 const tableContent = [
-  { id: 1, correction: "correct", question: "arrow-right-ring" },
-  { id: 2, correction: "correct", question: "arrow-right-ring" },
-  { id: 3, correction: "incorrect", question: "arrow-right-ring" },
+  { id: 1, correction: "correct", yourAnser: "correct" },
+  { id: 2, correction: "correct", yourAnser: "incorrect" },
+  { id: 3, correction: "incorrect", yourAnser: "correct" },
 ];
 const quizSet = [
   {
@@ -149,7 +149,7 @@ setTimeout(() => {
   }, 3000);
 }, 3000);
 
-const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => true))
+const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => false))
 </script>
 
 <style>

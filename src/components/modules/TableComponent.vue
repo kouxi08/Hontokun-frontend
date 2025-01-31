@@ -18,7 +18,7 @@
             <Icon :name="row.correction" class="w-6 h-6 inline-block" />
           </td>
           <td class="px-4 hover:bg-gray-100">
-            <Icon :name="row.question" class="w-6 h-6 inline-block" />
+            <Icon :name="row.yourAnser" class="w-6 h-6 inline-block" />
           </td>
         </tr>
       </tbody>
