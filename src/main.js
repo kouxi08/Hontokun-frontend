@@ -13,6 +13,7 @@ import loginPage from './components/page/loginPage.vue';
 import profilePage from './components/page/profilePage.vue';
 import profileDetailPage from './components/page/profileDetailPage.vue';
 import profileEditPage from './components/page/profileEditPage.vue';
+import notFoundPage from '@/components/page/notFoundPage.vue'
 
 import { createWebHistory, createRouter, START_LOCATION } from 'vue-router'
 
@@ -30,7 +31,8 @@ const routes = [
   { path: '/login', name: "loginPage", component: loginPage },
   { path: '/profile', name: "profilePage", component: profilePage },
   { path: '/profile/detail', name: "profileDetailPage", component: profileDetailPage },
-  { path: '/profile/edit', name: "profileEditPage", component: profileEditPage }
+  { path: '/profile/edit', name: "profileEditPage", component: profileEditPage },
+  { path: "/notFound", name: 'error.404', component: notFoundPage },
 ]
 
 const router = createRouter({
@@ -38,7 +40,7 @@ const router = createRouter({
   routes,
 })
 
-const allowedDirectAccess = ['/', '/login', '/signup', '/main']
+const allowedDirectAccess = ['/', '/login', '/signup', '/main', '/notFound']
 
 router.beforeEach((to, from, next) => {
   if (allowedDirectAccess.includes(to.path)) {
@@ -46,7 +48,7 @@ router.beforeEach((to, from, next) => {
     next()
   } else if (from === START_LOCATION) {
     // 直接URLアクセスで、許可されていないパスの場合
-    next('/') // または適切なリダイレクト先
+    next('/notFound') // または適切なリダイレクト先
   } else {
     // アプリケーション内での遷移の場合は許可
     next()
