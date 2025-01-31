@@ -11,7 +11,7 @@
       </div>
       <div v-if="visibleQuiz" class="w-full absolute top-[88px]">
         <NewsTitle :id="currentQuiz.order" :title="currentQuiz.question" />
-        <News :title="currentQuiz.news.title" :img="currentQuiz.image" :content="currentQuiz.news.content"
+        <News :title="currentQuiz.news.title" :img="currentQuiz.news.image" :content="currentQuiz.news.content"
           class="pt-[32px]" />
         <div class="flex justify-between mx-[48px] pt-[32px]">
           <Icon name="correct" width="96" height="96" class="md:w-[128px] cursor-pointer" @click="handleAnswer(true)" />
@@ -49,7 +49,6 @@ onMounted(async () => {
     await axiosInstance.get(`/quiz/${props.difficulty}`)
       .then((res) => {
         quizData.value = res.data.quizzes;
-        console.log(quizData.value);
       })
       .catch((err) => {
         console.error(err);
