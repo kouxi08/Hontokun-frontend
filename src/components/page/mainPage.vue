@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen">
+  <div class="w-screen h-screen" v-if="loading">
     <div class="bg-detective-offices">
       <div class="flex justify-between items-center px-[24px] pt-[56px]">
         <div class="flex gap-[8px]">
@@ -13,10 +13,7 @@
       </div>
       <div>
         <Message class="mt-[5%]">
-          ようこそ！<br>
-          {{ user.nickname }}探偵事務所へ<br>
-          僕は助手のホントくん<br>
-          よろしくね！
+          {{ messages[0] }}
         </Message>
         <img :src="costume" alt="" class="mx-auto my-[16px] xs:w-[128px] md:w-[192px]">
         <button
@@ -27,6 +24,7 @@
       </div>
     </div>
   </div>
+  <LoadingPage v-else />
 </template>
 
 <script setup>
@@ -34,19 +32,29 @@ import Level from '@/components/modules/LevelComponent.vue'
 import XP from '@/components/modules/XpComponent.vue'
 import Icon from '@/components/modules/IconComponent.vue'
 import Message from '@/components/modules/MessageComponent.vue'
+import LoadingPage from '@/components/page/loadingPage.vue'
 import AxiosInstance from '@/axiosInstance.js'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const user = ref({})
 const costume = ref('')
+const loading = ref(false)
+const messages = ref([])
 
-onMounted(async () => {
-  const main = await AxiosInstance.get('/main')
-  user.value = main.data.user
-  costume.value = main.data.costume.url
+onMounted(async() => {
+  try {
+    const main = await AxiosInstance.get('/main')
+    user.value = main.data.user
+    costume.value = main.data.costume.url
+    loading.value = true
+    messages.value = [
+      `ようこそ！\n${user.value.nickname}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`
+    ];
+  } catch (error) {
+    console.error('データの取得に失敗しました:', error)
+  }
 })
-
 </script>
 
 <style>
