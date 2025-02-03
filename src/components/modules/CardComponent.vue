@@ -7,9 +7,7 @@
       <img :src="iconImage" alt="ネコ画像" class="w-[64px] h-[64px] object-contain">
       <!-- 名前 -->
       <p class="text-sm leading-4 text-center font-zenMaru">
-        {{ iconName.split('ネコ')[0] }}
-        <br>
-        ネコ
+        {{ iconName }}
       </p>
       <!-- Rate -->
       <div class="h-full flex items-center justify-center">
