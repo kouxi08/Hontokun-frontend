@@ -22,8 +22,8 @@
     </div>
     <div
       class="w-full h-[45%] flex flex-col items-center justify-start gap-[24px] px-[48px] mt-[32px] overflow-hidden overflow-y-scroll">
-      <Card v-for="cat in cats" :key="cat" :icon-name="cat.name" :icon-image="cat.icon" :accuracy="cat.accuracy"
-        :attempts="cat.attempts" />
+      <Card v-for="cat in cats" :key="cat" :icon-name="cat.enemy.name" :icon-image="cat.enemy.url"
+        :accuracy="cat.accuracy" :attempts="cat.quizList" />
     </div>
     <div class="flex justify-center items-center pt-[32px]">
       <Button color="secondary" size="md" class="mx-auto cursor-pointer" @click="Logout">
@@ -38,62 +38,38 @@ import Icon from '@/components/modules/IconComponent.vue'
 import Rate from '@/components/modules/RateComponent.vue'
 import Card from '@/components/modules/CardComponent.vue'
 import Button from '@/components/modules/ButtonComponent.vue'
+import AxiosInstance from '@/axiosInstance.js'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { getAuth, signOut } from "firebase/auth"; // Firebase Authのインポート
 
 const router = useRouter()
-const userName = "山田"
+const userName = ref("")
+const cats = ref([])
 
 // Firebase Authのインスタンスを取得
 const auth = getAuth();
+
+onMounted(async () => {
+  try {
+    const profile = await AxiosInstance.get('/history')
+    console.log(profile)
+    cats.value = profile.data.history.tierList
+    user.value = profile.data.user.nickname
+    loading.value = true
+  } catch (error) {
+    console.error('データの取得に失敗しました:', error)
+  }
+})
 
 // ログアウト処理
 const Logout = async () => {
   try {
     await signOut(auth); // Firebaseからログアウト
-    localStorage.removeItem("token");
     router.push({ name: 'topPage' }); // ログアウト後にトップページにリダイレクト
   } catch (error) {
     console.error("ログアウト中にエラーが発生しました: ", error);
   }
 };
 
-const cats = [
-  {
-    name: "ふろしきネコ", icon: "hurosiki.svg", accuracy: 22.8,
-    attempts: [
-      {
-        accuracy: 20, timeAgo: "2分前", to: 'profileDetailPage'
-      },
-      {
-        accuracy: 20, timeAgo: "2分前", to: 'profileDetailPage'
-
-      },
-    ]
-  },
-  {
-    name: "ハットネコ", icon: "hat.svg", accuracy: 22.8,
-    attempts: [{
-      accuracy: 20, timeAgo: "5分前", to: 'profileDetailPage'
-    }]
-  },
-  {
-    name: "グラサンネコ", icon: "sunglasses.svg", accuracy: 22.8,
-    attempts: [{
-      accuracy: 20, timeAgo: "5分前", to: 'profileDetailPage'
-    }]
-  },
-  {
-    name: "はまきネコ", icon: "hamaki.svg", accuracy: 22.8,
-    attempts: [{
-      accuracy: 20, timeAgo: "5分前", to: 'profileDetailPage'
-    }]
-  },
-  {
-    name: "ボスネコ", icon: "boss.svg", accuracy: 22.8,
-    attempts: [{
-      accuracy: 20, timeAgo: "5分前", to: 'profileDetailPage'
-    }]
-  }
-]
 </script>
