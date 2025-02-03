@@ -1,10 +1,11 @@
 <template>
-  <div class="w-screen h-screen bg-[#FFFCF8] fixed">
-    <div class="w-full grid grid-cols-3 justify-between items-center pt-[32px] px-[48px]">
+  <div class="w-screen h-screen bg-[#FFFCF8] fixed" v-if="loading">
+    <div class="w-full flex justify-between items-center pt-[32px] px-[48px]">
       <Icon name="close-circle" width="32" height="32" class="justify-self-start cursor-pointer"
         @click="router.push({ name: 'mainPage' })" />
-      <p class="font-zenMaru text-[24px] text-center">{{ userName }}</p>
-      <!-- ログアウトボタンにクリックイベントを追加 -->
+      <p class="font-zenMaru font-bold text-[24px] text-center absolute left-1/2 transform -translate-x-1/2">
+        {{ userName }}
+      </p>
     </div>
     <div class="relative w-[168px] h-[168px] mx-auto mt-[56px]">
       <div
@@ -21,7 +22,7 @@
       </div>
     </div>
     <div
-      class="w-full h-[45%] flex flex-col items-center justify-start gap-[24px] px-[48px] mt-[32px] overflow-hidden overflow-y-scroll">
+      class="w-full h-[45%] flex flex-col items-center justify-start gap-[24px] px-[48px] py-[16px] my-[16px] overflow-hidden overflow-y-scroll">
       <Card v-for="cat in cats" :key="cat" :icon-name="cat.enemy.name" :icon-image="cat.enemy.url"
         :accuracy="cat.accuracy" :attempts="cat.quizList" />
     </div>
@@ -31,6 +32,7 @@
       </Button>
     </div>
   </div>
+  <LoadingPage v-else />
 </template>
 
 <script setup>
@@ -38,6 +40,7 @@ import Icon from '@/components/modules/IconComponent.vue'
 import Rate from '@/components/modules/RateComponent.vue'
 import Card from '@/components/modules/CardComponent.vue'
 import Button from '@/components/modules/ButtonComponent.vue'
+import LoadingPage from '@/components/pages/loadingPage.vue'
 import AxiosInstance from '@/axiosInstance.js'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -46,6 +49,7 @@ import { getAuth, signOut } from "firebase/auth"; // Firebase Authのインポ�
 const router = useRouter()
 const userName = ref("")
 const cats = ref([])
+const loading = ref(false)
 
 // Firebase Authのインスタンスを取得
 const auth = getAuth();
@@ -55,7 +59,7 @@ onMounted(async () => {
     const profile = await AxiosInstance.get('/history')
     console.log(profile)
     cats.value = profile.data.history.tierList
-    user.value = profile.data.user.nickname
+    userName.value = profile.data.user.nickname
     loading.value = true
   } catch (error) {
     console.error('データの取得に失敗しました:', error)
