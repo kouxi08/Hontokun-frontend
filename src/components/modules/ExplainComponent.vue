@@ -13,8 +13,7 @@
         正解
       </p>
       <Icon class="justify-self-center" :name="answer ? 'correct' : 'incorrect'" width="24" height="24" />
-      <a
-        v-if="answer === 'true'" class="justify-self-end text-blue-500 text-[12px] font-bold" href="example.com"
+      <a v-if="answer === 'true'" class="justify-self-end text-blue-500 text-[12px] font-bold" href="example.com"
         target="_blank">
         ニュース記事へ
       </a>
@@ -27,8 +26,7 @@
           正解
         </p>
         <p class="font-bold text-[16px] text-center">正解の選択肢</p>
-        <div
-          v-for="(option, index) in options" :key="index"
+        <div v-for="(option, index) in options" :key="index"
           class="flex items-center justify-center w-[200px] h-[50px] border-[3px] rounded-md" :class="{
             'border-red-500 text-red-500': index === correctIndex && indexColor === 'red',
             'border-yellow-500 text-yellow-500': index === correctIndex && indexColor === 'yellow',
@@ -45,8 +43,7 @@
       <p class="text-black font-bold text-[12px] px-[8px] flex-1">
         {{ keyword }}
       </p>
-      <button
-        class="bg-primary text-black font-bold text-[14px] py-[6px] px-[16px] rounded-full shadow"
+      <button class="bg-primary text-black font-bold text-[14px] py-[6px] px-[16px] rounded-full shadow"
         @click="searchGoogle">
         検索
       </button>
@@ -59,8 +56,8 @@
 </template>
 
 <script setup>
-import Button from "./ButtonComponent.vue";
-import Icon from "./IconComponent.vue";
+import Button from "@/components/modules/ButtonComponent.vue";
+import Icon from "@/components/modules/IconComponent.vue";
 
 // Propsを定義
 const props = defineProps({
@@ -95,7 +92,7 @@ const props = defineProps({
 import { ref } from "vue";
 
 const isAnswered = ref(false);
-const selectedOption = ref(null); 
+const selectedOption = ref(null);
 
 // Emitsの定義
 const emit = defineEmits(["showNewsEvent"]);
