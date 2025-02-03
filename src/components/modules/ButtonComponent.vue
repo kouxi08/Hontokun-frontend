@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonClasses" :disabled="isButtonDisabled" @click="routeTo(props.to)">
+  <button :class="buttonClasses" :disabled="props.disabled" @click="routeTo(props.to)">
     <slot></slot>
   </button>
 </template>
@@ -9,8 +9,6 @@ import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-
-const isButtonDisabled = ref(false)
 
 const props = defineProps({
   color: {
@@ -27,6 +25,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  disabled: {
+    type: Boolean,
+    defalut: true
+  }
 });
 
 const buttonClasses = computed(() => {
@@ -57,7 +59,6 @@ const buttonClasses = computed(() => {
 });
 
 const routeTo = (to) => {
-  isButtonDisabled.value = true
   router.push({ name: to });
 };
 </script>

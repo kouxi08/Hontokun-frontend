@@ -20,7 +20,7 @@
         <router-link to="/login" class="text-[#4F61EC]">ログインはこちら</router-link>
       </div>
       <div class="flex flex-col items-start justify-center px-[72px] pt-[24px]">
-        <Button color="primary" @click="toSignup">登録</Button>
+        <Button color="primary" @click="toSignup" :disabled="isButtonDisabled">登録</Button>
       </div>
       <div class="flex flex-col items-start justify-center px-[72px] pt-[32px]">
         <p class="font-zenMaru text-[16px]">または</p>
@@ -46,6 +46,7 @@ const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
 const router = useRouter()
+const isButtonDisabled = ref(false)
 
 const auth = getAuth()
 
@@ -53,6 +54,7 @@ const toSignup = () => {
   errorMessage.value = ''
   createUserWithEmailAndPassword(auth, email.value, password.value)
     .then(async (userCredential) => {
+      isButtonDisabled.value = true
       const user = await userCredential.user
       return user.getIdToken()
     })
@@ -60,6 +62,7 @@ const toSignup = () => {
       createAccount(token)
       router.push({ name: 'mainPage' })
     }).catch((error) => {
+      isButtonDisabled.value = false
       switch (error.code) {
         case 'auth/invalid-email':
           // メールアドレスの形式がおかしい
@@ -93,6 +96,7 @@ const toGoogleWithSignin = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then(async (userCredential) => {
+      isButtonDisabled.value = true
       const user = await userCredential.user
       return user.getIdToken()
     })
@@ -100,8 +104,8 @@ const toGoogleWithSignin = () => {
       createAccount(token)
       router.push({ name: 'mainPage' })
     }).catch((error) => {
+      isButtonDisabled.value = false
       switch (error.code) {
-
         case 'auth/email-already-in-use':
           // すでに登録されているメールを使用している
           errorMessage.value = "このメールアドレスはすでに使用されています"
