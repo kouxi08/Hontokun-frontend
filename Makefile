@@ -31,4 +31,4 @@ down:
 #exec
 
 app-shell:
-		docker exec -it $(APP_NAME) /bin/sh
+		docker exec -it $(APP_NAME) /bin/bash
