@@ -46,14 +46,14 @@ const router = useRouter()
 const catName = "ふろしきネコ"
 const catImage = "/hurosiki.svg"
 const tableHeader = [
-  { name: "番号" },
-  { name: "正誤" },
-  { name: "問題" }
+  { name: "ばんごう" },
+  { name: "こたえ" },
+  { name: "あなた" }
 ]
 const tableContent = [
-  { id: 1, correction: "correct", question: "arrow-right-ring" },
-  { id: 2, correction: "correct", question: "arrow-right-ring" },
-  { id: 3, correction: "incorrect", question: "arrow-right-ring" },
+  { id: 1, correction: "correct", yourAnser: "correct" },
+  { id: 2, correction: "correct", yourAnser: "incorrect" },
+  { id: 3, correction: "incorrect", yourAnser: "correct" },
 ];
 const quizSet = [
   {
@@ -100,7 +100,7 @@ const explainData = [
   },
 ]
 
-const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => true))
+const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => false))
 
 const arrestCat = () => {
   // ふろしきネコのページに遷移

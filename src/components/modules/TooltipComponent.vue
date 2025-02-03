@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import Icon from "./IconComponent.vue";
+import Icon from "@/components/modules/IconComponent.vue";
 import { ref } from "vue";
 const visibleTooltip = ref(true);
 </script>
