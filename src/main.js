@@ -2,17 +2,17 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import './index.css'
-import topPage from './components/page/topPage.vue';
-import mainPage from './components/page/mainPage.vue'
-import modePage from './components/page/modePage.vue'
-import difficultyPage from './components/page/difficultyPage.vue'
-import battlePage from './components/page/battlePage.vue';
-import resultPage from './components/page/resultPage.vue';
-import signupPage from './components/page/signupPage.vue';
-import loginPage from './components/page/loginPage.vue';
-import profilePage from './components/page/profilePage.vue';
-import profileDetailPage from './components/page/profileDetailPage.vue';
-import profileEditPage from './components/page/profileEditPage.vue';
+import topPage from '@/components/page/topPage.vue';
+import mainPage from '@/components/page/mainPage.vue'
+import modePage from '@/components/page/modePage.vue'
+import difficultyPage from '@/components/page/difficultyPage.vue'
+import battlePage from '@/components/page/battlePage.vue';
+import resultPage from '@/components/page/resultPage.vue';
+import signupPage from '@/components/page/signupPage.vue';
+import loginPage from '@/components/page/loginPage.vue';
+import profilePage from '@/components/page/profilePage.vue';
+import profileDetailPage from '@/components/page/profileDetailPage.vue';
+import profileEditPage from '@/components/page/profileEditPage.vue';
 
 import { createWebHistory, createRouter, START_LOCATION } from 'vue-router'
 

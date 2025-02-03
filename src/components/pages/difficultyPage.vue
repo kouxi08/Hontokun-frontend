@@ -31,8 +31,8 @@
 import Level from '@/components/modules/LevelComponent.vue'
 import Icon from "@/components/modules/IconComponent.vue";
 import XP from "@/components/modules/XpComponent.vue";
-import modePage from "@/components/page/modePage.vue";
-import battlePage from "@/components/page/battlePage.vue"
+import modePage from "@/components/pages/modePage.vue";
+import battlePage from "@/components/pages/battlePage.vue"
 import { useRouter } from "vue-router"
 const router = useRouter()
 const difficulties = ["1.png", "2.png", "3.png", "4.png", "5.png"];

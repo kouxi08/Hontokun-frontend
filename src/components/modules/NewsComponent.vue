@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import Button from "./ButtonComponent.vue";
+import Button from "@/components/modules/ButtonComponent.vue";
 const props = defineProps({
   title: {
     type: String,
