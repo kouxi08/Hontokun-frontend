@@ -31,4 +31,4 @@ jobs:
         push: true
         tags:  kouxi00/hontokun-frontend:1.0.0
         build-args: |
-          API_KEY=${{ secrets.VUE_APP_API_BASE_URL }}
+          VUE_APP_API_BASE_URL =${{ secrets.VUE_APP_API_BASE_URL }}
