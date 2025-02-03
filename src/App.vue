@@ -9,7 +9,7 @@
 
 <script setup>
 import { firebase } from "./firebase.js"
-import LoadingPage from "@/components/page/loadingPage.vue"
+import LoadingPage from "@/components/pages/loadingPage.vue"
 import { ref, onMounted } from "vue"
 
 const isPageLoaded = ref(false)
