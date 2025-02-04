@@ -37,6 +37,7 @@ import Header from '@/components/modules/HeaderComponent.vue'
 import Input from '@/components/modules/InputComponent.vue'
 import Button from '@/components/modules/ButtonComponent.vue'
 import Icon from '@/components/modules/IconComponent.vue'
+import axios from 'axios'
 import { RouterLink, useRouter } from "vue-router";
 import { ref } from 'vue'
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
@@ -82,10 +83,14 @@ const toLogin = () => {
 
 const toGoogleWithSignin = () => {
   const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: 'select_account' });
   signInWithPopup(auth, provider)
-    .then((result) => {
+    .then(async (userCredential) => {
       isButtonDisabled.value = true
-      router.push({ name: "mainPage" });
+      const user = await userCredential.user
+      const token = await user.getIdToken()
+      await createAccount(token)
+      await router.push({ name: "mainPage" });
     })
     .catch((error) => {
       isButtonDisabled.value = false
@@ -94,12 +99,19 @@ const toGoogleWithSignin = () => {
           // すでに登録されているメールを使用している
           errorMessage.value = "このメールアドレスはすでに使用されています"
           break;
-
-        default:
-          // どれにも当てはまらない
-          errorMessage.value = "システムエラーが発生しました。現在、運営チームが対応中です"
-          break;
       }
     })
+}
+
+const createAccount = async (token) => {
+  const requestBody = {
+    nickname: "ホントくん",
+    birthday: "2000-01-01",
+  };
+  const signup = await axios.post(`${process.env.VUE_APP_API_BASE_URL}/sign-up`, requestBody, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  })
 }
 </script>
