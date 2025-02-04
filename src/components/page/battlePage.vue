@@ -106,10 +106,23 @@ const currentQuiz = computed(() => quizData.value[current.value]);
 
 // Events
 const handleAnswer = (answer) => {
-  answers.value.push(answer);
-
+  answers.value.push({
+    quizId: currentQuiz.value.id,
+    order: current.value,
+    answer: answer,
+    answerTime: null,
+  });
+  
   if (current.value === quizData.value.length - 1) {
-    router.push({ name: "resultPage", params: { difficulty: props.difficulty } });
+    router.push(
+      {
+        name: "resultPage",
+        params: {
+          difficulty: props.difficulty,
+          answers: answers.value
+        }
+      }
+    );
   } else {
     current.value++;
   }
