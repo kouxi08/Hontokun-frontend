@@ -32,8 +32,11 @@ import Icon from '@/components/modules/IconComponent.vue'
 import Message from '@/components/modules/MessageComponent.vue'
 import LoadingPage from '@/components/pages/loadingPage.vue'
 import AxiosInstance from '@/axiosInstance.js'
+import { getAuth } from 'firebase/auth'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+
+const auth = getAuth()
 const router = useRouter()
 const user = ref({})
 const costume = ref('')
@@ -41,6 +44,19 @@ const loading = ref(false)
 const messages = ref([])
 
 onMounted(async () => {
+  if (auth.currentUser.isAnonymous) {
+    const gestUserData = {
+      nickname: "ゲスト",
+      level: 1,
+      experience: 0
+    }
+    user.value = gestUserData
+    costume.value = "/honto.svg"
+    loading.value = true
+    messages.value = [
+      `ようこそ！\n${user.value.nickname}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`,
+    ]
+  }
   try {
     const main = await AxiosInstance.get('/main')
     user.value = main.data.user

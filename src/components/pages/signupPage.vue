@@ -94,30 +94,26 @@ const toSignup = () => {
 
 const toGoogleWithSignin = () => {
   const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({ prompt: 'select_account' });
   signInWithPopup(auth, provider)
     .then(async (userCredential) => {
       isButtonDisabled.value = true
       const user = await userCredential.user
-      return user.getIdToken()
+      const token = await user.getIdToken()
+      await createAccount(token)
+      await router.push({ name: "mainPage" });
     })
-    .then((token) => {
-      createAccount(token)
-      router.push({ name: 'mainPage' })
-    }).catch((error) => {
+    .catch((error) => {
       isButtonDisabled.value = false
       switch (error.code) {
         case 'auth/email-already-in-use':
           // すでに登録されているメールを使用している
           errorMessage.value = "このメールアドレスはすでに使用されています"
           break;
-
-        default:
-          // どれにも当てはまらない
-          errorMessage.value = "システムエラーが発生しました。現在、運営チームが対応中です"
-          break;
       }
     })
 }
+
 const createAccount = async (token) => {
   const requestBody = {
     nickname: "ホントくん",
