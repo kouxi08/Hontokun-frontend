@@ -64,19 +64,19 @@ onMounted(async () => {
     "quizMode": 1,
     "answers": [
         {
-            "quizId": "jzfq6lhz0eim3poruzkzj_cd0370_ybtemo4",
+            "quizId": "",
             "order": 1,
             "answerTime": 10,
             "answer": "TRUE"
         },
         {
-            "quizId": "rkxz25to52m2oh3oy32wvyzud97379dxgwgk",
+            "quizId": "",
             "order": 2,
             "answerTime": 10,
             "answer": "TRUE"
         },
         {
-            "quizId": "20frn6cvbuw664-0kct-z95us31p5darb_l7",
+            "quizId": "",
             "order": 3,
             "answerTime": 10,
             "answer": "TRUE"
