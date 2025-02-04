@@ -11,6 +11,7 @@ vuepic
 vuex
 width
 height
+honto
 hurosiki
 hamaki
 zclass
