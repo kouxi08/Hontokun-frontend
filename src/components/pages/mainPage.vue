@@ -44,20 +44,20 @@ const loading = ref(false)
 const messages = ref([])
 
 onMounted(async () => {
-  if (auth.currentUser.isAnonymous) {
-    const gestUserData = {
-      nickname: "ゲスト",
-      level: 1,
-      experience: 0
-    }
-    user.value = gestUserData
-    costume.value = "/honto.svg"
-    loading.value = true
-    messages.value = [
-      `ようこそ！\n${user.value.nickname}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`,
-    ]
-  }
   try {
+    if (auth.currentUser && auth.currentUser.isAnonymous) {
+      const gestUserData = {
+        nickname: "ゲスト",
+        level: 1,
+        experience: 0
+      }
+      user.value = gestUserData
+      costume.value = "/honto.svg"
+      loading.value = true
+      messages.value = [
+        `ようこそ！\n${user.value.nickname}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`,
+      ]
+    }
     const main = await AxiosInstance.get('/main')
     user.value = main.data.user
     costume.value = main.data.costume.url

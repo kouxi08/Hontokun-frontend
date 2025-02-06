@@ -5,7 +5,7 @@ export const useStore = defineStore('main', {
     component: null,
   }),
   actions: {
-    setPage(name, component, props = {}) {
+    setPage(name, component) {
       this.name = name
       this.component = component
     },

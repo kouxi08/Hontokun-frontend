@@ -14,9 +14,10 @@
         <News :title="currentQuiz.questionTitle" :img="currentQuiz.img" :content="currentQuiz.content"
           class="pt-[32px]" />
         <div class="flex justify-between mx-[48px] pt-[32px]">
-          <Icon name="correct" width="96" height="96" class="md:w-[128px] cursor-pointer" @click="handleAnswer(true)" />
+          <Icon name="correct" width="96" height="96" class="md:w-[128px] cursor-pointer"
+            @click="handleAnswer('correct')" />
           <Icon name="incorrect" width="96" height="96" class="md:w-[128px] cursor-pointer"
-            @click="handleAnswer(false)" />
+            @click="handleAnswer('incorrect')" />
         </div>
       </div>
       <img v-show="visibleCats" src="/hontokun.svg" alt="" class="absolute bottom-[32px] left-1/2 -translate-x-1/2">
@@ -29,15 +30,10 @@ import NewsTitle from "@/components/modules/NewsTitleComponent.vue";
 import News from "@/components/modules/NewsComponent.vue";
 import Icon from "@/components/modules/IconComponent.vue";
 import { ref, computed } from "vue";
+import { useStore } from "@/stores/Quiz"
 import { useRouter } from "vue-router";
 
-// Props
-const props = defineProps({
-  difficulty: {
-    type: Number,
-    default: 1,
-  },
-});
+const store = useStore()
 
 // Router
 const router = useRouter();
@@ -99,7 +95,7 @@ const catSettingsMap = {
   },
 };
 
-const catSettings = catSettingsMap[props.difficulty] || catSettingsMap[1];
+const catSettings = catSettingsMap[store.difficulty] || catSettingsMap[1];
 
 // Reactive States
 const current = ref(0);
@@ -112,10 +108,10 @@ const currentQuiz = computed(() => quizSet[current.value]);
 
 // Events
 const handleAnswer = (answer) => {
+  store.addAnswer(answer)
   answers.value.push(answer);
-
   if (current.value === quizSet.length - 1) {
-    router.push({ name: "resultPage", params: { difficulty: props.difficulty } });
+    router.push({ name: "resultPage" });
   } else {
     current.value++;
   }
