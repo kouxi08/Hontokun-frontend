@@ -19,8 +19,7 @@
         </p>
         <div class="h-full pb-[40px] grid grid-cols-2 md:grid-cols-4 gap-4 overflow-hidden overflow-y-scroll">
           <img v-for="(difficulty, index) in difficulties" :key="difficulty" :src="`/wantedList/${difficulty}`"
-            class="w-full h-auto object-contain cursor-pointer" alt=""
-            @click="router.push({ name: 'battlePage', params: { difficulty: index + 1 } })">
+            class="w-full h-auto object-contain cursor-pointer" alt="" @click="selectDifficulty(index + 1)">
         </div>
       </div>
     </div>
@@ -31,17 +30,15 @@
 import Level from '@/components/modules/LevelComponent.vue'
 import Icon from "@/components/modules/IconComponent.vue";
 import XP from "@/components/modules/XpComponent.vue";
-import modePage from "@/components/pages/modePage.vue";
-import battlePage from "@/components/pages/battlePage.vue"
+import { useStore } from "@/stores/Quiz"
 import { useRouter } from "vue-router"
 const router = useRouter()
 const difficulties = ["1.png", "2.png", "3.png", "4.png", "5.png"];
+const store = useStore()
 
-const props = defineProps({
-  type: {
-    type: String,
-    require: true
-  }
-});
+const selectDifficulty = (difficulty) => {
+  store.setDifficulty(difficulty)
+  router.push({ name: 'battlePage' })
+}
 
 </script>

@@ -2,13 +2,35 @@ import { defineStore } from "pinia";
 
 export const useStore = defineStore('quiz', {
   state: () => ({
-    name: '登場',
-    component: null,
+    mode: null,
+    difficulty: null,
+    questions: [], // 問題を保存する配列
+    answers: [],   // ユーザーの回答を保存する配列
   }),
   actions: {
-    setPage(name, component) {
-      this.name = name
-      this.component = component
+    setMode(mode) {
+      this.mode = mode
+    },
+    setDifficulty(difficulty) {
+      this.difficulty = difficulty
+    },
+    setQuestions(questions) {
+      this.questions = questions
+    },
+    addAnswer(answer) {
+      this.answers.push(answer)
+    },
+    clearAnswers() {
+      this.answers = []
+    }
+  },
+  getters: {
+    tableContent() {
+      return this.questions.map((question, index) => ({
+        id: index + 1,
+        correction: question.correctAnswer,
+        yourAnswer: this.answers[index] || ''
+      }))
     }
   }
-})
+});

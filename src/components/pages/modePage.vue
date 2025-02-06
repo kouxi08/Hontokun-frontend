@@ -21,7 +21,7 @@
           <div class="flex flex-col gap-[8px]">
             <div v-for="mode in modes" :key="mode"
               class="bg-white p-[16px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] flex justify-between items-center rounded-[8px] cursor-pointer"
-              @click="router.push({ name: 'difficultyPage', params: { type: mode.name } })">
+              @click="selectMode(mode.name)">
               <p class="px-[8px] py-[2px] rounded-[6px] font-bold font-zenMaru text-white bg-gradient-to-r text-[24px] text-center"
                 :class="getBackground(mode.name)">
                 {{ mode.name }}
@@ -41,14 +41,17 @@
 import Level from '@/components/modules/LevelComponent.vue'
 import XP from '@/components/modules/XpComponent.vue'
 import Icon from "@/components/modules/IconComponent.vue"
+import { useStore } from "@/stores/Quiz.js"
 import { ref, onMounted } from 'vue'
 import { useRouter } from "vue-router"
 import AxiosInstance from '@/axiosInstance.js'
 const router = useRouter()
+const store = useStore()
+
+const modes = ref([])
 
 onMounted(async () => {
   const modeData = await AxiosInstance.get('/quiz/mode')
-  console.log(modeData.data)
   modes.value = modeData.data
 })
 
@@ -67,5 +70,9 @@ const getBackground = (modeName) => {
   }
 }
 
-const modes = ref([])
+
+const selectMode = (modeName) => {
+  store.setMode(modeName)
+  router.push({ name: 'difficultyPage' })
+}
 </script>

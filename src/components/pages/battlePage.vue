@@ -28,17 +28,12 @@
 import NewsTitle from "@/components/modules/NewsTitleComponent.vue";
 import News from "@/components/modules/NewsComponent.vue";
 import Icon from "@/components/modules/IconComponent.vue";
-import { ref, computed, onMounted } from "vue";
+import { ref, computed } from "vue";
+import { useStore } from "@/stores/Quiz"
 import { useRouter } from "vue-router";
 import axiosInstance from "@/axiosInstance";
 
-// Props
-const props = defineProps({
-  difficulty: {
-    type: Number,
-    default: 1,
-  },
-});
+const store = useStore()
 
 // Router
 const router = useRouter();
@@ -92,7 +87,7 @@ const catSettingsMap = {
   },
 };
 
-const catSettings = catSettingsMap[props.difficulty] || catSettingsMap[1];
+const catSettings = catSettingsMap[store.difficulty] || catSettingsMap[1];
 
 // Reactive States
 const current = ref(0);
@@ -106,23 +101,10 @@ const currentQuiz = computed(() => quizData.value[current.value]);
 
 // Events
 const handleAnswer = (answer) => {
-  answers.value.push({
-    quizId: currentQuiz.value.id,
-    order: current.value,
-    answer: answer,
-    answerTime: null,
-  });
-  
-  if (current.value === quizData.value.length - 1) {
-    router.push(
-      {
-        name: "resultPage",
-        params: {
-          difficulty: props.difficulty,
-          answers: answers.value
-        }
-      }
-    );
+  store.addAnswer(answer)
+  answers.value.push(answer);
+  if (current.value === quizSet.length - 1) {
+    router.push({ name: "resultPage" });
   } else {
     current.value++;
   }
@@ -132,6 +114,11 @@ const battleEvent = () => {
   visibleCats.value = false;
 };
 
+setTimeout(() => {
+  store.clearAnswers()
+  store.setQuestions(quizSet)
+  visibleQuiz.value = true;
+}, 3000);
 </script>
 
 <style scoped>

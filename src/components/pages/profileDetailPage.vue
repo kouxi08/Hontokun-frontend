@@ -51,9 +51,9 @@ const tableHeader = [
   { name: "あなた" }
 ]
 const tableContent = [
-  { id: 1, correction: "correct", yourAnser: "correct" },
-  { id: 2, correction: "correct", yourAnser: "incorrect" },
-  { id: 3, correction: "incorrect", yourAnser: "correct" },
+  { id: 1, correction: true, yourAnswer: true },
+  { id: 2, correction: true, yourAnswer: false },
+  { id: 3, correction: false, yourAnswer: true },
 ];
 const quizSet = [
   {
@@ -104,6 +104,6 @@ const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => false)
 
 const arrestCat = () => {
   // ふろしきネコのページに遷移
-  router.push({  name: 'battlePage', params: { difficulty: 1 } })
+  router.push({ name: 'battlePage', params: { difficulty: 1 } })
 }
 </script>

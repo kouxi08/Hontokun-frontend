@@ -25,9 +25,9 @@ const routes = [
   { path: '/', name: "topPage", component: topPage },
   { path: '/main', name: "mainPage", component: mainPage },
   { path: '/main/mode', name: "modePage", component: modePage },
-  { path: '/main/difficulty/:type', name: "difficultyPage", props: true, component: difficultyPage },
-  { path: '/battle/:difficulty', name: "battlePage", props: true, component: battlePage },
-  { path: '/result/:difficulty', name: "resultPage", props: true, component: resultPage },
+  { path: '/main/difficulty', name: "difficultyPage", component: difficultyPage },
+  { path: '/battle', name: "battlePage", component: battlePage },
+  { path: '/result', name: "resultPage", component: resultPage },
   { path: '/signup', name: "signupPage", component: signupPage },
   { path: '/login', name: "loginPage", component: loginPage },
   { path: '/profile', name: "profilePage", component: profilePage },
@@ -41,7 +41,7 @@ const router = createRouter({
   routes,
 })
 
-const allowedDirectAccess = ['/', '/login', '/signup', '/main', '/profile', '/notFound']
+const allowedDirectAccess = ['/', '/login', '/signup', '/main', '/profile/detail', '/notFound']
 
 router.beforeEach((to, from, next) => {
   if (allowedDirectAccess.includes(to.path)) {
