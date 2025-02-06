@@ -53,7 +53,7 @@ const tableHeader = [
 const tableContent = [
   { id: 1, correction: true, yourAnswer: true },
   { id: 2, correction: true, yourAnswer: false },
-  { id: 3, correction: false, yourAnwser: true },
+  { id: 3, correction: false, yourAnswer: true },
 ];
 const quizSet = [
   {
