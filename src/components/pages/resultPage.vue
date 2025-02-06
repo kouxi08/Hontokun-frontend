@@ -72,6 +72,17 @@ onMounted(async () => {
     ]
   });
 
+=======
+const props = defineProps({
+  difficulty: {
+    type: Number,
+    default: 1,
+  },
+  answers: {
+    type: Array,
+    required: true,
+  },
+});
   console.log(res.data);
   quizSet.value = res.data.quizList;
   isAnswerRevealed.value = Array.from({ length: quizSet.value.length }, () => false);
