@@ -85,6 +85,8 @@ const background = ref("");
 const answers = ref([]);
 const quizSet = ref([]);
 
+const yourAnswer = store.answers
+
 const gotMessage = {
   titleStroke: "stroke-accent-4",
   subTitleStroke: "stroke-accent-2",
@@ -98,11 +100,7 @@ const gotAwayMessage = {
   gotAwaySub: "にげられてしまった",
 };
 const tableHeader = [{ name: "ばんごう" }, { name: "こたえ" }, { name: "あなた" }];
-const tableContent = [
-  { id: 1, correction: "correct", yourAnser: "correct" },
-  { id: 2, correction: "correct", yourAnser: "incorrect" },
-  { id: 3, correction: "incorrect", yourAnser: "correct" },
-];
+const tableContent = store.tableContent;
 
 const showResultPage = () => {
   isResultMessage.value = false;

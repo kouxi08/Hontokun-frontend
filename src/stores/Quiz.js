@@ -4,7 +4,8 @@ export const useStore = defineStore('quiz', {
   state: () => ({
     mode: null,
     difficulty: null,
-    answers: [], // 'answer' の綴りを修正し、配列に変更
+    questions: [], // 問題を保存する配列
+    answers: [],   // ユーザーの回答を保存する配列
   }),
   actions: {
     setMode(mode) {
@@ -13,11 +14,23 @@ export const useStore = defineStore('quiz', {
     setDifficulty(difficulty) {
       this.difficulty = difficulty
     },
-    addAnswer(answer) { // 'setAnswer' を 'addAnswer' に変更し、配列に追加する動作に
+    setQuestions(questions) {
+      this.questions = questions
+    },
+    addAnswer(answer) {
       this.answers.push(answer)
     },
-    clearAnswers() { // 答えをクリアするメソッドを追加
+    clearAnswers() {
       this.answers = []
     }
+  },
+  getters: {
+    tableContent() {
+      return this.questions.map((question, index) => ({
+        id: index + 1,
+        correction: question.correctAnswer,
+        yourAnswer: this.answers[index] || ''
+      }))
+    }
   }
-})
+});

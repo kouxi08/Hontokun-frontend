@@ -41,7 +41,7 @@
 import Level from '@/components/modules/LevelComponent.vue'
 import XP from '@/components/modules/XpComponent.vue'
 import Icon from "@/components/modules/IconComponent.vue"
-import { useStore } from "@/stores/Quiz"
+import { useStore } from "@/stores/Quiz.js"
 import { ref, onMounted } from 'vue'
 import { useRouter } from "vue-router"
 import AxiosInstance from '@/axiosInstance.js'

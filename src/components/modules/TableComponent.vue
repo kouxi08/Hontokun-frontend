@@ -15,10 +15,12 @@
           class="min-w-[96px] xs:h-[40px] sm:h-[48px] px-[8px] py-[4px] border-t-[1.5px] border-black cursor-default">
           <td class="px-4 hover:bg-gray-100">{{ row.id }}</td>
           <td class="px-4 hover:bg-gray-100">
-            <Icon :name="row.correction" class="w-6 h-6 inline-block" />
+            <Icon v-if="row.correction" name="correct" class="w-6 h-6 inline-block" />
+            <Icon v-else name="incorrect" class="w-6 h-6 inline-block" />
           </td>
           <td class="px-4 hover:bg-gray-100">
-            <Icon :name="row.yourAnser" class="w-6 h-6 inline-block" />
+            <Icon v-if="row.yourAnswer" name="correct" class="w-6 h-6 inline-block" />
+            <Icon v-else name="incorrect" class="w-6 h-6 inline-block" />
           </td>
         </tr>
       </tbody>

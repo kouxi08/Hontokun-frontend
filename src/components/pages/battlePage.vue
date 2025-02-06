@@ -14,10 +14,9 @@
         <News :title="currentQuiz.questionTitle" :img="currentQuiz.img" :content="currentQuiz.content"
           class="pt-[32px]" />
         <div class="flex justify-between mx-[48px] pt-[32px]">
-          <Icon name="correct" width="96" height="96" class="md:w-[128px] cursor-pointer"
-            @click="handleAnswer('correct')" />
+          <Icon name="correct" width="96" height="96" class="md:w-[128px] cursor-pointer" @click="handleAnswer(true)" />
           <Icon name="incorrect" width="96" height="96" class="md:w-[128px] cursor-pointer"
-            @click="handleAnswer('incorrect')" />
+            @click="handleAnswer(false)" />
         </div>
       </div>
       <img v-show="visibleCats" src="/hontokun.svg" alt="" class="absolute bottom-[32px] left-1/2 -translate-x-1/2">
@@ -122,6 +121,8 @@ const battleEvent = () => {
 };
 
 setTimeout(() => {
+  store.clearAnswers()
+  store.setQuestions(quizSet)
   visibleQuiz.value = true;
 }, 3000);
 </script>
