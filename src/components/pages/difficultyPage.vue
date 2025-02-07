@@ -30,11 +30,11 @@
 import Level from '@/components/modules/LevelComponent.vue'
 import Icon from "@/components/modules/IconComponent.vue";
 import XP from "@/components/modules/XpComponent.vue";
-import { useStore } from "@/stores/Quiz"
+import { useQuizStore } from "@/stores/Quiz"
 import { useRouter } from "vue-router"
 const router = useRouter()
 const difficulties = ["1.png", "2.png", "3.png", "4.png", "5.png"];
-const store = useStore()
+const store = useQuizStore()
 
 const selectDifficulty = (difficulty) => {
   store.setDifficulty(difficulty)

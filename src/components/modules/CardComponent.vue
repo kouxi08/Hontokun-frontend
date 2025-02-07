@@ -23,8 +23,8 @@
       <!-- 詳細カードを繰り返し表示 -->
       <div v-for="attempt in attempts" :key="attempt"
         class="flex justify-between items-center w-full h-[80px] shadow-card rounded-lg px-4 py-2 cursor-pointer hover:bg-[#C5C5C5]"
-        @click="router.push({ name: attempt.to })">
-        <p class="font-zenMaru text-[#808080] text-[16px] w-[80px]">{{ attempt.timeAgo }}</p>
+        @click="handleDetailClick(attempt)">
+        <p class="font-zenMaru text-[#808080] text-[16px] w-[80px]">{{ attempt.answeredAt }}</p>
         <Rate v-if="attempt.accuracy < 50" :value="attempt.accuracy" size="sm" color="danger" />
         <Rate v-else :value="attempt.accuracy" size="sm" color="secondary" />
         <Icon name="card-right" width="24" height="24" />
@@ -39,6 +39,16 @@ import Rate from "@/components/modules/RateComponent.vue";
 import Icon from "@/components/modules/IconComponent.vue";
 import { useRouter } from 'vue-router'
 const router = useRouter();
+const emit = defineEmits(['detailSelected']);
+
+const handleDetailClick = (attempt) => {
+  emit('detailSelected', {
+    iconName: props.iconName,
+    iconImage: props.iconImage,
+    attempt: attempt
+  });
+  router.push({ name: 'profileDetailPage' });
+};
 
 // 受け取るprops
 const props = defineProps({

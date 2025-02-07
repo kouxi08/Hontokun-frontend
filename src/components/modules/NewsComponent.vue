@@ -12,7 +12,8 @@
           <Button size="xs" color="danger" class="absolute top-0 right-0 m-[8px]">報告</Button>
         </div>
       </div>
-      <p class="font-notoSans font-bold xs:text-[12px] md:text-[16px] tracking-wider leading-[32px]">
+      <p
+        class="font-notoSans font-bold xs:text-[12px] md:text-[16px] tracking-wider leading-[32px] overflow-hidden overflow-y-auto">
         {{ props.content }}
       </p>
     </div>

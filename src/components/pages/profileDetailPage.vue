@@ -5,12 +5,12 @@
     <div class="w-full grid grid-cols-3 justify-between items-center pt-[32px] px-[48px]">
       <Icon name="arrow-left-line" width="32" height="32" class="justify-self-start cursor-pointer"
         @click="router.push({ name: 'profilePage' })" />
-      <p class="font-zenMaru text-[16px] text-center">{{ catName }}</p>
+      <p class="font-zenMaru text-[16px] text-center">{{ store.catName }}</p>
     </div>
-    <Rate value="32" size="sm" class="absolute top-[40px] right-[48px]" />
+    <Rate :value="store.accuracy" size="sm" class="absolute top-[40px] right-[48px]" />
     <!-- ネコとボタン -->
     <div class="relative h-44 mx-[48px] my-[24px]">
-      <img :src="catImage" alt="" height="120" class="absolute left-1/2 -translate-x-1/2">
+      <img :src="store.catUrl" alt="" height="120" class="absolute left-1/2 -translate-x-1/2">
       <Button color="primary" size="xs" class="absolute left-1/2 bottom-0 -translate-x-1/2">つかまえる</Button>
     </div>
     <!-- スクロール可能な部分 -->
@@ -40,11 +40,11 @@ import News from '@/components/modules/NewsComponent.vue'
 import Explain from '@/components/modules/ExplainComponent.vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useProfileStore } from '@/stores/Profile'
 
 const router = useRouter()
+const store = useProfileStore()
 
-const catName = "ふろしきネコ"
-const catImage = "/hurosiki.svg"
 const tableHeader = [
   { name: "ばんごう" },
   { name: "こたえ" },
@@ -103,7 +103,6 @@ const explainData = [
 const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => false))
 
 const arrestCat = () => {
-  // ふろしきネコのページに遷移
-  router.push({ name: 'battlePage', params: { difficulty: 1 } })
+  router.push({ name: "battlePage" })
 }
 </script>

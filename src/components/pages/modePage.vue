@@ -41,12 +41,12 @@
 import Level from '@/components/modules/LevelComponent.vue'
 import XP from '@/components/modules/XpComponent.vue'
 import Icon from "@/components/modules/IconComponent.vue"
-import { useStore } from "@/stores/Quiz.js"
+import { useQuizStore } from "@/stores/Quiz.js"
 import { ref, onMounted } from 'vue'
 import { useRouter } from "vue-router"
 import AxiosInstance from '@/axiosInstance.js'
 const router = useRouter()
-const store = useStore()
+const store = useQuizStore()
 
 const modes = ref([])
 
@@ -73,6 +73,25 @@ const getBackground = (modeName) => {
 
 const selectMode = (modeName) => {
   store.setMode(modeName)
-  router.push({ name: 'difficultyPage' })
+  switch (modeName) {
+    case "バトル":
+      router.push({ name: 'difficultyPage' })
+      break;
+    case "スピード":
+      router.push({ name: 'mainPage' })
+      break;
+    case "ランク":
+      router.push({ name: 'mainPage' })
+      break;
+    case "ムゲン":
+      router.push({ name: 'mainPage' })
+      break;
+    case "トリセツ":
+      router.push({ name: 'mainPage' })
+      break;
+    default:
+      router.push({ name: 'mainPage' })
+      break;
+  }
 }
 </script>

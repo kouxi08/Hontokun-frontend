@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useStore = defineStore('quiz', {
+export const useQuizStore = defineStore('quiz', {
   state: () => ({
     mode: null,
     difficulty: null,

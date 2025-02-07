@@ -38,51 +38,26 @@ import Table from "@/components/modules/TableComponent.vue";
 import News from "@/components/modules/NewsComponent.vue";
 import Button from "@/components/modules/ButtonComponent.vue";
 import Explain from '@/components/modules/ExplainComponent.vue'
-import { useStore } from '@/stores/Quiz'
+import { useQuizStore } from '@/stores/Quiz'
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router"
 import axiosInstance from "@/axiosInstance";
 
 const router = useRouter()
-const store = useStore()
+const store = useQuizStore()
 
 onMounted(async () => {
   // TODO: answersをbattlePageから受け取る
+  console.log(store.questions)
   const res = await axiosInstance.post('/quiz/result', {
     "quizMode": 1,
-    "answers": [
-      {
-        "quizId": "",
-        "order": 1,
-        "answerTime": 10,
-        "answer": "TRUE"
-      },
-      {
-        "quizId": "",
-        "order": 2,
-        "answerTime": 10,
-        "answer": "TRUE"
-      },
-      {
-        "quizId": "",
-        "order": 3,
-        "answerTime": 10,
-        "answer": "TRUE"
-      }
-    ]
+    "answers": store.questions.map((item, index) => ({
+      "quizId": item.id,
+      "order": index + 1,  // または item.order を使用
+      "answerTime": 10,    // これは固定値か、別の方法で計算する必要があるかもしれません
+      "answer": item.correctAnswer
+    }))
   });
-
-=======
-const props = defineProps({
-  difficulty: {
-    type: Number,
-    default: 1,
-  },
-  answers: {
-    type: Array,
-    required: true,
-  },
-});
   console.log(res.data);
   quizSet.value = res.data.quizList;
   isAnswerRevealed.value = Array.from({ length: quizSet.value.length }, () => false);
