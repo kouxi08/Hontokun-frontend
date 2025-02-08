@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia';
-export const useProfileStore = defineStore('profile', {
+import { defineStore } from "pinia";
+export const useProfileStore = defineStore("profile", {
   state: () => ({
     id: null,
     catName: null,
@@ -8,15 +8,15 @@ export const useProfileStore = defineStore('profile', {
   }),
   actions: {
     setCat(id, catName, catUrl, accuracy) {
-      this.id = id
-      this.catName = catName
-      this.catUrl = catUrl
-      this.accuracy = accuracy
+      this.id = id;
+      this.catName = catName;
+      this.catUrl = catUrl;
+      this.accuracy = accuracy;
     },
     clearCat() {
-      this.catName = null
-      this.catUrl = null
-      this.accuracy = null
+      this.catName = null;
+      this.catUrl = null;
+      this.accuracy = null;
     },
-  }
+  },
 });

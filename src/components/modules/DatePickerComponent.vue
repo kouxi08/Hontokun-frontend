@@ -14,8 +14,7 @@
           v-for="(month, index) in months"
           :key="index"
           class="month-button"
-          @click="selectMonth(index + 1)"
-        >
+          @click="selectMonth(index + 1)">
           {{ month }}
         </button>
       </div>

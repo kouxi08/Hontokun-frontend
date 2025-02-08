@@ -9,8 +9,7 @@
       :stroke-width="strokeWidth"
       :stroke-dasharray="circumference"
       :stroke-dashoffset="strokeDashoffset"
-      stroke="#FFDA29"
-    />
+      stroke="#FFDA29" />
     <!-- 中央の円 -->
     <circle class="center-circle" cx="50" cy="50" :r="centerCircleRadius" :fill="currentColor" />
     <!-- 数値表示 -->
