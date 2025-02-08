@@ -3,8 +3,8 @@
     <div class="bg-detective-offices">
       <div class="flex justify-between items-center px-[24px] pt-[56px]">
         <div class="flex gap-[16px]">
-          <Level />
-          <XP value="4" class="bg-white border-2 border-primary rounded-[4px]" />
+          <Level>{{ userStore.level }}</Level>
+          <XP :value="userStore.experience" class="bg-white border-2 border-primary rounded-[4px]" />
         </div>
         <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
           @click="router.push({ name: 'profilePage' })">
@@ -41,12 +41,14 @@
 import Level from '@/components/modules/LevelComponent.vue'
 import XP from '@/components/modules/XpComponent.vue'
 import Icon from "@/components/modules/IconComponent.vue"
-import { useQuizStore } from "@/stores/Quiz.js"
+import { useQuizStore } from "@/stores/Quiz"
+import { useUserStore } from '@/stores/User'
 import { ref, onMounted } from 'vue'
 import { useRouter } from "vue-router"
 import AxiosInstance from '@/axiosInstance.js'
 const router = useRouter()
 const store = useQuizStore()
+const userStore = useUserStore()
 
 const modes = ref([])
 

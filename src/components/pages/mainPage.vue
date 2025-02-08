@@ -2,9 +2,9 @@
   <div class="w-screen h-screen" v-if="loading">
     <div class="bg-detective-offices">
       <div class="flex justify-between items-center px-[24px] pt-[56px]">
-        <div class="flex gap-[8px]">
-          <Level>{{ user.level }}</Level>
-          <XP :value="user.experience" class="bg-white border-2 border-primary rounded-[4px]" />
+        <div class="flex gap-[16px]">
+          <Level>{{ store.level }}</Level>
+          <XP :value="store.experience" class="bg-white border-2 border-primary rounded-[4px]" />
         </div>
         <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
           @click="router.push({ name: 'profilePage' })">
@@ -32,6 +32,7 @@ import Icon from '@/components/modules/IconComponent.vue'
 import Message from '@/components/modules/MessageComponent.vue'
 import LoadingPage from '@/components/pages/loadingPage.vue'
 import AxiosInstance from '@/axiosInstance.js'
+import { useUserStore } from '@/stores/User'
 import { getAuth } from 'firebase/auth'
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
@@ -42,15 +43,12 @@ const user = ref({})
 const costume = ref('')
 const loading = ref(false)
 const messages = ref([])
+const store = useUserStore()
 
 onMounted(async () => {
   try {
     if (auth.currentUser && auth.currentUser.isAnonymous) {
-      const gestUserData = {
-        nickname: "ゲスト",
-        level: 1,
-        experience: 0
-      }
+      store.setUser("ゲスト", 1, 0)
       user.value = gestUserData
       costume.value = "/honto.svg"
       loading.value = true
@@ -59,11 +57,11 @@ onMounted(async () => {
       ]
     }
     const main = await AxiosInstance.get('/main')
-    user.value = main.data.user
+    store.setUser(main.data.user.nickname, main.data.user.level, main.data.user.experience)
     costume.value = main.data.costume.url
     loading.value = true
     messages.value = [
-      `ようこそ！\n${user.value.nickname}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`,
+      `ようこそ！\n${store.userName}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`,
     ];
   } catch (error) {
     console.error('データの取得に失敗しました:', error)
