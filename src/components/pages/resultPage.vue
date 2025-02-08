@@ -8,10 +8,10 @@
         @click="showResultPage">
         <div v-if="accuracy >= 0.5">
           <p class="text-[64px] font-zenMaru text-white text-center font-bold stroke-accent-4">
-            おめでとう！
+            おめでとう
           </p>
           <p class="text-[24px] font-zenMaru text-white text-center font-bold stroke-accent-2">
-            指名手配猫そつかまえた！
+            {{ quizStore.catName }}をつかまえた！
           </p>
         </div>
         <div v-else>

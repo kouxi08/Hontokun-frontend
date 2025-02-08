@@ -55,6 +55,7 @@ onMounted(async () => {
       costume.value = res.data.costume.url
       enemy.value = res.data.enemy
       quizStore.setQuestions(res.data.quizzes)
+      quizStore.setCatName(res.data.enemy.name)
     })
     .catch((err) => {
       console.error(err);

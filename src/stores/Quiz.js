@@ -4,6 +4,7 @@ export const useQuizStore = defineStore('quiz', {
   state: () => ({
     mode: null,
     difficulty: null,
+    catName: null,
     questions: [], // 問題を保存する配列
     answers: [],   // ユーザーの回答を保存する配列
   }),
@@ -13,6 +14,9 @@ export const useQuizStore = defineStore('quiz', {
     },
     setDifficulty(difficulty) {
       this.difficulty = difficulty
+    },
+    setCatName(catName) {
+      this.catName = catName
     },
     setQuestions(questions) {
       this.questions = questions
