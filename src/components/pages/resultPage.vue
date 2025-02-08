@@ -20,7 +20,7 @@
             <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
               :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
             <Explain v-else :type="quiz.type" :explanation="quiz.explanation" :answer="quiz.answer"
-              :keyword="quiz.keyword" :newsLink="quiz.newsUrl"
+              :yourAnswer="quizStore.answers[index]" :keyword="quiz.keyword" :newsLink="quiz.newsUrl"
               @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
           </div>
         </div>

@@ -8,21 +8,30 @@
     </div>
 
     <!-- マルバツの場合 -->
-    <div v-if="type === 'TRUE_OR_FALSE'" class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
-      <p class="justify-self-start bg-accent font-bold text-white text-[16px] py-[4px] px-[8px] rounded-[8px]">
-        正解
-      </p>
-      <Icon class="justify-self-center" :name="answer ? 'correct' : 'incorrect'" width="24" height="24" />
-      <a v-if="answer === 'TRUE'" class="justify-self-end text-blue-500 text-[12px] font-bold" :href="props.newsLink"
-        target="_blank">
-        ニュース記事へ
-      </a>
+    <div v-if="type === 'TRUE_OR_FALSE'" class="w-full">
+      <div class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
+        <p class="justify-self-start bg-primary font-bold text-white text-[16px] py-[4px] px-[8px] rounded-[8px]">
+          こたえ
+        </p>
+        <Icon class="justify-self-center" :name="answer ? 'correct' : 'incorrect'" width="32" height="32" />
+        <a v-if="answer === 'TRUE'" class="justify-self-end text-blue-500 text-[12px] font-bold" :href="props.newsLink"
+          target="_blank">
+          ニュース記事へ
+        </a>
+      </div>
+      <div class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
+        <p class="justify-self-start font-bold text-black text-[10px] py-[4px] px-[8px] rounded-[8px]">
+          あなたのこたえ
+        </p>
+        <Icon class="justify-self-center" :name="yourAnswer ? 'correct' : 'incorrect'" width="24" height="24" />
+      </div>
     </div>
     <!-- 複数回答の場合 -->
     <div v-if="type === 'MULTIPLE_CHOICE'" class="mt-[16px]">
       <!-- 正解表示 -->
       <div v-if="answer === 'true'" class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
-        <p class="justify-self-start bg-accent font-bold text-white text-[16px] py-[4px] px-[8px] rounded-[8px]">
+        <p
+          class="justify-self-start bg-primary font-bold text-white text-stroke-2 text-[16px] py-[4px] px-[8px] rounded-[8px]">
           正解
         </p>
         <p class="font-bold text-[16px] text-center">正解の選択肢</p>
