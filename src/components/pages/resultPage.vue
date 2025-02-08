@@ -6,12 +6,22 @@
       </div>
       <div v-show="isResultMessage" class="h-full flex flex-col gap-[40px] items-center justify-center"
         @click="showResultPage">
-        <p class="text-[64px] font-zenMaru text-white font-bold" :class="gotMessage.titleStroke">
-          {{ gotMessage.title }}
-        </p>
-        <p class="text-[24px] font-zenMaru text-white font-bold" :class="gotMessage.subTitleStroke">
-          {{ gotMessage.subTitle }}
-        </p>
+        <div v-if="accuracy >= 0.5">
+          <p class="text-[64px] font-zenMaru text-white text-center font-bold stroke-accent-4">
+            おめでとう！
+          </p>
+          <p class="text-[24px] font-zenMaru text-white text-center font-bold stroke-accent-2">
+            指名手配猫そつかまえた！
+          </p>
+        </div>
+        <div v-else>
+          <p class="text-[64px] font-zenMaru text-white text-center font-bold stroke-secondary-4">
+            ざんねん
+          </p>
+          <p class="text-[24px] font-zenMaru text-white text-center font-bold stroke-secondary-2">
+            にげられてしまった…
+          </p>
+        </div>
       </div>
       <div v-show="resultPage" class="h-full xs:py-[56px] sm:py-[64px] flex flex-col justify-between">
         <Table :header="tableHeader" :content="tableContent" />
@@ -60,8 +70,8 @@ onMounted(async () => {
   });
   console.log(res.data)
   quizSet.value = res.data.quizList;
+  accuracy.value = res.data.accuracy
   isAnswerRevealed.value = Array.from({ length: quizSet.value.length }, () => false);
-
 })
 
 const isBattle = ref(true);
@@ -70,6 +80,7 @@ const resultPage = ref(false);
 const background = ref("");
 const answers = ref([]);
 const quizSet = ref([]);
+const accuracy = ref()
 
 const yourAnswer = quizStore.answers
 
