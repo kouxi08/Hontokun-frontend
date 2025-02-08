@@ -7,18 +7,18 @@
       <Button size="xs" color="danger" class="justify-self-end">報告</Button>
     </div>
 
-    <!-- 本当のニュースかフェイクかフェイクか -->
+    <!-- マルバツの場合 -->
     <div v-if="type === 'TRUE_OR_FALSE'" class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
       <p class="justify-self-start bg-accent font-bold text-white text-[16px] py-[4px] px-[8px] rounded-[8px]">
         正解
       </p>
       <Icon class="justify-self-center" :name="answer ? 'correct' : 'incorrect'" width="24" height="24" />
-      <a v-if="answer === 'true'" class="justify-self-end text-blue-500 text-[12px] font-bold" href="example.com"
+      <a v-if="answer === 'TRUE'" class="justify-self-end text-blue-500 text-[12px] font-bold" :href="props.newsLink"
         target="_blank">
         ニュース記事へ
       </a>
     </div>
-
+    <!-- 複数回答の場合 -->
     <div v-if="type === 'MULTIPLE_CHOICE'" class="mt-[16px]">
       <!-- 正解表示 -->
       <div v-if="answer === 'true'" class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
@@ -66,14 +66,22 @@ const props = defineProps({
     required: true,
     validator: (value) => ["TRUE_OR_FALSE", "MULTIPLE_CHOICE"].includes(value),
   },
+  // 問題の答え
   answer: {
     type: Boolean,
     required: true,
   },
+  // ユーザーの答え
+  yourAnswer: {
+    type: Boolean,
+    required: true,
+  },
+  // 解説の文章
   explanation: {
     type: String,
     required: true,
   },
+  // 検索ワード
   keyword: {
     type: String,
     default: "",
@@ -86,6 +94,10 @@ const props = defineProps({
     type: Number,
     default: -1,
   },
+  newsLink: {
+    type: String,
+    default: ""
+  }
 });
 
 // State管理

@@ -20,7 +20,8 @@
             <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
               :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
             <Explain v-else :type="quiz.type" :explanation="quiz.explanation" :answer="quiz.answer"
-              :keyword="quiz.keyword" @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
+              :keyword="quiz.keyword" :newsLink="quiz.newsUrl"
+              @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
           </div>
         </div>
         <div class="flex flex-col justify-center items-center gap-[24px] mx-[48px] pt-[5%]">
@@ -48,7 +49,6 @@ const quizStore = useQuizStore()
 
 onMounted(async () => {
   // TODO: answersをbattlePageから受け取る
-  console.log(quizStore.answers[0])
   const res = await axiosInstance.post('/quiz/result', {
     "quizMode": 1,
     "answers": quizStore.questions.map((item, index) => ({
