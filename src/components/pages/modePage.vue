@@ -47,7 +47,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from "vue-router"
 import AxiosInstance from '@/axiosInstance.js'
 const router = useRouter()
-const store = useQuizStore()
+const quizStore = useQuizStore()
 const userStore = useUserStore()
 
 const modes = ref([])
@@ -74,7 +74,7 @@ const getBackground = (modeName) => {
 
 
 const selectMode = (modeName) => {
-  store.setMode(modeName)
+  quizStore.setMode(modeName)
   switch (modeName) {
     case "バトル":
       router.push({ name: 'difficultyPage' })

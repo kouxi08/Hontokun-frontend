@@ -3,8 +3,8 @@
     <div class="bg-detective-offices">
       <div class="flex justify-between items-center px-[24px] pt-[56px]">
         <div class="flex gap-[16px]">
-          <Level>{{ store.level }}</Level>
-          <XP :value="store.experience" class="bg-white border-2 border-primary rounded-[4px]" />
+          <Level>{{ userStore.level }}</Level>
+          <XP :value="userStore.experience" class="bg-white border-2 border-primary rounded-[4px]" />
         </div>
         <div class="bg-[#FDFDFD] rounded-full p-[8px] shadow-[0_0_4px_0_rgba(171,171,171,0.25)] cursor-pointer"
           @click="router.push({ name: 'profilePage' })">
@@ -43,12 +43,12 @@ const user = ref({})
 const costume = ref('')
 const loading = ref(false)
 const messages = ref([])
-const store = useUserStore()
+const userStore = useUserStore()
 
 onMounted(async () => {
   try {
     if (auth.currentUser && auth.currentUser.isAnonymous) {
-      store.setUser("ゲスト", 1, 0)
+      userStore.setUser("ゲスト", 1, 0)
       user.value = gestUserData
       costume.value = "/honto.svg"
       loading.value = true
@@ -57,11 +57,11 @@ onMounted(async () => {
       ]
     }
     const main = await AxiosInstance.get('/main')
-    store.setUser(main.data.user.nickname, main.data.user.level, main.data.user.experience)
+    userStore.setUser(main.data.user.nickname, main.data.user.level, main.data.user.experience)
     costume.value = main.data.costume.url
     loading.value = true
     messages.value = [
-      `ようこそ！\n${store.userName}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`,
+      `ようこそ！\n${userStore.userName}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`,
     ];
   } catch (error) {
     console.error('データの取得に失敗しました:', error)

@@ -5,12 +5,12 @@
     <div class="w-full grid grid-cols-3 justify-between items-center pt-[32px] px-[48px]">
       <Icon name="arrow-left-line" width="32" height="32" class="justify-self-start cursor-pointer"
         @click="router.push({ name: 'profilePage' })" />
-      <p class="font-zenMaru text-[16px] text-center">{{ store.catName }}</p>
+      <p class="font-zenMaru text-[16px] text-center">{{ profileStore.catName }}</p>
     </div>
-    <Rate :value="store.accuracy" size="sm" class="absolute top-[40px] right-[48px]" />
+    <Rate :value="profileStore.accuracy" size="sm" class="absolute top-[40px] right-[48px]" />
     <!-- ネコとボタン -->
     <div class="relative h-44 mx-[48px] my-[24px]">
-      <img :src="store.catUrl" alt="" height="120" class="absolute left-1/2 -translate-x-1/2">
+      <img :src="profileStore.catUrl" alt="" height="120" class="absolute left-1/2 -translate-x-1/2">
       <Button color="primary" size="xs" class="absolute left-1/2 bottom-0 -translate-x-1/2">つかまえる</Button>
     </div>
     <!-- スクロール可能な部分 -->
@@ -43,7 +43,7 @@ import { useRouter } from 'vue-router'
 import { useProfileStore } from '@/stores/Profile'
 
 const router = useRouter()
-const store = useProfileStore()
+const profileStore = useProfileStore()
 
 const tableHeader = [
   { name: "ばんごう" },

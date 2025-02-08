@@ -35,11 +35,11 @@ import { useUserStore } from "@/stores/User"
 import { useRouter } from "vue-router"
 const router = useRouter()
 const difficulties = ["1.png", "2.png", "3.png", "4.png", "5.png"];
-const store = useQuizStore()
+const quizStore = useQuizStore()
 const userStore = useUserStore()
 
 const selectDifficulty = (difficulty) => {
-  store.setDifficulty(difficulty)
+  quizStore.setDifficulty(difficulty)
   router.push({ name: 'battlePage' })
 }
 

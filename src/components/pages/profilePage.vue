@@ -53,7 +53,7 @@ const userName = ref("")
 const user = ref({})
 const cats = ref([])
 const loading = ref(false)
-const store = useProfileStore()
+const profileStore = useProfileStore()
 
 // Firebase Authのインスタンスを取得
 const auth = getAuth();
@@ -64,7 +64,7 @@ onMounted(async () => {
     console.log(profile)
     cats.value = profile.data.history.tierList
     user.value = profile.data.user
-    store.clearCat()
+    profileStore.clearCat()
     loading.value = true
   } catch (error) {
     console.error('データの取得に失敗しました:', error)
@@ -72,7 +72,7 @@ onMounted(async () => {
 })
 
 const handleDetailSelected = (data) => {
-  store.setCat(data.iconName, data.iconImage, data.attempt.accuracy)
+  profileStore.setCat(data.iconName, data.iconImage, data.attempt.accuracy)
 };
 
 

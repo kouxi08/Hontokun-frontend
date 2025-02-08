@@ -33,7 +33,7 @@ import { useQuizStore } from "@/stores/Quiz"
 import { useRouter } from "vue-router";
 import axiosInstance from "@/axiosInstance";
 
-const store = useQuizStore()
+const quizStore = useQuizStore()
 
 // Router
 const router = useRouter();
@@ -43,12 +43,12 @@ const enemy = ref('')
 
 onMounted(async () => {
   // Fetch Data
-  await axiosInstance.get(`/quiz/${store.difficulty}`)
+  await axiosInstance.get(`/quiz/${quizStore.difficulty}`)
     .then((res) => {
       quizData.value = res.data.quizzes;
       costume.value = res.data.costume.url
       enemy.value = res.data.enemy
-      store.setQuestions(res.data.quizzes)
+      quizStore.setQuestions(res.data.quizzes)
     })
     .catch((err) => {
       console.error(err);
@@ -77,7 +77,7 @@ const handleAnswer = (answer) => {
 };
 
 const getBackground = () => {
-  switch (store.difficulty) {
+  switch (quizStore.difficulty) {
     case 1:
       return "url(/backgroundImage/forest-path.png)"
 
@@ -100,7 +100,7 @@ const battleEvent = () => {
 };
 
 setTimeout(() => {
-  store.clearAnswers()
+  quizStore.clearAnswers()
   visibleQuiz.value = true;
 }, 3000);
 </script>

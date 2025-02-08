@@ -38,20 +38,20 @@ import Table from "@/components/modules/TableComponent.vue";
 import News from "@/components/modules/NewsComponent.vue";
 import Button from "@/components/modules/ButtonComponent.vue";
 import Explain from '@/components/modules/ExplainComponent.vue'
-import { useQuizStore } from '@/stores/Quiz'
+import { useQuizquizStore } from '@/stores/Quiz'
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router"
 import axiosInstance from "@/axiosInstance";
 
 const router = useRouter()
-const store = useQuizStore()
+const quizStore = useQuizStore()
 
 onMounted(async () => {
   // TODO: answersをbattlePageから受け取る
-  console.log(store.questions)
+  console.log(quizStore.questions)
   const res = await axiosInstance.post('/quiz/result', {
     "quizMode": 1,
-    "answers": store.questions.map((item, index) => ({
+    "answers": quizStore.questions.map((item, index) => ({
       "quizId": item.id,
       "order": index + 1,  // または item.order を使用
       "answerTime": 10,    // これは固定値か、別の方法で計算する必要があるかもしれません
@@ -71,7 +71,7 @@ const background = ref("");
 const answers = ref([]);
 const quizSet = ref([]);
 
-const yourAnswer = store.answers
+const yourAnswer = quizStore.answers
 
 const gotMessage = {
   titleStroke: "stroke-accent-4",
@@ -86,22 +86,22 @@ const gotAwayMessage = {
   gotAwaySub: "にげられてしまった",
 };
 const tableHeader = [{ name: "ばんごう" }, { name: "こたえ" }, { name: "あなた" }];
-const tableContent = store.tableContent;
+const tableContent = quizStore.tableContent;
 
 const showResultPage = () => {
   isResultMessage.value = false;
   resultPage.value = true;
 };
 
-if (store.difficulty == 1) {
+if (quizStore.difficulty == 1) {
   background.value = "url(/backgroundImage/forest-path.png)";
-} else if (store.difficulty == 2) {
+} else if (quizStore.difficulty == 2) {
   background.value = "url(/backgroundImage/evening-cityscape.png)";
-} else if (store.difficulty == 3) {
+} else if (quizStore.difficulty == 3) {
   background.value = "url(/backgroundImage/busy-street-roadside.png)";
-} else if (store.difficulty == 4) {
+} else if (quizStore.difficulty == 4) {
   background.value = "url(/backgroundImage/airport.png)";
-} else if (store.difficulty == 5) {
+} else if (quizStore.difficulty == 5) {
   background.value = "url(/backgroundImage/red-carpet.png)";
 }
 
