@@ -8,7 +8,7 @@
     </div>
 
     <!-- 本当のニュースかフェイクかフェイクか -->
-    <div v-if="type === 'true_or_false'" class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
+    <div v-if="type === 'TRUE_OR_FALSE'" class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
       <p class="justify-self-start bg-accent font-bold text-white text-[16px] py-[4px] px-[8px] rounded-[8px]">
         正解
       </p>
@@ -19,7 +19,7 @@
       </a>
     </div>
 
-    <div v-if="type === 'multiple_choice'" class="mt-[16px]">
+    <div v-if="type === 'MULTIPLE_CHOICE'" class="mt-[16px]">
       <!-- 正解表示 -->
       <div v-if="answer === 'true'" class="w-full grid grid-cols-3 justify-between items-center pt-[24px]">
         <p class="justify-self-start bg-accent font-bold text-white text-[16px] py-[4px] px-[8px] rounded-[8px]">
@@ -64,7 +64,7 @@ const props = defineProps({
   type: {
     type: String,
     required: true,
-    validator: (value) => ["true_or_false", "multiple_choice"].includes(value),
+    validator: (value) => ["TRUE_OR_FALSE", "MULTIPLE_CHOICE"].includes(value),
   },
   answer: {
     type: Boolean,
