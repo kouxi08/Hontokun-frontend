@@ -38,7 +38,7 @@ import Table from "@/components/modules/TableComponent.vue";
 import News from "@/components/modules/NewsComponent.vue";
 import Button from "@/components/modules/ButtonComponent.vue";
 import Explain from '@/components/modules/ExplainComponent.vue'
-import { useQuizquizStore } from '@/stores/Quiz'
+import { useQuizStore } from '@/stores/Quiz'
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router"
 import axiosInstance from "@/axiosInstance";
@@ -48,7 +48,6 @@ const quizStore = useQuizStore()
 
 onMounted(async () => {
   // TODO: answersをbattlePageから受け取る
-  console.log(quizStore.questions)
   const res = await axiosInstance.post('/quiz/result', {
     "quizMode": 1,
     "answers": quizStore.questions.map((item, index) => ({
@@ -58,7 +57,6 @@ onMounted(async () => {
       "answer": item.correctAnswer
     }))
   });
-  console.log(res.data);
   quizSet.value = res.data.quizList;
   isAnswerRevealed.value = Array.from({ length: quizSet.value.length }, () => false);
 

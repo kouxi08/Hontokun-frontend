@@ -61,7 +61,6 @@ const auth = getAuth();
 onMounted(async () => {
   try {
     const profile = await AxiosInstance.get('/history')
-    console.log(profile)
     cats.value = profile.data.history.tierList
     user.value = profile.data.user
     profileStore.clearCat()
