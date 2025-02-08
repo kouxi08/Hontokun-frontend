@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: kouxi00/hontokun-frontend
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
@@ -61,14 +61,14 @@ resources:
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
 
 
-livenessProbe:
-  httpGet:
-    path: /
-    port: 80
-readinessProbe:
-  httpGet:
-    path: /
-    port: 80
+# livenessProbe:
+#   httpGet:
+#     path: /
+#     port: 80
+# readinessProbe:
+#   httpGet:
+#     path: /
+#     port: 80
 
 autoscaling:
   enabled: true
