@@ -68,7 +68,6 @@ onMounted(async () => {
     yourAnswer: quiz.userAnswer == "TRUE"
   }))
   accuracy.value = historyDetail.data.quizSet.accuracy
-  console.log(historyDetail.data)
 })
 
 const isAnswerRevealed = ref([])

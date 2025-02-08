@@ -13,9 +13,9 @@
           {{ gotMessage.subTitle }}
         </p>
       </div>
-      <div v-show="resultPage" class="h-full xs:pt-[56px] sm:pt-[64px]">
+      <div v-show="resultPage" class="h-full xs:py-[56px] sm:py-[64px] flex flex-col justify-between">
         <Table :header="tableHeader" :content="tableContent" />
-        <div class="h-[42%] flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
+        <div class="h-2/3 flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
           <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
             <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
               :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
