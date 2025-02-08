@@ -6,7 +6,7 @@
       <!-- 画像 -->
       <img :src="iconImage" alt="ネコ画像" class="w-[64px] h-[64px] object-contain">
       <!-- 名前 -->
-      <p class="text-sm leading-4 text-center font-zenMaru">
+      <p class="xs:w-[120px] md:w-[160px] text-sm leading-4 text-center font-zenMaru">
         {{ iconName }}
       </p>
       <!-- Rate -->
@@ -43,6 +43,7 @@ const emit = defineEmits(['detailSelected']);
 
 const handleDetailClick = (attempt) => {
   emit('detailSelected', {
+    id: attempt.id,
     iconName: props.iconName,
     iconImage: props.iconImage,
     attempt: attempt

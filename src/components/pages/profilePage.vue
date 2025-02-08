@@ -71,7 +71,7 @@ onMounted(async () => {
 })
 
 const handleDetailSelected = (data) => {
-  profileStore.setCat(data.iconName, data.iconImage, data.attempt.accuracy)
+  profileStore.setCat(data.id, data.iconName, data.iconImage, data.attempt.accuracy)
 };
 
 

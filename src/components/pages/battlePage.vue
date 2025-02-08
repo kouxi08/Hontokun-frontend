@@ -41,6 +41,12 @@ const router = useRouter();
 const costume = ref('')
 const enemy = ref('')
 
+// Reactive States
+const current = ref(0);
+const visibleCats = ref(true);
+const visibleQuiz = ref(false);
+const quizData = ref([]);
+
 onMounted(async () => {
   // Fetch Data
   await axiosInstance.get(`/quiz/${quizStore.difficulty}`)
@@ -56,19 +62,13 @@ onMounted(async () => {
     );
 })
 
-// Reactive States
-const current = ref(0);
-const visibleCats = ref(true);
-const visibleQuiz = ref(false);
-const answers = ref([]);
-const quizData = ref([]);
 
 // Computed Quiz
 const currentQuiz = computed(() => quizData.value[current.value]);
 
 // Events
 const handleAnswer = (answer) => {
-  answers.value.push(answer);
+  quizStore.addAnswer(answer)
   if (current.value === quizData.value.length - 1) {
     router.push({ name: "resultPage" });
   } else {

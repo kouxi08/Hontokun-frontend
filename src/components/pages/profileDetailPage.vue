@@ -38,12 +38,18 @@ import Table from '@/components/modules/TableComponent.vue'
 import NewsTitle from '@/components/modules/NewsTitleComponent.vue'
 import News from '@/components/modules/NewsComponent.vue'
 import Explain from '@/components/modules/ExplainComponent.vue'
-import { ref } from 'vue'
+import AxiosInstance from '@/axiosInstance.js'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useProfileStore } from '@/stores/Profile'
 
 const router = useRouter()
 const profileStore = useProfileStore()
+
+onMounted(async () => {
+  const historyDetail = await AxiosInstance.get(`/history/quiz-set/${profileStore.id}`)
+  console.log(historyDetail)
+})
 
 const tableHeader = [
   { name: "ばんごう" },

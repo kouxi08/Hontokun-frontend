@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen">
+  <div class="w-screen h-screen" v-if="loading">
     <div class="bg-detective-offices">
       <div class="flex justify-between items-center px-[24px] pt-[56px]">
         <div class="flex gap-[16px]">
@@ -35,17 +35,21 @@
       </div>
     </div>
   </div>
+  <LoadingPage v-else />
 </template>
 
 <script setup>
 import Level from '@/components/modules/LevelComponent.vue'
 import XP from '@/components/modules/XpComponent.vue'
 import Icon from "@/components/modules/IconComponent.vue"
+import LoadingPage from "@/components/pages/loadingPage.vue"
 import { useQuizStore } from "@/stores/Quiz"
 import { useUserStore } from '@/stores/User'
 import { ref, onMounted } from 'vue'
 import { useRouter } from "vue-router"
 import AxiosInstance from '@/axiosInstance.js'
+
+const loading = ref(false)
 const router = useRouter()
 const quizStore = useQuizStore()
 const userStore = useUserStore()
@@ -55,6 +59,7 @@ const modes = ref([])
 onMounted(async () => {
   const modeData = await AxiosInstance.get('/quiz/mode')
   modes.value = modeData.data
+  loading.value = true
 })
 
 const getBackground = (modeName) => {
