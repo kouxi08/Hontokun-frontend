@@ -5,5 +5,5 @@
 </template>
 
 <script setup>
-import { firebase } from "./firebase.js"
+import { firebase } from "@/firebase.js";
 </script>
