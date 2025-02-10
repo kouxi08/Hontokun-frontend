@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   hontokun-frontend:
   - apiVersion: v2
+    appVersion: 1.0.2
+    created: "2025-02-10T02:16:12.955813162Z"
+    description: A Helm chart for Kubernetes
+    digest: edfaa2de232e3227a4d54809eecf3a306ebccf69a294024bed4558854d0f1f99
+    name: hontokun-frontend
+    type: application
+    urls:
+    - https://github.com/kouxi08/Hontokun-frontend/releases/download/hontokun-frontend-0.1.2/hontokun-frontend-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: 1.0.1
     created: "2025-02-03T08:08:19.313564861Z"
     description: A Helm chart for Kubernetes
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://github.com/kouxi08/Hontokun-frontend/releases/download/hontokun-frontend-0.1.0/hontokun-frontend-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-03T08:08:19.313572976Z"
+generated: "2025-02-10T02:16:12.955830004Z"
