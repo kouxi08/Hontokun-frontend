@@ -12,14 +12,14 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  id: {
-    type: Number,
-    required: true
-  },
-  title: {
-    type: String,
-    required: true
-  },
-});
+  const props = defineProps({
+    id: {
+      type: Number,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+  });
 </script>

@@ -3,15 +3,29 @@
     <!-- 固定部分 -->
     <!-- ヘッダー -->
     <div class="w-full grid grid-cols-3 justify-between items-center pt-[32px] px-[48px]">
-      <Icon name="arrow-left-line" width="32" height="32" class="justify-self-start cursor-pointer"
+      <Icon
+        name="arrow-left-line"
+        width="32"
+        height="32"
+        class="justify-self-start cursor-pointer"
         @click="router.push({ name: 'profilePage' })" />
-      <p class="font-zenMaru text-[16px] text-center">{{ catName }}</p>
+      <p class="font-zenMaru text-[16px] text-center">{{ profileStore.catName }}</p>
     </div>
-    <Rate value="32" size="sm" class="absolute top-[40px] right-[48px]" />
+    <Rate :value="accuracy" size="sm" class="absolute top-[40px] right-[48px]" />
     <!-- ネコとボタン -->
     <div class="relative h-44 mx-[48px] my-[24px]">
-      <img :src="catImage" alt="" height="120" class="absolute left-1/2 -translate-x-1/2">
-      <Button color="primary" size="xs" class="absolute left-1/2 bottom-0 -translate-x-1/2">つかまえる</Button>
+      <img
+        :src="profileStore.catUrl"
+        alt=""
+        height="120"
+        class="absolute left-1/2 -translate-x-1/2">
+      <Button
+        color="primary"
+        size="xs"
+        class="absolute left-1/2 bottom-0 -translate-x-1/2"
+        @click="arrestCat"
+      >つかまえる</Button
+      >
     </div>
     <!-- スクロール可能な部分 -->
     <div class="flex-1 overflow-y-auto">
@@ -19,11 +33,21 @@
       <Table :header="tableHeader" :content="tableContent" />
       <!-- ニュース -->
       <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
-        <NewsTitle :id="quiz.id" :title="quiz.newsTitle" />
-        <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
-          :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
-        <Explain v-else :type="explainData[index].type" :explanation="explainData[index].explanation"
-          :answer="explainData[index].answer" :keyword="explainData[index].keyword"
+        <NewsTitle :id="index + 1" :title="quiz.question" />
+        <News
+          v-if="isAnswerRevealed[index]"
+          :title="quiz.questionTitle"
+          :img="quiz.img"
+          :content="quiz.content"
+          :show-result="true"
+          @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
+        <Explain
+          v-else
+          :type="quiz.type"
+          :explanation="quiz.explanation"
+          :answer="quiz.answer === 'TRUE'"
+          :your-answer="quiz.userAnswer === 'TRUE'"
+          :keyword="quiz.keyword"
           @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
       </div>
     </div>
@@ -31,79 +55,48 @@
 </template>
 
 <script setup>
-import Icon from '@/components/modules/IconComponent.vue'
-import Rate from '@/components/modules/RateComponent.vue'
-import Button from '@/components/modules/ButtonComponent.vue'
-import Table from '@/components/modules/TableComponent.vue'
-import NewsTitle from '@/components/modules/NewsTitleComponent.vue'
-import News from '@/components/modules/NewsComponent.vue'
-import Explain from '@/components/modules/ExplainComponent.vue'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+  import Icon from "@/components/modules/IconComponent.vue";
+  import Rate from "@/components/modules/RateComponent.vue";
+  import Button from "@/components/modules/ButtonComponent.vue";
+  import Table from "@/components/modules/TableComponent.vue";
+  import NewsTitle from "@/components/modules/NewsTitleComponent.vue";
+  import News from "@/components/modules/NewsComponent.vue";
+  import Explain from "@/components/modules/ExplainComponent.vue";
+  import AxiosInstance from "@/axiosInstance.js";
+  import { ref, computed, onMounted } from "vue";
+  import { useRouter } from "vue-router";
+  import { useProfileStore } from "@/stores/Profile";
+  import { useQuizStore } from "@/stores/Quiz";
 
-const router = useRouter()
+  const router = useRouter();
+  const profileStore = useProfileStore();
+  const quizStore = useQuizStore();
+  const accuracy = ref();
 
-const catName = "ふろしきネコ"
-const catImage = "/hurosiki.svg"
-const tableHeader = [
-  { name: "ばんごう" },
-  { name: "こたえ" },
-  { name: "あなた" }
-]
-const tableContent = [
-  { id: 1, correction: "correct", yourAnser: "correct" },
-  { id: 2, correction: "correct", yourAnser: "incorrect" },
-  { id: 3, correction: "incorrect", yourAnser: "correct" },
-];
-const quizSet = [
-  {
-    id: 1,
-    newsTitle: "これはフェイクニュース？",
-    questionTitle: "台風15号接近 首都圏厳戒態勢",
-    img: "/sample.jpg",
-    content: "台風15号が関東地方に接近中。気象庁は警戒を呼びかけ、各地で厳重な備えが進む。東京都は午後から公共交通機関の計画運休を発表。スーパーには買い出しの長蛇の列。企業は在宅勤務を推奨し、学校は休校を決定。避難所も開設され始めた。強風と豪雨に備え、住民の緊張が高まる。明日未明に最接近の見込み。",
-  },
-  {
-    id: 2,
-    newsTitle: "これはフェイクニュース？",
-    questionTitle: "月面に巨大UFO出現？地球外生命体か",
-    img: "/sample.jpg",
-    content: "NASA発表によると、月面に直径1kmの巨大UFOが出現したとのこと。宇宙ステーションの観測カメラが捉えた映像には、円盤状の物体が月面に着陸する様子が映っていた。専門家は「地球外知的生命体の可能性が高い」と指摘。各国首脳が緊急会議を開き、対応を協議している。",
-  },
-  {
-    id: 3,
-    newsTitle: "これはフェイクニュース？",
-    questionTitle: "実は寝ることは無駄！？",
-    img: "/sample.jpg",
-    content: "最新の研究によると、寝ることは実は時間の無駄だと判明。科学者たちは、睡眠時間を削減することで生産性が飛躍的に向上すると主張しています。この革新的な発見により、人々の生活様式が大きく変わる可能性があります。",
-  }
-]
+  const quizSet = ref([]);
+  const tableContent = ref([]);
 
-const explainData = [
-  {
-    type: "true_or_false",
-    answer: true,
-    explanation: "「台風15号」など台風番号で調べることでより検索しやすくなります。「関東」「接近」で関東に接近した台風の情報が検索で出てきやすくなります。",
-    keyword: "台風15号　関東　接近",
-  },
-  {
-    type: "true_or_false",
-    answer: false,
-    explanation: "「NASA」が公式発表されている記事を検索して、フェイクニュースか判断することができます。",
-    keyword: "NASA　宇宙ステーション　巨大UFO",
-  },
-  {
-    type: "true_or_false",
-    answer: false,
-    explanation: "「睡眠時間」が生産性に関係している記事を検索して、フェイクニュースか判断することができます。",
-    keyword: "睡眠時間　生産　無駄",
-  },
-]
+  const tableHeader = [{ name: "ばんごう" }, { name: "こたえ" }, { name: "あなた" }];
 
-const isAnswerRevealed = ref(Array.from({ length: quizSet.length }, () => false))
+  onMounted(async () => {
+    const historyDetail = await AxiosInstance.get(`/history/quiz-set/${profileStore.id}`);
+    quizSet.value = historyDetail.data.quizList;
+    tableContent.value = quizSet.value.map((quiz, index) => ({
+      id: index + 1,
+      correction: quiz.answer === "TRUE",
+      yourAnswer: quiz.userAnswer == "TRUE",
+    }));
+    accuracy.value = historyDetail.data.quizSet.accuracy;
+  });
 
-const arrestCat = () => {
-  // ふろしきネコのページに遷移
-  router.push({  name: 'battlePage', params: { difficulty: 1 } })
-}
+  const isAnswerRevealed = ref([]);
+
+  onMounted(() => {
+    isAnswerRevealed.value = Array.from({ length: quizSet.value.length }, () => false);
+  });
+
+  const arrestCat = () => {
+    quizStore.setDifficulty(quizSet.value[0].tier);
+    router.push({ name: "battlePage" });
+  };
 </script>

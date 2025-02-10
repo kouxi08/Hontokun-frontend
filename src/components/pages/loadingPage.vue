@@ -8,17 +8,17 @@
 </template>
 
 <style>
-@keyframes rotation {
-  from {
-    transform: rotateY(-360deg);
+  @keyframes rotation {
+    from {
+      transform: rotateY(-360deg);
+    }
+
+    to {
+      transform: rotateY(0deg);
+    }
   }
 
-  to {
-    transform: rotateY(0deg);
+  .animate-rotation {
+    animation: rotation 1s linear infinite;
   }
-}
-
-.animate-rotation {
-  animation: rotation 1s linear infinite;
-}
 </style>

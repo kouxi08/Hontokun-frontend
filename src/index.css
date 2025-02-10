@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@100;200;300;400;500;600;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@100;200;300;400;500;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Zen+Maru+Gothic&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -21,77 +21,76 @@
 }
 
 .stroke-white-1 {
-  -webkit-text-stroke: 1px #FFF;
+  -webkit-text-stroke: 1px #fff;
   paint-order: stroke;
 }
 
 .stroke-white-2 {
-  -webkit-text-stroke: 2px #FFF;
+  -webkit-text-stroke: 2px #fff;
   paint-order: stroke;
 }
 
 .stroke-white-4 {
-  -webkit-text-stroke: 4px #FFF;
+  -webkit-text-stroke: 4px #fff;
   paint-order: stroke;
 }
 
 .stroke-primary-1 {
-  -webkit-text-stroke: 1px #FFDA29;
+  -webkit-text-stroke: 1px #ffda29;
   paint-order: stroke;
 }
 
 .stroke-primary-2 {
-  -webkit-text-stroke: 2px #FFDA29;
+  -webkit-text-stroke: 2px #ffda29;
   paint-order: stroke;
 }
 
 .stroke-primary-4 {
-  -webkit-text-stroke: 4px #FFDA29;
+  -webkit-text-stroke: 4px #ffda29;
   paint-order: stroke;
 }
 
 .stroke-secondary-1 {
-  -webkit-text-stroke: 1px #33B1C2;
+  -webkit-text-stroke: 1px #33b1c2;
   paint-order: stroke;
 }
 
 .stroke-secondary-2 {
-  -webkit-text-stroke: 2px #33B1C2;
+  -webkit-text-stroke: 2px #33b1c2;
   paint-order: stroke;
 }
 
 .stroke-secondary-4 {
-  -webkit-text-stroke: 4px #33B1C2;
+  -webkit-text-stroke: 4px #33b1c2;
   paint-order: stroke;
 }
 
 .stroke-accent-1 {
-  -webkit-text-stroke: 1px #FF6633;
+  -webkit-text-stroke: 1px #ff6633;
   paint-order: stroke;
 }
 
 .stroke-accent-2 {
-  -webkit-text-stroke: 2px #FF6633;
+  -webkit-text-stroke: 2px #ff6633;
   paint-order: stroke;
 }
 
 .stroke-accent-4 {
-  -webkit-text-stroke: 4px #FF6633;
+  -webkit-text-stroke: 4px #ff6633;
   paint-order: stroke;
 }
 
 .stroke-braun-1 {
-  -webkit-text-stroke: 1px #7B4300;
+  -webkit-text-stroke: 1px #7b4300;
   paint-order: stroke;
 }
 
 .stroke-braun-2 {
-  -webkit-text-stroke: 2px #7B4300;
+  -webkit-text-stroke: 2px #7b4300;
   paint-order: stroke;
 }
 
 .stroke-braun-4 {
-  -webkit-text-stroke: 4px #7B4300;
+  -webkit-text-stroke: 4px #7b4300;
   paint-order: stroke;
 }
-
