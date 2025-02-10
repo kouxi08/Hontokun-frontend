@@ -4,8 +4,7 @@
       <div v-show="isBattle" class="flex items-center justify-center w-screen h-screen">
         <img src="/smoke.png" alt="" class="animate-tilt">
       </div>
-      <div
-        v-show="isResultMessage" class="h-full flex flex-col gap-[40px] items-center justify-center"
+      <div v-show="isResultMessage" class="h-full flex flex-col gap-[40px] items-center justify-center"
         @click="showResultPage">
         <div v-if="accuracy >= 0.5">
           <p class="text-[64px] font-zenMaru text-white text-center font-bold stroke-accent-4">
@@ -28,11 +27,9 @@
         <Table :header="tableHeader" :content="tableContent" />
         <div class="h-2/3 flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
           <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
-            <News
-              v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
+            <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
               :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
-            <Explain
-              v-else :type="quiz.type" :explanation="quiz.explanation" :answer="quiz.answer"
+            <Explain v-else :type="quiz.type" :explanation="quiz.explanation" :answer="quiz.answer"
               :your-answer="quizStore.answers[index]" :keyword="quiz.keyword" :news-link="quiz.newsUrl"
               @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
           </div>
@@ -63,7 +60,7 @@ const quizStore = useQuizStore();
 onMounted(async () => {
   // TODO: answersをbattlePageから受け取る
   const res = await axiosInstance.post("/quiz/result", {
-    quizMode: 1,
+    quizMode: quizStore.mode,
     answers: quizStore.questions.map((item, index) => ({
       quizId: item.id,
       order: item.order, // または item.order を使用
