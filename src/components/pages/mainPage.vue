@@ -62,7 +62,7 @@ onMounted(async () => {
       ];
     } else {
       const main = await AxiosInstance.get("/main");
-      userStore.setUser(main.data.user.nickname, main.data.user.level, main.data.user.experience);
+      await userStore.setUser(main.data.user.nickname, main.data.user.level, main.data.user.experience);
       costume.value = main.data.costume.url;
       loading.value = true;
       messages.value = [
