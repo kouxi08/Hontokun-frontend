@@ -59,12 +59,12 @@ const quizStore = useQuizStore();
 
 onMounted(async () => {
   // TODO: answersをbattlePageから受け取る
+  console.log(quizStore.answers[0] ? "TRUE" : "FALSE",)
   const res = await axiosInstance.post("/quiz/result", {
     quizMode: quizStore.mode,
     answers: quizStore.questions.map((item, index) => ({
       quizId: item.id,
       order: item.order, // または item.order を使用
-      answerTime: 10, // これは固定値か、別の方法で計算する必要があるかもしれません
       answer: quizStore.answers[index] ? "TRUE" : "FALSE",
     })),
   });
@@ -84,7 +84,7 @@ const accuracy = ref();
 const yourAnswer = quizStore.answers;
 
 const tableHeader = [{ name: "ばんごう" }, { name: "こたえ" }, { name: "あなた" }];
-const tableContent = quizStore.tableContent;
+const tableContent = quizStore.tableContent();
 
 const showResultPage = () => {
   isResultMessage.value = false;
