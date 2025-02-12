@@ -53,7 +53,7 @@ onMounted(async () => {
         level: 1,
         experience: 0
       }
-      userStore.setUser("ゲスト", 1, 0);
+      userStore.setUser(gestUserData);
       user.value = gestUserData;
       costume.value = "/honto.svg";
       loading.value = true;
@@ -62,7 +62,7 @@ onMounted(async () => {
       ];
     } else {
       const main = await AxiosInstance.get("/main");
-      await userStore.setUser(main.data.user.nickname, main.data.user.level, main.data.user.experience);
+      await userStore.setUser(main.data.user);
       costume.value = main.data.costume.url;
       loading.value = true;
       messages.value = [
