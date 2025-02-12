@@ -78,12 +78,8 @@ const handleAnswer = (answer) => {
   isButton.value = true;
   quizStore.addAnswer(answer);
   correctness.value = answer === quizData.value[current.value].correctAnswer;
-
-  // AnswerModal を表示
-  showAnswerModal();
-
   setTimeout(() => {
-    hideAnswerModal();
+    isButton.value = false;
     if (current.value === quizData.value.length - 1) {
       router.push({ name: "resultPage" });
     } else {
@@ -91,15 +87,6 @@ const handleAnswer = (answer) => {
     }
   }, 1000);
 };
-
-const showAnswerModal = () => {
-  isButton.value = true;
-};
-
-const hideAnswerModal = () => {
-  isButton.value = false;
-};
-
 
 const getBackground = () => {
   switch (quizStore.difficulty) {
