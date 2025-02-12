@@ -33,7 +33,7 @@ export const useQuizStore = defineStore("quiz", {
       return this.questions.map((question) => ({
         id: question.order,
         correction: question.correctAnswer,
-        yourAnswer: this.answers[question.order] || "",
+        yourAnswer: this.answers[question.order - 1],
       }));
     },
   },
