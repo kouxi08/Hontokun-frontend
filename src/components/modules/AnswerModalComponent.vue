@@ -15,8 +15,7 @@ import Icon from '@/components/modules/IconComponent.vue'
 const props = defineProps({
   answer: {
     type: Boolean,
-    requier: true
+    require: true
   },
 });
-console.log(props.answer)
 </script>
