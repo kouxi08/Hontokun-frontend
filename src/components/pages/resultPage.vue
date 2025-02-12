@@ -85,8 +85,6 @@ const yourAnswer = quizStore.answers;
 const tableHeader = [{ name: "ばんごう" }, { name: "こたえ" }, { name: "あなた" }];
 const tableContent = quizStore.tableContent;
 
-console.log(tableContent)
-
 const showResultPage = () => {
   isResultMessage.value = false;
   resultPage.value = true;
