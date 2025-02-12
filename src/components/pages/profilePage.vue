@@ -49,7 +49,6 @@ import { useRouter } from "vue-router";
 import { getAuth, signOut } from "firebase/auth"; // Firebase Authのインポート
 
 const router = useRouter();
-const userName = ref("");
 const user = ref({});
 const cats = ref([]);
 const loading = ref(false);
