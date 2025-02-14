@@ -3,7 +3,7 @@
     <div class="w-full flex justify-between items-center pt-[32px] px-[48px]">
       <Icon name="close-circle" width="32" height="32" class="justify-self-start cursor-pointer"
         @click="router.push({ name: 'mainPage' })" />
-      <p class="font-zenMaru font-bold text-[24px] text-center absolute left-1/2 transform -translate-x-1/2">
+      <p class="font-zenMaru font-medium text-[16px] text-center absolute left-1/2 transform -translate-x-1/2">
         {{ user.nickname }}
       </p>
     </div>
@@ -49,7 +49,6 @@ import { useRouter } from "vue-router";
 import { getAuth, signOut } from "firebase/auth"; // Firebase Authのインポート
 
 const router = useRouter();
-const userName = ref("");
 const user = ref({});
 const cats = ref([]);
 const loading = ref(false);
@@ -61,7 +60,6 @@ const auth = getAuth();
 onMounted(async () => {
   try {
     const profile = await AxiosInstance.get("/history");
-    console.log(profile)
     cats.value = profile.data.history.tierList;
     user.value = profile.data.user;
     profileStore.clearCat();

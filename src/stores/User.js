@@ -6,10 +6,10 @@ export const useUserStore = defineStore("user", {
     experience: null,
   }),
   actions: {
-    setUser(userName, level, experience) {
-      this.userName = userName;
-      this.level = level;
-      this.experience = experience;
+    setUser(user) {
+      this.userName = user.nickname;
+      this.level = user.level;
+      this.experience = user.experience;
     },
     clearCat() {
       this.userName = null;
