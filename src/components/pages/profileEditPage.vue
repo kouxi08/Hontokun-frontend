@@ -5,10 +5,11 @@
         @click="router.push({ name: 'profilePage' })" />
       <p class="font-zenMaru font-medium text-[16px] text-center">{{ userStore.userName }}</p>
     </div>
+    {{ current }}
     <div class="flex items-center justify-center gap-[48px] pt-[32px]">
-      <Icon name="arrow-left" width="8" />
-      <img src="/honto.svg" alt="" height="120">
-      <Icon name="arrow-right" width="8" />
+      <Icon name="arrow-left" width="8" @click="previousCostume" />
+      <img :src="costume[current]" alt="" height="120">
+      <Icon name="arrow-right" width="8" @click="nextCostume" />
     </div>
     <div class="flex flex-col items-start justify-center px-[72px] pt-[78px]">
       <label for="name" class="text-[16px] font-zenMaru">名前の変更</label>
@@ -20,7 +21,7 @@
         <p class="bg-[#42D325] text-white rounded-[4px] font-zenMaru text-center px-[8px]">任意</p>
       </div>
       <Input name="date" type="date" />
-      <Button color="primary" size="sm" class="w-full justify-self-end">保存</Button>
+      <Button color="primary" size="sm" class="w-full mt-[48px]">保存</Button>
     </div>
   </div>
 </template>
@@ -29,9 +30,27 @@
 import Icon from "@/components/modules/IconComponent.vue";
 import Button from "@/components/modules/ButtonComponent.vue";
 import Input from "@/components/modules/InputComponent.vue";
+import { ref } from "vue"
 import { useRouter } from "vue-router";
 import { useUserStore } from "@/stores/User";
 
 const router = useRouter();
 const userStore = useUserStore();
+
+const costume = ["/honto.svg", "/made.svg", "/suit.svg"]
+const current = ref(0)
+
+const previousCostume = () => {
+  current.value--
+  if (current.value <= -1) {
+    current.value = costume.length - 1
+  }
+}
+
+const nextCostume = () => {
+  current.value++
+  if (current.value >= costume.length) {
+    current.value = 0
+  }
+}
 </script>
