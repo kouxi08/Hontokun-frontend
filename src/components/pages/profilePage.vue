@@ -3,7 +3,7 @@
     <div class="w-full flex justify-between items-center pt-[32px] px-[48px]">
       <Icon name="close-circle" width="32" height="32" class="justify-self-start cursor-pointer"
         @click="router.push({ name: 'mainPage' })" />
-      <p class="font-zenMaru font-bold text-[24px] text-center absolute left-1/2 transform -translate-x-1/2">
+      <p class="font-zenMaru font-medium text-[16px] text-center absolute left-1/2 transform -translate-x-1/2">
         {{ user.nickname }}
       </p>
     </div>
