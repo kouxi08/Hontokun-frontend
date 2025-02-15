@@ -66,7 +66,7 @@ onMounted(async () => {
       costume.value = main.data.costume.url;
       loading.value = true;
       messages.value = [
-        `ようこそ！\n${userStore.userName}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`,
+        `ようこそ！\n${userStore.name}探偵事務所へ\n僕は助手のホントくん\nよろしくね！`,
       ];
     }
   } catch (error) {

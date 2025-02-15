@@ -4,7 +4,7 @@
       <Icon name="close-circle" width="32" height="32" class="justify-self-start cursor-pointer"
         @click="router.push({ name: 'mainPage' })" />
       <p class="font-zenMaru font-medium text-[16px] text-center absolute left-1/2 transform -translate-x-1/2">
-        {{ user.nickname }}
+        {{ userStore.name }}
       </p>
     </div>
     <div class="relative w-[168px] h-[168px] mx-auto mt-[56px]">
@@ -44,6 +44,7 @@ import Button from "@/components/modules/ButtonComponent.vue";
 import LoadingPage from "@/components/pages/loadingPage.vue";
 import AxiosInstance from "@/axiosInstance.js";
 import { useProfileStore } from "@/stores/Profile";
+import { useUserStore } from "@/stores/User";
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { getAuth, signOut } from "firebase/auth"; // Firebase Authのインポート
@@ -53,6 +54,7 @@ const user = ref({});
 const cats = ref([]);
 const loading = ref(false);
 const profileStore = useProfileStore();
+const userStore = useUserStore();
 
 // Firebase Authのインスタンスを取得
 const auth = getAuth();
