@@ -25,7 +25,8 @@
         <VueDatePicker v-model="date" locale="ja" format="yyyy/M/d" :enable-time-picker="false"
           :text-input="textInputOptions" placeholder="2000/1/1" week-start="0" auto-apply no-today
           class="rounded-[6px] border border-black font-zenMaru focus:outline-none" />
-        <Button color="primary" size="sm" class="w-full mt-[48px]" @click="save">保存</Button>
+        <Button color="primary" size="sm" :disabled="isButtonDisabled" class="w-full mt-[48px]"
+          @click="save">保存</Button>
       </div>
     </div>
   </div>
@@ -46,6 +47,8 @@ const userStore = useUserStore();
 
 const name = ref("")
 const date = ref("")
+const loading = ref(false)
+const isButtonDisabled = ref(false);
 
 const textInputOptions = {
   format: 'yyyy/M/d'
@@ -86,12 +89,15 @@ const nextCostume = () => {
 }
 
 const save = () => {
+  isButtonDisabled.value = true;
   if (name.value !== "") {
     userStore.setUserName(name.value)
   }
   if (date.value !== "") {
     userStore.setBirthdaty(date.value)
   }
+  isButtonDisabled.value = false;
+  router.push({ name: "profilePage" })
 }
 </script>
 
