@@ -59,7 +59,7 @@
           :accuracy="cat.accuracy" :attempts="cat.quizSetList" @detail-selected="handleDetailSelected" />
       </div>
       <div class="flex justify-center items-center pt-[32px]">
-        <Button color="secondary" size="md" @click="Logout" class="lg:hidden">
+        <Button color="secondary" size="md" @click="toLogout" class="lg:hidden">
           ログアウト
         </Button>
       </div>
@@ -121,6 +121,11 @@ const toSignup = () => {
 const toLogin = () => {
   Logout()
   router.push({ name: "loginPage" })
+}
+
+const toLogout = () => {
+  Logout()
+  router.push({ name: "topPage" })
 }
 
 // ログアウト処理
