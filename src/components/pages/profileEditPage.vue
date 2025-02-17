@@ -94,7 +94,7 @@ const save = () => {
     userStore.setUserName(name.value)
   }
   if (date.value !== "") {
-    userStore.setBirthdaty(date.value)
+    userStore.setBirthday(date.value)
   }
   isButtonDisabled.value = false;
   router.push({ name: "profilePage" })
