@@ -1,11 +1,11 @@
 <template>
-  <div class="w-screen h-screen bg-[#FFFCF8] flex flex-col overflow-hidden">
+  <div v-if="loading" class="w-screen h-screen bg-[#FFFCF8] flex flex-col overflow-hidden">
     <!-- 固定部分 -->
     <!-- ヘッダー -->
     <div class="w-full grid grid-cols-3 justify-between items-center pt-[32px] px-[48px]">
       <Icon name="arrow-left-line" width="32" height="32" class="justify-self-start cursor-pointer"
         @click="router.push({ name: 'profilePage' })" />
-      <p class="font-zenMaru text-[16px] text-center">{{ profileStore.catName }}</p>
+      <p class="font-zenMaru font-medium text-[16px] text-center">{{ profileStore.catName }}</p>
     </div>
     <Rate :value="accuracy" size="sm" class="absolute top-[40px] right-[48px]" />
     <!-- ネコとボタン -->
@@ -29,6 +29,7 @@
       </div>
     </div>
   </div>
+  <LoadingPage v-else />
 </template>
 
 <script setup>
@@ -39,6 +40,7 @@ import Table from "@/components/modules/TableComponent.vue";
 import NewsTitle from "@/components/modules/NewsTitleComponent.vue";
 import News from "@/components/modules/NewsComponent.vue";
 import Explain from "@/components/modules/ExplainComponent.vue";
+import LoadingPage from "@/components/pages/loadingPage.vue";
 import AxiosInstance from "@/axiosInstance.js";
 import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -48,8 +50,9 @@ import { useQuizStore } from "@/stores/Quiz";
 const router = useRouter();
 const profileStore = useProfileStore();
 const quizStore = useQuizStore();
-const accuracy = ref();
 
+const loading = ref(false)
+const accuracy = ref();
 const quizSet = ref([]);
 const tableContent = ref([]);
 
@@ -64,6 +67,7 @@ onMounted(async () => {
     yourAnswer: quiz.userAnswer,
   }));
   accuracy.value = historyDetail.data.quizSet.accuracy;
+  loading.value = true;
 });
 
 const isAnswerRevealed = ref([]);

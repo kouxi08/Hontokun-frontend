@@ -1,7 +1,8 @@
 <template>
   <div class="w-screen h-screen bg-[#FFFCF8] fixed">
     <Header />
-    <div class="w-full grid grid-cols-3 justify-between items-center pt-[32px] px-[48px]">
+    <div
+      class="w-full grid grid-cols-3 justify-between items-center pt-[32px] xs:px-[48px] sm:px-[160px] md:px-[240px] lg:px-[320px]">
       <Icon name="arrow-left-line" class="justify-self-start cursor-pointer w-6 h-6"
         @click="router.push({ name: 'topPage' })" />
       <p class="text-center font-zenMaru text-[16px]">新規登録</p>
@@ -9,27 +10,23 @@
     <p class="rounded-[16px] text-danger text-center font-zenMaru font-bold my-[24px] mx-[48px]">
       {{ errorMessage }}
     </p>
-    <div class="flex flex-col items-center">
-      <div class="flex flex-col items-start justify-center px-[72px] pt-[40px]">
+    <div
+      class="flex flex-col justify-center items-center xs:px-[48px] sm:px-[160px] md:px-[240px] lg:px-[320px] xs:pt-[40px] md:pt-[16px] gap-[24px]">
+      <div class="w-full flex flex-col items-start">
         <label for="email" class="text-[16px] pb-[8px] font-zenMaru">メールアドレス</label>
-        <Input v-model="email" name="email" type="email" />
+        <Input v-model="email" type="email" placeholder="example@example.com" />
       </div>
-      <div class="flex flex-col items-start justify-center px-[72px] pt-[40px]">
+      <div class="w-full flex flex-col items-start">
         <label for="password" class="text-[16px] pb-[8px] font-zenMaru">パスワード</label>
-        <Input v-model="password" name="password" type="password" />
+        <Input v-model="password" type="password" placeholder="6文字以上のパスワード" />
       </div>
-      <div class="flex flex-col items-start justify-center px-[72px] pt-[24px]">
+      <div class="flex flex-col items-start justify-center">
         <router-link to="/login" class="text-[#4F61EC]">ログインはこちら</router-link>
       </div>
-      <div class="flex flex-col items-start justify-center px-[72px] pt-[24px]">
-        <Button color="primary" :disabled="isButtonDisabled" @click="toSignup">登録</Button>
-      </div>
-      <div class="flex flex-col items-start justify-center px-[72px] pt-[32px]">
-        <p class="font-zenMaru text-[16px]">または</p>
-      </div>
-      <div class="flex flex-col items-start justify-center px-[72px] pt-[104px]">
-        <img src="/signin-with-google.svg" alt="" class="cursor-pointer" @click="toGoogleWithSignin">
-      </div>
+      <Button color="primary" :disabled="isButtonDisabled" class="w-full xs:h-[40px] md:h-[56px]"
+        @click="toSignup">新規登録</Button>
+      <p class="font-zenMaru text-[16px]">または</p>
+      <img src="/signin-with-google.svg" alt="" class="cursor-pointer" @click="toGoogleWithSignin">
     </div>
   </div>
 </template>
