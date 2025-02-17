@@ -64,7 +64,7 @@ onMounted(async () => {
     answers: quizStore.questions.map((item, index) => ({
       quizId: item.id,
       order: item.order, // または item.order を使用
-      answer: quizStore.answers[index] ? "TRUE" : "FALSE",
+      answer: quizStore.answers[index],
     })),
   });
   quizSet.value = res.data.quizList;
