@@ -6,12 +6,6 @@ on:
       - image_build_push
     types:
       - completed
-  push:
-    branches:
-      - main
-    paths:
-      - charts/**/*
-      - .github/workflows/release.yaml
 
 jobs:
   release:
