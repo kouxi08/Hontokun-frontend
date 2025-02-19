@@ -30,10 +30,10 @@ export const useQuizStore = defineStore("quiz", {
   },
   getters: {
     tableContent() {
-      return this.questions.map((question, index) => ({
-        id: index + 1,
+      return this.questions.map((question) => ({
+        id: question.order,
         correction: question.correctAnswer,
-        yourAnswer: this.answers[index] || "",
+        yourAnswer: this.answers[question.order - 1],
       }));
     },
   },
