@@ -74,7 +74,6 @@ const currentQuiz = computed(() => quizData.value[current.value]);
 
 // マルバツを押したときの処理
 const handleAnswer = (answer) => {
-  quizStore.clearAnswers();
   isButton.value = true;
   quizStore.addAnswer(answer);
   correctness.value = answer === quizData.value[current.value].correctAnswer;
