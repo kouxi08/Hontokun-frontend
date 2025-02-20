@@ -56,20 +56,27 @@ import axiosInstance from "@/axiosInstance";
 
 const router = useRouter();
 const quizStore = useQuizStore();
+console.log(quizStore.answers[0])
 
 onMounted(async () => {
   // TODO: answersをbattlePageから受け取る
+  console.log(quizStore.questions)
   const res = await axiosInstance.post("/quiz/result", {
     quizMode: quizStore.mode,
     answers: quizStore.questions.map((item, index) => ({
       quizId: item.id,
-      order: item.order, // または item.order を使用
+      order: item.order,
       answer: quizStore.answers[index],
     })),
   });
   quizSet.value = res.data.quizList;
   accuracy.value = res.data.accuracy;
   isAnswerRevealed.value = Array.from({ length: quizSet.value.length }, () => false);
+  tableContent.value = res.data.quizList.map(quiz => ({
+    id: quiz.order,
+    correction: quiz.answer,
+    yourAnswer: quiz.userAnswer
+  }))
 });
 
 const isBattle = ref(true);
@@ -83,7 +90,7 @@ const accuracy = ref();
 const yourAnswer = quizStore.answers;
 
 const tableHeader = [{ name: "ばんごう" }, { name: "こたえ" }, { name: "あなた" }];
-const tableContent = quizStore.tableContent;
+const tableContent = ref([])
 
 const showResultPage = () => {
   isResultMessage.value = false;

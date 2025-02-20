@@ -63,6 +63,7 @@ onMounted(async () => {
       enemy.value = res.data.enemy;
       quizStore.setQuestions(res.data.quizzes);
       quizStore.setCatName(res.data.enemy.name);
+      console.log(res.data.quizzes)
     })
     .catch((err) => {
       console.error(err);
@@ -74,7 +75,6 @@ const currentQuiz = computed(() => quizData.value[current.value]);
 
 // マルバツを押したときの処理
 const handleAnswer = (answer) => {
-  quizStore.clearAnswers();
   isButton.value = true;
   quizStore.addAnswer(answer);
   correctness.value = answer === quizData.value[current.value].correctAnswer;
