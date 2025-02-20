@@ -23,8 +23,8 @@
           <label for="date" class="text-[16px] font-zenMaru">生年月日</label>
           <p class="bg-[#42D325] text-white rounded-[4px] font-zenMaru text-center px-[8px]">任意</p>
         </div>
-        <VueDatePicker v-model="date" locale="ja" format="yyyy/MM/dd" :enable-time-picker="false"
-          :text-input="textInputOptions" placeholder="2000/01/01" week-start="0" auto-apply no-today
+        <VueDatePicker v-model="date" locale="ja" format="yyyy/M/d" :enable-time-picker="false"
+          :text-input="textInputOptions" placeholder="2000/1/1" week-start="0" auto-apply no-today
           class="rounded-[6px] border border-black font-zenMaru focus:outline-none" />
         <Button color="primary" size="sm" :disabled="isButtonDisabled" class="w-full mt-[48px]"
           @click="save">保存</Button>
@@ -56,7 +56,7 @@ const loading = ref(false)
 const isButtonDisabled = ref(false);
 
 const textInputOptions = {
-  format: 'yyyy/MM/dd'
+  format: 'yyyy/M/d'
 };
 
 const costume = ref()
