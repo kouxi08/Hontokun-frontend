@@ -63,7 +63,6 @@ onMounted(async () => {
       enemy.value = res.data.enemy;
       quizStore.setQuestions(res.data.quizzes);
       quizStore.setCatName(res.data.enemy.name);
-      console.log(res.data.quizzes)
     })
     .catch((err) => {
       console.error(err);

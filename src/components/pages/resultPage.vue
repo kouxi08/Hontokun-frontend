@@ -56,11 +56,8 @@ import axiosInstance from "@/axiosInstance";
 
 const router = useRouter();
 const quizStore = useQuizStore();
-console.log(quizStore.answers[0])
 
 onMounted(async () => {
-  // TODO: answersをbattlePageから受け取る
-  console.log(quizStore.questions)
   const res = await axiosInstance.post("/quiz/result", {
     quizMode: quizStore.mode,
     answers: quizStore.questions.map((item, index) => ({
