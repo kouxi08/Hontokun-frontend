@@ -28,13 +28,4 @@ export const useQuizStore = defineStore("quiz", {
       this.answers = [];
     },
   },
-  getters: {
-    tableContent() {
-      return this.questions.map((question) => ({
-        id: question.order,
-        correction: question.correctAnswer,
-        yourAnswer: this.answers[question.order - 1],
-      }));
-    },
-  },
 });
