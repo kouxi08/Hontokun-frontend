@@ -4,7 +4,7 @@
       <Icon name="close-circle" width="32" height="32" class="justify-self-start cursor-pointer"
         @click="router.push({ name: 'mainPage' })" />
       <p class="font-zenMaru font-medium text-[16px] text-center absolute left-1/2 transform -translate-x-1/2">
-        {{ userStore.name }}
+        {{ user.nickname }}
       </p>
       <div class="flex justify-center items-center pt-[32px]">
         <Button color="secondary" size="md" @click="Logout" class="xs:hidden sm:hidden md:hidden">
