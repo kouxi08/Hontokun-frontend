@@ -27,8 +27,9 @@
         <Table :header="tableHeader" :content="tableContent" />
         <div class="h-2/3 flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
           <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
-            <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
-              :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
+            <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.imageUrl"
+              :content="quiz.content" :show-result="true"
+              @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
             <Explain v-else :type="quiz.type" :explanation="quiz.explanation" :answer="quiz.answer"
               :your-answer="quizStore.answers[index]" :keyword="quiz.keyword" :news-link="quiz.newsUrl"
               @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />

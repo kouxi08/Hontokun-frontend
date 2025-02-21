@@ -50,9 +50,7 @@
           プロフィールの編集
         </p>
       </div>
-      <div class="absolute top-[-15%] right-[-15%]">
-        <Rate value="32" size="md" />
-      </div>
+      <Rate :value="totalAccuracy" size="md" class="absolute top-[32px] right-[32px]" />
       <div
         class="w-full h-[45%] flex flex-col items-center justify-start gap-[24px] px-[48px] py-[16px] my-[16px] overflow-hidden overflow-y-scroll">
         <Card v-for="cat in cats" :key="cat" :icon-name="cat.enemy.name" :icon-image="cat.enemy.url"
@@ -84,6 +82,7 @@ import { getAuth, signOut } from "firebase/auth"; // Firebase Authのインポ�
 const router = useRouter();
 const user = ref({});
 const cats = ref([]);
+const totalAccuracy = ref()
 const loading = ref(false);
 const anonymous = ref(false)
 const profileStore = useProfileStore();
@@ -97,7 +96,8 @@ onMounted(async () => {
     if (!auth.currentUser?.isAnonymous) {
       const profile = await AxiosInstance.get("/history");
       cats.value = profile.data.history.tierList;
-      user.value = profile.data.user;
+      user.value = profile.data.user
+      totalAccuracy.value = profile.data.history.totalAccuracy;
       profileStore.clearCat();
       loading.value = true;
     } else {
