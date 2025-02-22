@@ -18,13 +18,15 @@
           v-for="(row, index) in props.content"
           :key="index"
           align="center"
-          class="min-w-[96px] xs:h-[40px] sm:h-[48px] px-[8px] py-[4px] border-t-[1.5px] border-black cursor-default">
-          <td class="px-4 hover:bg-gray-100">{{ row.id }}</td>
-          <td class="px-4 hover:bg-gray-100">
+          class="min-w-[96px] xs:h-[40px] sm:h-[48px] px-[8px] py-[4px] border-t-[1.5px] border-black cursor-default hover:bg-gray-100"
+          @click="handleRowClick(row.id)"
+        >
+          <td class="px-4">{{ row.id }}</td>
+          <td class="px-4">
             <Icon v-if="row.correction" name="correct" class="w-6 h-6 inline-block" />
             <Icon v-else name="incorrect" class="w-6 h-6 inline-block" />
           </td>
-          <td class="px-4 hover:bg-gray-100">
+          <td class="px-4">
             <Icon v-if="row.yourAnswer" name="correct" class="w-6 h-6 inline-block" />
             <Icon v-else name="incorrect" class="w-6 h-6 inline-block" />
           </td>
@@ -48,9 +50,15 @@
     },
   });
 
+  const emit = defineEmits(['rowClick']);
+
   const headerRound = props.header.map((item, index) => {
     if (index === 0) return "rounded-tl-[6px]";
     if (index === props.header.length - 1) return "rounded-tr-[6px]";
     return "";
   });
+
+  const handleRowClick = (id) => {
+    emit('rowClick', id);
+  };
 </script>

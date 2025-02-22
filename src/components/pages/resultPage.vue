@@ -24,13 +24,13 @@
         </div>
       </div>
       <div v-show="resultPage" class="h-full xs:py-[56px] sm:py-[64px] flex flex-col justify-between">
-        <Table :header="tableHeader" :content="tableContent" />
+        <Table :header="tableHeader" :content="tableContent" @rowClick="scrollToNews" />
         <div class="h-2/3 flex flex-col gap-[8px] overflow-hidden overflow-y-scroll mt-[24px]">
-          <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
-            <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
+          <div v-for="(quiz, index) in quizSet" :key="quiz" :id="`news-${index + 1}`" class="flex flex-col gap-[24px] py-[24px]">
+            <News v-if="isAnswerRevealed[index]" :title="quiz.title" :img="quiz.imageUrl" :content="quiz.content"
               :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
             <Explain v-else :type="quiz.type" :explanation="quiz.explanation" :answer="quiz.answer"
-              :your-answer="quizStore.answers[index]" :keyword="quiz.keyword" :news-link="quiz.newsUrl"
+              :yourAnswer="quizStore.answers[index]" :keyword="quiz.keyword" :newsLink="quiz.newsUrl"
               @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
           </div>
         </div>
@@ -58,18 +58,22 @@ const router = useRouter();
 const quizStore = useQuizStore();
 
 onMounted(async () => {
-  // TODO: answersをbattlePageから受け取る
   const res = await axiosInstance.post("/quiz/result", {
     quizMode: quizStore.mode,
     answers: quizStore.questions.map((item, index) => ({
       quizId: item.id,
-      order: item.order, // または item.order を使用
+      order: item.order,
       answer: quizStore.answers[index],
     })),
   });
   quizSet.value = res.data.quizList;
   accuracy.value = res.data.accuracy;
   isAnswerRevealed.value = Array.from({ length: quizSet.value.length }, () => false);
+  tableContent.value = res.data.quizList.map(quiz => ({
+    id: quiz.order,
+    correction: quiz.answer,
+    yourAnswer: quiz.userAnswer
+  }))
 });
 
 const isBattle = ref(true);
@@ -80,10 +84,8 @@ const answers = ref([]);
 const quizSet = ref([]);
 const accuracy = ref();
 
-const yourAnswer = quizStore.answers;
-
 const tableHeader = [{ name: "ばんごう" }, { name: "こたえ" }, { name: "あなた" }];
-const tableContent = quizStore.tableContent;
+const tableContent = ref([])
 
 const showResultPage = () => {
   isResultMessage.value = false;
@@ -120,6 +122,14 @@ setTimeout(() => {
 }, 3000);
 
 const isAnswerRevealed = ref([]);
+
+const scrollToNews = (id) => {
+  const element = document.getElementById(`news-${id}`);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
+
 </script>
 
 <style>

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full h-fit font-zenMaru flex flex-col">
     <div
-      class="mx-[48px] p-[16px] h-[408px] bg-white shadow-lg rounded-[6px] flex flex-col gap-[16px] z-10">
+      class="mx-[48px] p-[16px] h-[448px] bg-white shadow-lg rounded-[6px] flex flex-col gap-[16px] z-10">
       <div class="relative">
         <img :src="props.img" alt="" class="w-full h-[104px] rounded-[6px] object-cover">
         <p
@@ -20,7 +20,7 @@
         </div>
       </div>
       <p
-        class="font-notoSans font-bold xs:text-[12px] md:text-[16px] tracking-wider leading-[32px] overflow-hidden overflow-y-auto">
+        class="font-notoSans font-bold xs:text-[14px] md:text-[16px] tracking-[.12em] leading-[40px] overflow-hidden overflow-y-auto">
         {{ props.content }}
       </p>
     </div>
