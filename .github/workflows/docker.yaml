@@ -29,7 +29,7 @@ jobs:
         context: .
         file: ./docker/Dockerfile.prod
         push: true
-        tags:  kouxi00/hontokun-frontend:1.0.6
+        tags:  kouxi00/hontokun-frontend:1.0.7
         build-args: |
           VUE_APP_API_BASE_URL =${{ secrets.VUE_APP_API_BASE_URL }}
           NODE_ENV = ${{ secrets.NODE_ENV}}
