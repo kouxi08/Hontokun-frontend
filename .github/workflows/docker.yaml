@@ -32,3 +32,4 @@ jobs:
         tags:  kouxi00/hontokun-frontend:1.0.6
         build-args: |
           VUE_APP_API_BASE_URL =${{ secrets.VUE_APP_API_BASE_URL }}
+          NODE_ENV = ${{ secrets.NODE_ENV}}
