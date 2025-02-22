@@ -2,7 +2,7 @@
   <div v-if="loading" class="w-screen h-screen">
     <div class="bg-detective-offices">
       <Status />
-      <Message class="mt-[5%]" :messages="messages" />
+      <Message class="mt-[5%] mx-[24px]" :messages="messages" />
       <img :src="costume" alt="" class="mx-auto my-[16px] xs:w-[128px] md:w-[192px]">
       <button
         class="w-[136px] h-[136px] bg-[#FF6633] rounded-full text-white text-[32px] border-4 border-white flex items-center justify-center font-black font-zenMaru shadow-[0_0_4px_0_rgba(171,171,171,0.25)] mx-auto mt-[120px] hover:translate-y-[2px] md:mt-[32px] lg:mt-[40px]"

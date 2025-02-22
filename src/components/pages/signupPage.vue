@@ -60,10 +60,8 @@ const toSignup = () => {
     .then(async (userCredential) => {
       isButtonDisabled.value = true;
       const user = await userCredential.user;
-      return user.getIdToken();
-    })
-    .then((token) => {
-      createAccount(token);
+      const token = await user.getIdToken();
+      await createAccount(token);
       router.push({ name: "mainPage" });
     })
     .catch((error) => {

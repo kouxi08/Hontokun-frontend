@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen bg-[#FFFCF8] flex flex-col overflow-hidden">
+  <div v-if="loading" class="w-screen h-screen bg-[#FFFCF8] flex flex-col overflow-hidden">
     <!-- 固定部分 -->
     <!-- ヘッダー -->
     <div class="w-full grid grid-cols-3 justify-between items-center pt-[32px] px-[48px]">
@@ -17,18 +17,19 @@
     <!-- スクロール可能な部分 -->
     <div class="flex-1 overflow-y-auto">
       <!-- テーブル -->
-      <Table :header="tableHeader" :content="tableContent" />
+      <Table :header="tableHeader" :content="tableContent" @rowClick="scrollToNews" />
       <!-- ニュース -->
-      <div v-for="(quiz, index) in quizSet" :key="quiz" class="flex flex-col gap-[24px] py-[24px]">
+      <div v-for="(quiz, index) in quizSet" :key="quiz" :id="`news-${index + 1}`" class="flex flex-col gap-[24px] py-[24px]">
         <NewsTitle :id="index + 1" :title="quiz.question" />
-        <News v-if="isAnswerRevealed[index]" :title="quiz.questionTitle" :img="quiz.img" :content="quiz.content"
+        <News v-if="isAnswerRevealed[index]" :title="quiz.title" :img="quiz.imageUrl" :content="quiz.content"
           :show-result="true" @showExplainEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
         <Explain v-else :type="quiz.type" :explanation="quiz.explanation" :answer="quiz.answer"
-          :your-answer="quiz.userAnswer" :keyword="quiz.keyword"
+          :yourAnswer="quiz.userAnswer" :keyword="quiz.keyword" :newsLink="quiz.newsUrl"
           @showNewsEvent="isAnswerRevealed[index] = !isAnswerRevealed[index]" />
       </div>
     </div>
   </div>
+  <LoadingPage v-else />
 </template>
 
 <script setup>
@@ -39,6 +40,7 @@ import Table from "@/components/modules/TableComponent.vue";
 import NewsTitle from "@/components/modules/NewsTitleComponent.vue";
 import News from "@/components/modules/NewsComponent.vue";
 import Explain from "@/components/modules/ExplainComponent.vue";
+import LoadingPage from "@/components/pages/loadingPage.vue";
 import AxiosInstance from "@/axiosInstance.js";
 import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
@@ -51,6 +53,7 @@ const quizStore = useQuizStore();
 
 const accuracy = ref();
 const quizSet = ref([]);
+const loading = ref(false);
 const tableContent = ref([]);
 const isAnswerRevealed = ref([]);
 
@@ -65,16 +68,20 @@ onMounted(async () => {
     yourAnswer: quiz.userAnswer,
   }));
   accuracy.value = historyDetail.data.quizSet.accuracy;
-});
-
-
-onMounted(() => {
   isAnswerRevealed.value = Array.from({ length: quizSet.value.length }, () => false);
+  loading.value = true;
 });
 
 const arrestCat = () => {
   quizStore.setDifficulty(quizSet.value[0].tier);
   router.push({ name: "battlePage" });
+};
+
+const scrollToNews = (id) => {
+  const element = document.getElementById(`news-${id}`);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 };
 
 </script>
