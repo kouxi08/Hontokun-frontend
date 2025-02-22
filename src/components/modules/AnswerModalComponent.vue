@@ -16,7 +16,7 @@
 const props = defineProps({
   answer: {
     type: Boolean,
-    requier: true
+    require: true
   },
 });
 </script>
